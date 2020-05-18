@@ -1,0 +1,314 @@
+---
+title:    "Virginia Clean Energy Project"
+subtitle: "Extract, transform and load datasets from U.S. Energy Information Administration"
+author:   Arthur Small
+date:     "Version of `r Sys.Date()`"
+output: html_notebook
+---
+
+This notebook includes code for retrieving and parsing datasetsfrom the [bulk download facility](https://www.eia.gov/opendata/bulkfiles.php) maintained by the [U.S. Energy Information Administration](https://www.eia.gov).
+
+
+```{r read in packages}
+if(!("jsonlite" %in% installed.packages())) install.packages("jsonlite")
+library(here)
+library(readr)
+library(tidyverse)
+library(stringr)
+library(jsonlite)
+```
+
+
+```{r retrieve updated manifest file}
+library(httr)
+url <- "http://api.eia.gov/bulk/manifest.txt"
+
+manifest <- stream_in(file(url))
+
+str(manifest)
+
+# flatten(manifest)
+
+t(manifest$dataset[[2]]) 
+
+```
+
+
+```{r define function to fetch a single zipped file from a specified URL}
+# get_remote_zip_file <- function(url){
+#   require(httr)
+#   require(RCurl)
+#   require(readr)
+#   require(stringr)
+#   require(zip)
+# 
+#   print("Sending HEAD request...")
+#   HEAD_response <- HEAD(url, timeout(30))
+#   print(paste("HEAD response status is:", HEAD_response$all_headers[[1]]$status))
+#   
+#   if(HEAD_response$all_headers[[1]]$status == 200L){
+#     
+#       zip_filename <- word(HEAD_response$headers$`content-disposition`, 2, sep="=")
+#       path2zip <- here("Raw_Data", "EIA", zip_filename)
+#     
+#       print("Sending GET request...")
+#       GET_response <- RETRY("GET", url = url, times = 3, write_disk(path2zip, overwrite = TRUE), progress(), verbose(), overwrite=TRUE)
+#     
+#       GET_response_error <- http_error(GET_response)
+#     
+#       print(paste("GET_response_error status is:", GET_response_error))
+# 
+#       GET_response_headers   <- GET_response$all_headers
+# 
+#       # sink(file = str_replace(path2zip,".zip","_GET_response_headers.txt"), append = FALSE)
+#       # print(paste("GET_response_error =", GET_response_error))
+#       # print("GET_response_headers:")
+#       # print(GET_response_headers)
+#       # sink()
+#     
+#       if(!(GET_response_error)){
+#         unzip(path2zip, exdir = wqp_folder)
+#         path2csv <- str_replace(path2zip,".zip",".csv")
+#         wqp_samples <- read_csv(path2csv, col_types=cols(.default = col_character()))
+#       
+#         return(wqp_samples)
+#       
+#       } else print(paste("Error GET'ing file for", url))
+#     
+#     } else print(paste("HEAD request for", url,"failed."))
+#     
+#   } else {
+#       print(paste("File narrowresult.zip already exists in folder", state_name))
+#       zip_filename <- "narrowresult.zip"
+#       path2zip <- here("Raw_Data","WQP", state_name, zip_filename)
+#       unzip(path2zip, exdir = wqp_folder)
+#       path2csv <- str_replace(path2zip,".zip",".csv")
+#       wqp_samples <- read_csv(path2csv, col_types=cols(.default = col_character()))
+#       
+#       return(wqp_samples)
+#   }
+#  
+# }
+```
+
+
+```{r download and process fuel data file from EIA, eval=FALSE}
+library(here)
+library(dplyr)
+library(stringr) # for replacing strings
+library(readr) 
+
+# url <- "[URL for fuel.csv raw data file]"
+
+
+
+# setwd("C:/Users/Christina Chung/Desktop/EO43")
+path2csv <- here("data", "fuel.csv")
+
+fuel <- read_csv(path2csv)
+
+fuel <- as.data.frame(t(fuel))
+fuel <- fuel[,2:10]
+names(fuel)<-lapply(fuel[1,],as.character)
+fuel <- fuel[-1,]
+colnames(fuel)[1] <- 'Year'
+fuel[,1] <-str_replace_all(fuel[,1],'Year','')
+colnames(fuel)<-str_replace_all(colnames(fuel),' ','_')
+for (i in c(3,6,9)){
+  fuel[,i]<-as.numeric(gsub(",", "", fuel[,i]))
+
+}
+fuel_ordered <-fuel[nrow(fuel):1,]
+write.csv(fuel_ordered,file = 'fuel.csv')
+```
+
+```{r define function to fetch JSON bulk dataset from EIA website }
+get_EIA_bulk_json <- function(url){
+  
+  require(utils)
+  require(here)
+  require(stringr)
+  require(zip)
+  require(fs)
+  
+  os <- Sys.info()[['sysname']] 
+  sep <- ifelse(os == "Windows", "\\", "/")
+  
+  zip_filename <- word(url, start=-1, end=-1, sep=sep)
+  
+  download_dir <- here("data", "raw_data", "EIA")
+  path2zip     <- paste(download_dir, zip_filename, sep=sep)
+  
+  download.file(url = url, destfile = path2zip, method = "libcurl")
+  
+  unzip(path2zip, exdir = download_dir)
+  
+  unzipped_filename <- zip_list(path2zip)$filename
+  path2unzip <- paste(download_dir,unzipped_filename,sep=sep)
+  json_filename <- str_replace(unzipped_filename, ".txt", ".json")
+  path2json <- paste(download_dir,json_filename,sep=sep)
+  
+  file_move(path2unzip, path2json)
+  
+  file_delete(path2zip) 
+  
+  return(path2json)
+}
+```
+
+```{r fetch and parse SEDS bulk JSON file from EIA website}
+library(jsonlite)
+library(dplyr)
+library(fst)
+
+url <- "http://api.eia.gov/bulk/SEDS.zip"
+
+path2json <- get_EIA_bulk_json(url)
+
+SEDS <-
+```
+
+
+```{r fetch and parse SEDS bulk JSON file from EIA website}
+
+```
+
+
+```{r fetch and parse SEDS bulk JSON file from EIA website}
+(file(path2json))
+
+(SEDS %>%
+  as_tibble %>%
+  filter(geography == "USA-VA" & str_detect(description,"lectricity")) %>%
+  flatten() %>%
+  mutate_all(as.character)-> SEDS_va_elec)
+
+write_fst(SEDS_va_elec, path = here("data", "SEDS_va_elec.fst"))
+
+```
+
+```{r fetch and parse ELEC bulk JSON file from EIA website}
+library(jsonlite)
+library(dplyr)
+library(fst)
+
+url <- "http://api.eia.gov/bulk/ELEC.zip"
+
+path2json <- get_EIA_bulk_json(url)
+
+ELEC <- stream_in(file(path2json))
+
+(ELEC %>%
+  as_tibble %>%
+  filter(geography == "USA-VA") %>%
+  flatten() %>%
+  mutate_all(as.character) -> ELEC_va)
+
+write_fst(ELEC_va, path = here("data", "ELEC_va.fst"))
+
+```
+
+```{r fetch and parse bulk JSON file on US Electric System Operating Data from EIA website}
+url <- "http://api.eia.gov/bulk/EBA.zip"
+
+path2json <- get_EIA_bulk_json(url)
+
+EBA <- stream_in(file(path2json))
+
+(EBA %>%
+  as_tibble %>%
+  filter(geography == "USA-VA") %>%
+  flatten() %>%
+  mutate_all(as.character) -> EBA_va)
+
+write_fst(EBA_va, path = here("data", "EBA_va.fst"))
+
+```
+```{r read in SEDS_va_elec}
+(SEDS_va_elec <- read_fst(path = here("data", "SEDS_va_elec.fst")))
+```
+
+```{r read in ELEC_va}
+(ELEC_va <- read_fst(path = here("data", "ELEC_va.fst")))
+```
+
+
+```{r, eval=FALSE}
+library(httr)
+library(here)
+library(dplyr)
+library(tibble)
+
+
+# Replace the line below with a line of the following form:
+# my_api_key <- "YOUR-API-KEY-GOES-HERE"
+
+source(here("etl","my_eia_api_key.R"))
+
+series_id  <- "ELEC.GEN.ALL-VA-99.M"
+
+url_root <- "http://api.eia.gov/series/"
+
+# uri <- paste0("http://api.eia.gov/series/?api_key=",my_api_key,"&series_id=",series_id)
+
+
+resp <- GET(url_root, query = list(api_key = my_api_key, series_id = series_id))
+
+r <- resp
+
+# rm(my_api_key)
+
+# str(r)
+
+status_code(r)
+
+http_status(r)
+#str(content(r))
+# content(r)
+
+headers(r)
+
+content(r)$series[[1]]$data %>% as_tibble(.name_repair = "universal")
+
+content(r, "text")
+
+stringi::stri_enc_detect(content(r, "raw"))
+
+str(content(r, "parsed"))
+
+http_type(resp)
+
+jsonlite::fromJSON(content(resp, "text"), simplifyVector = FALSE)$series[[1]]$data %>%
+  as_tibble()
+
+
+```
+
+
+```{r}
+if(!("eia" %in% installed.packages())) install.packages("eia")
+library(eia)
+
+# Replace the line below with a line of the following form:
+# my_api_key <- "YOUR-API-KEY-GOES-HERE"
+
+source(here("etl","my_eia_api_key.R"))
+
+series_id  <- "ELEC.GEN.ALL-VA-99.M"
+
+eia_set_key(my_api_key) # set API key if not already set globally
+
+# id <- "ELEC.GEN.ALL-AK-99.A"
+d <- eia_series(series_id, n=10)
+
+d$data[[1]] 
+
+```
+```{r}
+library(ggplot2)
+library(tidyr)
+unnest(d, cols = data) %>% ggplot(aes(month, value)) +
+  geom_line() + labs(y = d$units, title = d$name)
+
+```
+
