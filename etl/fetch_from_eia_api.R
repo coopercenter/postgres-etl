@@ -10,12 +10,20 @@ if(!("eia" %in% installed.packages())) install.packages("eia")
 library(eia)
 library(stringr)
 
-# create a list of series ids
+# Make a list of series ids
+#---------------------------------------------------------------------------------
+# If you have a large number of datasets, create a txt file storing the series ids
 ## reads in a txt file containing the series ids of the datasets we need
 series_id_vec <- read_file(here("etl","series_ids.txt"))
 
 ## transform the content to a list that we can later feed into the fetch function
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
+
+#---------------------------------------------------------------------------
+# If you only have a few datasets, here is an example
+## series_id_list <- c("SEDS.TERCB.VA.A","SEDS.TECCB.VA.A","SEDS.TEICB.VA.A",
+##            "SEDS.TEACB.VA.A","SEDS.TETCB.VA.A")
+#----------------------------------------------------------------------------
 
 # setting the url root for the EIA data
 url_root <- "http://api.eia.gov/series/"
@@ -35,11 +43,13 @@ fetch_eia_series <- function(series_id){
   return(data_series)
 }
 
-# apply the function to each series id in the series id list using lappy
+# Fetching a large number of datasets
+## apply the function to each series id in the series id list using lappy
 all_data_series <-lapply(series_id_list,fetch_eia_series)
 
-# create an empty list to store the data tables
+## create an empty list to store the data tables
 all_tables<- vector("list", length(series_id_list))
+
 
 # function used to display data
 displaydata <- function(series) {
