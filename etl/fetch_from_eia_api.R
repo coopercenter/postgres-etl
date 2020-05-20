@@ -63,6 +63,8 @@ for (i in 1:length(all_data_series)){
   all_tables[[i]]<-displaydata(series)
 }
 
+#--------------------------------------------------------------------------------
+# No need to go beyond this line if you do not want to upload the dataset to the database
 
 # Connection to the database
 # "my_postgres_login.R" contains the log-in informations of RAs
