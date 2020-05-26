@@ -43,7 +43,6 @@ r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and qual
 
 library(plyr)
 metadata<-rbind(metadata,r1)
-dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 #------------------------------------------------------------------------------------
 #sample code used to get the metadata for EIA datasets
@@ -83,11 +82,11 @@ get_name <- function(series_id) {
 eia_data_names <- lapply(series_id_list,get_name)
 
 # eia_short <- list()
-eia_urls <- list('https://www.eia.gov/electricity/state/virginia/state_tables.php',
-                 'https://www.eia.gov/state/seds/seds-data-complete.php?sid=US#StatisticsIndicators',
-                 'https://www.eia.gov/state/seds/seds-data-complete.php?sid=US#Production',
-                 'https://www.eia.gov/electricity/data/browser/#/topic/5?agg=0,1&geo=00000001&endsec=vg&linechart=ELEC.SALES.VA-ALL.A&columnchart=ELEC.SALES.VA-ALL.A&map=ELEC.SALES.VA-ALL.A&freq=A&ctype=linechart&ltype=sourcekey&rtype=s&rse=0&maptype=0&pin=',
-                 'https://www.eia.gov/electricity/data/browser/#/topic/5?agg=0,1&geo=00000001&endsec=vg&linechart=ELEC.SALES.VA-ALL.M&columnchart=ELEC.SALES.VA-ALL.M&map=ELEC.SALES.VA-ALL.M&freq=M&start=200101&end=202001&ctype=linechart&ltype=sourcekey&rtype=s&pin=&maptype=0&rse=0',
+eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.M',
                  'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
                  'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
@@ -104,7 +103,8 @@ eia_urls <- list('https://www.eia.gov/electricity/state/virginia/state_tables.ph
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.AOR-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
-                 'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M'
+                 'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M'
 )
 
 col2var<-vector("list", length(series_id_list))
@@ -133,7 +133,7 @@ db_driver = dbDriver("PostgreSQL")
 source(here("etl", "my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 
 
