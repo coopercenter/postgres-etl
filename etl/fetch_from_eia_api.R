@@ -1,3 +1,8 @@
+# This code extracts data tables from the US Energy Information Administration's
+# (EIA) API from a list of series ids previously identified and listed
+# in eia_series_ids.txt, and stores in a PostgreSQL instance.
+# This code does not handle metadata.
+
 # Loading the libraries used in this script
 library(httr)
 library(here)
@@ -67,7 +72,7 @@ for (i in 1:length(all_data_series)){
 # No need to go beyond this line if you do not want to upload the dataset to the database
 
 # Connection to the database
-# "my_postgres_login.R" contains the log-in informations of RAs
+# "my_postgres_credentials.R" contains the log-in informations of RAs
 source(here("etl", "my_postgres_credentials.R"))
 db_driver = dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -94,5 +99,5 @@ for (i in 1:length(all_data_series)){
 }
 
 # Close connection
-dbDisconnect(con)
-dbUnloadDriver(drv)
+dbDisconnect(db)
+dbUnloadDriver(db_driver)
