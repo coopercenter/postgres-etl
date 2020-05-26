@@ -33,7 +33,7 @@ url_root <- "http://api.eia.gov/series/"
 ## R script in the etl folder with the exact script name and variable name specified below
 
 source(here("etl","my_eia_api_key.R"))
-eia_set_key(my_api_key)
+eia_set_key(eiaKey)
 
 # function used to fetch the eia series given the series id
 fetch_eia_series <- function(series_id){
@@ -68,17 +68,10 @@ for (i in 1:length(all_data_series)){
 
 # Connection to the database
 # "my_postgres_login.R" contains the log-in informations of RAs
-source(here("etl", "my_postgres_login.R"))
-drv <- dbDriver("PostgreSQL")
+source(here("etl", "my_postgres_credentials.R"))
+db_driver = dbDriver("PostgreSQL")
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-con<- dbConnect(drv, dbname = dbname, host = host, port = port, user = user, password = password)
-
-rm(password)
-
-# check the connection, will display TRUE if seccuessful
-dbExistsTable(con, "fuel")
-# TRUE
-dbListTables(con)
 
 # Function used to change the names of tables to the format used in MySQL
 ## Key: all lower case and no punctuation other than _
@@ -96,8 +89,8 @@ db_table_names <- lapply(series_id_list,get_name)
 # Note: This code OVERWRITES EXISTING TABLE!
 
 for (i in 1:length(all_data_series)){
-  dbWriteTable(con, db_table_names[[i]], value = all_tables[[i]], append = FALSE, overwrite = TRUE, row.names = FALSE)
-  dbGetQuery(con, paste("SELECT * from",db_table_names[[i]])) %>% as_tibble() -> df_postgres
+  dbWriteTable(db, db_table_names[[i]], value = all_tables[[i]], append = FALSE, overwrite = TRUE, row.names = FALSE)
+  dbGetQuery(db, paste("SELECT * from",db_table_names[[i]])) %>% as_tibble() -> df_postgres
 }
 
 # Close connection
