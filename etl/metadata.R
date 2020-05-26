@@ -11,16 +11,16 @@ colnames(metadata) <- c('db_table_name','full_series_name',
 # Sample Code used to manually write the metadata
 
 # Connection to the database
-# "my_postgres_login.R" contains the log-in informations of RAs
+# "my_postgres_credentials.R" contains the log-in informations of RAs
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("etl", "my_postgres_login.R"))
-drv <- dbDriver("PostgreSQL")
+source(here("etl", "my_postgres_credentials.R"))
+db_driver <- dbDriver("PostgreSQL")
 
-con<- dbConnect(drv, dbname = dbname, host = host, port = port, user = user, password = password)
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-rm(password)
+rm(ra_pwd)
 
 # check the connection
 dbExistsTable(con, "metadata")
@@ -43,6 +43,7 @@ r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and qual
 
 library(plyr)
 metadata<-rbind(metadata,r1)
+dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 #------------------------------------------------------------------------------------
 #sample code used to get the metadata for EIA datasets
@@ -60,16 +61,16 @@ series_id_vec <- read_file(here("etl","series_ids.txt"))
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
 
 ## create a empty list to store the metadata tables
-all_eia_meta<-vector("list", length(series_id_list))
+all_eia_meta <- vector("list", length(series_id_list))
 
 ## loops through the series id list and store the corresponding metadata table
 for (i in 1:length(series_id_list)){
-  all_eia_meta[[i]]<-eia_series(series_id_list[[i]],n=10)
+  all_eia_meta[[i]] <- eia_series(series_id_list[[i]],n=10)
 }
 
 # Fit the metadata tables into the standard structure
 ## Create an empty list to store the reformatted metadata tables
-fit_meta<-vector("list", length(series_id_list))
+fit_meta <- vector("list", length(series_id_list))
 
 ## create lists to store other info that is not in the metadata extracted using code
 
@@ -82,29 +83,34 @@ get_name <- function(series_id) {
 eia_data_names <- lapply(series_id_list,get_name)
 
 # eia_short <- list()
-eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=12&sdid=ELEC.GEN.HYC-VA-99.M',
+eia_urls <- list('https://www.eia.gov/opendata/qb.php?category=2251718&sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
+                 'https://www.eia.gov/state/seds/seds-data-complete.php?sid=US#StatisticsIndicators',
+                 'https://www.eia.gov/state/seds/seds-data-complete.php?sid=US#Production',
+                 'https://www.eia.gov/electricity/data/browser/#/topic/5?agg=0,1&geo=00000001&endsec=vg&linechart=ELEC.SALES.VA-ALL.A&columnchart=ELEC.SALES.VA-ALL.A&map=ELEC.SALES.VA-ALL.A&freq=A&ctype=linechart&ltype=sourcekey&rtype=s&rse=0&maptype=0&pin=',
+                 'https://www.eia.gov/electricity/data/browser/#/topic/5?agg=0,1&geo=00000001&endsec=vg&linechart=ELEC.SALES.VA-ALL.M&columnchart=ELEC.SALES.VA-ALL.M&map=ELEC.SALES.VA-ALL.M&freq=M&start=200101&end=202001&ctype=linechart&ltype=sourcekey&rtype=s&pin=&maptype=0&rse=0',
                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-ALL.M',
                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-COM.M',
                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-RES.M',
                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-IND.M',
                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-TRA.M',
                  'https://www.eia.gov/opendata/qb.php?category=1718389&sdid=ELEC.CUSTOMERS.VA-ALL.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?category=12&sdid=ELEC.GEN.HYC-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NUC-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.COW-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NG-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.AOR-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
-                 'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M'
+                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M'
 )
 
 col2var<-vector("list", length(series_id_list))
