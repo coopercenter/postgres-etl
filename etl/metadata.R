@@ -50,6 +50,7 @@ dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE
 library(eia)
 library(here)
 library(RPostgreSQL)
+library(tidyverse)
 
 
 ## read in my eia api key
@@ -105,7 +106,7 @@ eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
                  'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M'
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M',
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
