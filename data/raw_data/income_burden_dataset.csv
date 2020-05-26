@@ -1,0 +1,54 @@
+Low-Income Energy Affordability Data Tool Chart Export (https://www.energy.gov/eere/slsc/maps/lead-tool)
+Exported On:,5/21/2020
+AMI:,0% - 30%; 30% - 60%; 60% - 80%; 80% - 100%; 100%+
+Building Age:,Before 1940; 1940 - 59; 1960 - 79; 1980 - 99; 2000 - 09; 2010+
+Fuel Type:,Utility Gas; Bottled Gas; Electricity; Fuel Oil; Coal; Wood; Solar; Other; None
+Building Type:,1 unit detached; 1 unit attached; 2 units; 3 - 4 units; 5 - 9 units; 10 - 19 units; 20 - 49 units; 50+ units; Other
+Rent/Own:,Renter-occupied; Owner-occupied
+
+Name,Fuel Type,Area Median Income,Avg. Annual Energy Cost (Electricity),Avg. Annual Energy Cost (Gas),Avg. Annual Energy Cost (Other),Avg. Annual Energy Cost (Total),Avg. Energy Burden (% Income)
+Virginia,Utility Gas,0% - 30%,1008,585,21,1615,15
+Virginia,Utility Gas,30% - 60%,1061,595,28,1684,6
+Virginia,Utility Gas,60% - 80%,1154,621,26,1801,4
+Virginia,Utility Gas,80% - 100%,1190,611,21,1822,3
+Virginia,Utility Gas,100%+,1388,685,21,2095,1
+Virginia,Bottled Gas,0% - 30%,1282,1052,170,2504,23
+Virginia,Bottled Gas,30% - 60%,1319,1058,190,2567,10
+Virginia,Bottled Gas,60% - 80%,1434,1107,165,2705,7
+Virginia,Bottled Gas,80% - 100%,1490,1080,182,2752,5
+Virginia,Bottled Gas,100%+,1737,1244,134,3115,2
+Virginia,Electricity,0% - 30%,1457,64,21,1542,15
+Virginia,Electricity,30% - 60%,1526,67,28,1620,6
+Virginia,Electricity,60% - 80%,1608,76,30,1715,4
+Virginia,Electricity,80% - 100%,1630,81,30,1741,3
+Virginia,Electricity,100%+,1788,122,35,1945,2
+Virginia,Fuel Oil,0% - 30%,1270,103,896,2269,22
+Virginia,Fuel Oil,30% - 60%,1235,111,1050,2395,10
+Virginia,Fuel Oil,60% - 80%,1304,112,1138,2554,7
+Virginia,Fuel Oil,80% - 100%,1364,110,1170,2643,5
+Virginia,Fuel Oil,100%+,1570,126,1251,2947,3
+Virginia,Coal,0% - 30%,1064,49,298,1411,14
+Virginia,Coal,30% - 60%,886,66,563,1515,8
+Virginia,Coal,60% - 80%,1342,159,936,2437,7
+Virginia,Coal,80% - 100%,1340,18,681,2038,4
+Virginia,Coal,100%+,1786,54,613,2453,3
+Virginia,Wood,0% - 30%,1219,66,337,1622,15
+Virginia,Wood,30% - 60%,1249,113,377,1740,7
+Virginia,Wood,60% - 80%,1427,93,335,1855,5
+Virginia,Wood,80% - 100%,1451,95,313,1859,4
+Virginia,Wood,100%+,1547,125,307,1979,2
+Virginia,Solar,0% - 30%,690,0,0,690,8
+Virginia,Solar,30% - 60%,1921,0,23,1943,5
+Virginia,Solar,60% - 80%,1300,22,100,1422,3
+Virginia,Solar,80% - 100%,1118,148,68,1334,2
+Virginia,Solar,100%+,1460,344,191,1995,2
+Virginia,Other,0% - 30%,1150,75,338,1563,11
+Virginia,Other,30% - 60%,1145,104,589,1838,7
+Virginia,Other,60% - 80%,1288,152,515,1955,5
+Virginia,Other,80% - 100%,1272,285,530,2087,4
+Virginia,Other,100%+,1861,294,584,2739,2
+Virginia,None,0% - 30%,1250,66,13,1330,12
+Virginia,None,30% - 60%,1320,77,22,1419,5
+Virginia,None,60% - 80%,1384,69,11,1464,3
+Virginia,None,80% - 100%,1355,78,13,1446,3
+Virginia,None,100%+,1573,99,15,1687,1
