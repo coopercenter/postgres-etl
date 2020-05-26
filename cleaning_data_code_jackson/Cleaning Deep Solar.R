@@ -20,4 +20,3 @@ deep_solar <- deep_solar[,3:170]
 
 dbWriteTable(db,'deep_solar',deep_solar, row.names=FALSE)
 
-?dbWriteTable
