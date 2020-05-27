@@ -11,16 +11,16 @@ colnames(metadata) <- c('db_table_name','full_series_name',
 # Sample Code used to manually write the metadata
 
 # Connection to the database
-# "my_postgres_login.R" contains the log-in informations of RAs
+# "my_postgres_credentials.R" contains the log-in informations of RAs
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("etl", "my_postgres_login.R"))
-drv <- dbDriver("PostgreSQL")
+source(here("etl", "my_postgres_credentials.R"))
+db_driver <- dbDriver("PostgreSQL")
 
-con<- dbConnect(drv, dbname = dbname, host = host, port = port, user = user, password = password)
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-rm(password)
+rm(ra_pwd)
 
 # check the connection
 dbExistsTable(con, "metadata")
@@ -43,12 +43,14 @@ r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and qual
 
 library(plyr)
 metadata<-rbind(metadata,r1)
+dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 #------------------------------------------------------------------------------------
 #sample code used to get the metadata for EIA datasets
 library(eia)
 library(here)
 library(RPostgreSQL)
+library(tidyverse)
 
 
 ## read in my eia api key
@@ -60,16 +62,16 @@ series_id_vec <- read_file(here("etl","series_ids.txt"))
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
 
 ## create a empty list to store the metadata tables
-all_eia_meta<-vector("list", length(series_id_list))
+all_eia_meta <- vector("list", length(series_id_list))
 
 ## loops through the series id list and store the corresponding metadata table
 for (i in 1:length(series_id_list)){
-  all_eia_meta[[i]]<-eia_series(series_id_list[[i]],n=10)
+  all_eia_meta[[i]] <- eia_series(series_id_list[[i]],n=10)
 }
 
 # Fit the metadata tables into the standard structure
 ## Create an empty list to store the reformatted metadata tables
-fit_meta<-vector("list", length(series_id_list))
+fit_meta <- vector("list", length(series_id_list))
 
 ## create lists to store other info that is not in the metadata extracted using code
 
@@ -104,7 +106,13 @@ eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
                  'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M'
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M'
 )
 
 col2var<-vector("list", length(series_id_list))
