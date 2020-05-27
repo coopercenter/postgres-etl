@@ -57,7 +57,7 @@ r3<- data.frame(db_table_name = "total_mw_offshore_wind",
                 series_id=NA,json=NA,notes=NA)
 
 library(plyr)
-metadata<-rbind(metadata,r1,r2,r3)
-dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+metadata<-rbind(r1,r2,r3)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 
