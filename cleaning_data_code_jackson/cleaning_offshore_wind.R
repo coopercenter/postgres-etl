@@ -13,7 +13,7 @@ rm(ra_pwd)
 offshore_wind <- read_excel(here('data','raw_data','offshore_wind_data.xlsx'))
 #break down dataset into subsets
 total_mw_offshore_wind <- offshore_wind[1:18,]
-net_capacity_factor_offshore_wind <- offshore_wind[52:71,]
+net_capacity_factor_offshore_wind <- offshore_wind[52:71,1:5]
 total_production_forecast_offshore_wind <- offshore_wind[75:92,1:2]
 
 #create function to clean datasets and upload them to db 
@@ -27,6 +27,7 @@ simple_clean <- function(df) {
 total_mw_offshore_wind <- simple_clean(total_mw_offshore_wind)
 net_capacity_factor_offshore_wind <- simple_clean(net_capacity_factor_offshore_wind)
 total_production_forecast_offshore_wind <- simple_clean(total_production_forecast_offshore_wind)
+colnames(total_production_forecast_offshore_wind) <- c('Year','Total_Production')
 #upload to database
 df_name <- deparse(substitute(total_mw_offshore_wind))
 dbWriteTable(db, df_name, total_mw_offshore_wind, row.names=FALSE, overwrite = TRUE)
