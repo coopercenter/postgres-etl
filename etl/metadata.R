@@ -1,7 +1,7 @@
 # Creating the dataframe for metadata
 metadata<-data.frame(matrix(ncol = 13, nrow = 0))
 
-# without the short series name first
+# Specify the column names
 colnames(metadata) <- c('db_table_name','full_series_name',
                         'column2variable_name_map','units','frequency',
                         'data_source','data_source_full_name','url',
@@ -23,17 +23,24 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 # check the connection
-dbExistsTable(con, "metadata")
-# TRUE
-fuel<-dbGetQuery(con,'SELECT * from fuel_cleaned')
+# if this returns true, it means that you are connected to the database now
+dbExistsTable(db, "metadata")
 
-colnames(fuel)
-fuel_cols <- list(c('Year','Coal','Average_heat_value','Average_sulfur_content','Petroleum',
-                    'Average_heat_value','Average_sulfur_content','Natural_gas','Average_heat_value'))
+# get the cleaned dataset from the database
+## fuel_cleaned should be replaced by the name of your dataset in the database
+## (coordinate with Jackson)
+fuel<-dbGetQuery(db,'SELECT * from fuel_cleaned')
+
+# put the column names into a list
+fuel_cols<-list(colnames(fuel))
+
+# put the unit of each column into a list
 fuel_units <-list(c('Year','dollars_per_million_Btu','Btu_per_pound','percent',
                     'dollars_per_million_Btu','Btu_per_pound','percent',
                     'dollars_per_million_Btu','Btu_per_cubic_foot'))
 
+# Construct a data frame with only one row, if you have more than one dataset,
+# construct r2, r3,... if needed
 r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and quality",
                 full_series_name = 'Electric power delivered fuel prices and quality for coal, petroleum, Natural gas, 1990 through 2018',
                 column2variable_name_map=I(fuel_cols),units=I(fuel_units),frequency='Y',
@@ -42,7 +49,14 @@ r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and qual
                 series_id=NA,json=NA,notes=NA)
 
 library(plyr)
+# if you have more than one dataset,rbind the rows first,and then bind it to the metadata
+# Example
+# r1 <- rbind(r1,r2)
 metadata<-rbind(metadata,r1)
+
+# WARNING
+# Do not run dbWriteTable before you check with Christina and Chloe
+# This will overwrite the existing metadata table in the db
 dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 #------------------------------------------------------------------------------------
