@@ -1,5 +1,5 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 13, nrow = 0))
+metadata<-data.frame(matrix(ncol = 12, nrow = 0))
 
 # Specify the column names
 colnames(metadata) <- c('db_table_name','full_series_name',
@@ -29,7 +29,7 @@ dbExistsTable(db, "metadata")
 # get the cleaned dataset from the database
 ## fuel_cleaned should be replaced by the name of your dataset in the database
 ## (coordinate with Jackson)
-fuel<-dbGetQuery(db,'SELECT * from fuel_cleaned')
+a<-dbGetQuery(db,'SELECT * from metadata')
 
 # put the column names into a list
 fuel_cols<-list(colnames(fuel))
