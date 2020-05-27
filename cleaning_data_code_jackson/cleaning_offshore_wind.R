@@ -27,6 +27,7 @@ simple_clean <- function(df) {
 total_mw_offshore_wind <- simple_clean(total_mw_offshore_wind)
 net_capacity_factor_offshore_wind <- simple_clean(net_capacity_factor_offshore_wind)
 total_production_forecast_offshore_wind <- simple_clean(total_production_forecast_offshore_wind)
+colnames(total_production_forecast_offshore_wind) <- c('Year','Total_Production')
 #upload to database
 df_name <- deparse(substitute(total_mw_offshore_wind))
 dbWriteTable(db, df_name, total_mw_offshore_wind, row.names=FALSE, overwrite = TRUE)
