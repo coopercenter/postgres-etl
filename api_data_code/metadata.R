@@ -4,7 +4,7 @@ metadata<-data.frame(matrix(ncol = 12, nrow = 0))
 # Specify the column names
 colnames(metadata) <- c('db_table_name','full_series_name',
                         'column2variable_name_map','units','frequency',
-                        'data_source','data_source_full_name','url',
+                        'data_source_brief_name','data_source_full_name','url',
                         'api','series_id','json','notes')
 
 #--------------------------------------------------------------------------------------
