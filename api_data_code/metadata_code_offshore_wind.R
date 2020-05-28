@@ -24,9 +24,10 @@ offshore_mw_cols <- list(c('Year','Total','CVOW_Pilot','CVOW_Commercial_Stage_I'
 offshore_mw_units <-'megawatts'
 
 r1<- data.frame(db_table_name = "total_mw_offshore_wind",
+                short_series_name= 'Total megawatt predictions of offshore wind',
                 full_series_name = 'Total megawatt predictions of offshore wind energy in phases from 2017 through 2033',
-                column2variable_name_map=I(offshore_mw_cols),units=I(offshore_mw_units),frequency='Y',
-                data_source='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
+                column2variable_name_map=I(offshore_mw_cols),units=I(offshore_mw_units),frequency='A',
+                data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA)
 
@@ -39,9 +40,10 @@ offshore_cf_cols <- list(c('Year','Pilot','Stage_I','Stage_II',
 offshore_cf_units <- 'CF'
 
 r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
+                short_series_name='Capacity factor predictions of offshore wind',
                 full_series_name = 'Capacity factor predictions of offshore wind energy in phases from 2017 through 2035',
-                column2variable_name_map=I(offshore_cf_cols),units=I(offshore_cf_units),frequency='Y',
-                data_source='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
+                column2variable_name_map=I(offshore_cf_cols),units=I(offshore_cf_units),frequency='A',
+                data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA)
 
@@ -51,9 +53,10 @@ colnames(total_production_forecast_offshore_wind)
 offshore_tp_cols <- list(c('Year','Total_Production_GWh'))
 offshore_tp_units <- 'gigawatt'
 r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
+                short_series_name = 'Total production forecast of offshore wind',
                 full_series_name = 'Total production forecast of offshore wind energy in phases from 2017 through 2035',
                 column2variable_name_map=I(offshore_tp_cols),units=I(offshore_tp_units),frequency='Y',
-                data_source='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
+                data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA)
 
