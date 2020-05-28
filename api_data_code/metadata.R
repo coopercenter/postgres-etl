@@ -15,7 +15,7 @@ colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("etl", "my_postgres_credentials.R"))
+source(here("api_data_code", "my_postgres_credentials.R"))
 db_driver <- dbDriver("PostgreSQL")
 
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -182,7 +182,7 @@ for (i in 1:length(series_id_list)){
 }
 
 db_driver = dbDriver("PostgreSQL")
-source(here("etl", "my_postgres_credentials.R"))
+source(here("api_data_code", "my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
