@@ -93,7 +93,7 @@ Data tables for hourly- and other high-frequency time series will be structured 
 | `column2variable_name_map` | List of ordered pairs in format "[column_names_vector], [variable_names_vector]" | ''c("dom", "appco", "coops"), c("Dominion", "AppCo", "Co-ops")'' |
 | `units` | units of measure for variable value fields | "MWh" |
 | `frequency` | Frequency of date-time steps | Allowable values: "A" or "Y" (annual/yearly), "Q" (quarterly), "M" (monthly), "W" (weekly), "D" (daily), "H" (hourly), "O" (other) | 
-| `data_source` | Brief name of the agency or entity that supplies the data  | "EIA"  |
+| `data_source_brief_name` | Brief name of the agency or entity that supplies the data  | "EIA"  |
 | `data_source_full_name` | Full name of the agency or entity that supplies the data  | "U.S. Energy Information Administration"  |
 | `url` |  URL for the data source (if applicable) |     |
 | `api` | If data are retrieved via an API: URL of the API | |
@@ -105,7 +105,7 @@ Data tables for hourly- and other high-frequency time series will be structured 
   * All fields except for the `db_table_name` are `NULL`-able. However, leaving certain metadata fields unpopulated will be considered poor practice. The following practices and interpretations apply: 
     - At least one of `short_series_name` or `full_series_name` fields should always be populated.
     - If the `units` field is `NULL`, variable values will be interpreted as unit-less pure numbers.
-    - At least one of the `data_source` or `data_source_full_name` fields should always be populated. 
+    - At least one of the `data_source_brief_name` or `data_source_full_name` fields should always be populated. 
     - If the `api` field is populated, the `series_id` field should be also.
     - If `url` and `api` fields are both blank, an annotation should be entered manually in the `notes` column to explain the provenance of the data set.
   * The `column2variable_name_map` field links data columns to variable names. If these values are missing or incomplete, then no match can be made. In these cases, the name of the data table field (i.e., the column header) will be used as the default variable name:
