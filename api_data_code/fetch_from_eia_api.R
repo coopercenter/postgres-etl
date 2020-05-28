@@ -37,7 +37,7 @@ url_root <- "http://api.eia.gov/series/"
 ## if you don't have one, apply for one at EIA's website and save it in a separate 
 ## R script in the etl folder with the exact script name and variable name specified below
 
-source(here("etl","my_eia_api_key.R"))
+source(here("api_data_code","my_eia_api_key.R"))
 eia_set_key(eiaKey)
 
 # function used to fetch the eia series given the series id
@@ -73,7 +73,7 @@ for (i in 1:length(all_data_series)){
 
 # Connection to the database
 # "my_postgres_credentials.R" contains the log-in informations of RAs
-source(here("etl", "my_postgres_credentials.R"))
+source(here("api_data_code", "my_postgres_credentials.R"))
 db_driver = dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 

@@ -15,7 +15,7 @@ colnames(metadata) <- c('db_table_name','full_series_name',
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("etl", "my_postgres_credentials.R"))
+source(here("api_data_code", "my_postgres_credentials.R"))
 db_driver <- dbDriver("PostgreSQL")
 
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -68,11 +68,11 @@ library(tidyverse)
 
 
 ## read in my eia api key
-source(here("etl","my_eia_api_key.R"))
+source(here("api_data_code","my_eia_api_key.R"))
 eia_set_key(eiaKey)
 
 ## create a list of series ids
-series_id_vec <- read_file(here("etl","series_ids.txt"))
+series_id_vec <- read_file(here("api_data_code","series_ids.txt"))
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
 
 ## create a empty list to store the metadata tables
@@ -152,7 +152,7 @@ for (i in 1:length(series_id_list)){
 }
 
 db_driver = dbDriver("PostgreSQL")
-source(here("etl", "my_postgres_credentials.R"))
+source(here("api_data_code", "my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
