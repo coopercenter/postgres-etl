@@ -1,8 +1,8 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 12, nrow = 0))
+metadata<-data.frame(matrix(ncol = 13, nrow = 0))
 
 # Specify the column names
-colnames(metadata) <- c('db_table_name','full_series_name',
+colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
                         'column2variable_name_map','units','frequency',
                         'data_source_brief_name','data_source_full_name','url',
                         'api','series_id','json','notes')
@@ -29,7 +29,6 @@ dbExistsTable(db, "metadata")
 # get the cleaned dataset from the database
 ## fuel_cleaned should be replaced by the name of your dataset in the database
 ## (coordinate with Jackson)
-a<-dbGetQuery(db,'SELECT * from metadata')
 
 # put the column names into a list
 fuel_cols<-list(colnames(fuel))
@@ -68,11 +67,11 @@ library(tidyverse)
 
 
 ## read in my eia api key
-source(here("etl","my_eia_api_key.R"))
+source(here("api_data_code","my_eia_api_key.R"))
 eia_set_key(eiaKey)
 
 ## create a list of series ids
-series_id_vec <- read_file(here("etl","series_ids.txt"))
+series_id_vec <- read_file(here("api_data_code","series_ids.txt"))
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
 
 ## create a empty list to store the metadata tables
@@ -97,7 +96,6 @@ get_name <- function(series_id) {
 # apply the function to the list of series id to get the names for the data tables
 eia_data_names <- lapply(series_id_list,get_name)
 
-# eia_short <- list()
 eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
@@ -129,6 +127,37 @@ eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M'
 )
 
+eia_short_names<-list('Total co2 emission',
+                      'Total energy consumption',
+                      'Total energy production',
+                      'Annual retail sales',
+                      'Monthly retail sales',
+                      'Total monthly generation',
+                      'Total annual generation',
+                      'Total monthly solar generation',
+                      'Total monthly conventional hydroelectric generation',
+                      'Total monthly average retail price',
+                      'Commercial monthly average retail price',
+                      'Residential monthly average retial price',
+                      'Industrial monthly average retial price',
+                      'Transportation monthly average retial price',
+                      'Total monthly number of customer accounts',
+                      'Total monthly nuclear generation',
+                      'Total monthly coal generation',
+                      'Total monthly natural gas generation',
+                      'Total monthly other renewables generation',
+                      'Total monthly petroleum liquids generation',
+                      'Total monthly utility scale solar generation',
+                      'Total monthly small scale solar generation',
+                      'Total monthly utility scale solar generation non cogen',
+                      'Total monthly coal electric power generation',
+                      'Total monthly utility scale photovoltaic generation',
+                      'Total monthly wood and wood derived fuels generation',
+                      'Total monthly other biomass generation',
+                      'Total monthly hydro electric pumped sotrage',
+                      'Total monthly other generation'
+                      )
+
 col2var<-vector("list", length(series_id_list))
 cols<-vector("list", length(series_id_list))
 
@@ -143,6 +172,7 @@ for (i in 1:length(series_id_list)){
 # Create metadata dataframes for each dataset and fill in the info
 for (i in 1:length(series_id_list)){
   fit_meta[[i]]<-data.frame(db_table_name = eia_data_names[[i]],
+                            short_series_name= eia_short_names[[i]],
                             full_series_name = all_eia_meta[[i]]$name,
                             column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
                             data_source='EIA',data_source_full_name='U.S. Energy Information Administration',
