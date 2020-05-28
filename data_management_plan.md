@@ -133,7 +133,7 @@ structured very similarly:
 | `column2variable_name_map` | List of ordered pairs in format “\[column\_names\_vector\], \[variable\_names\_vector\]” | ‘’c(“dom”, “appco”, “coops”), c(“Dominion”, “AppCo”, “Co-ops”)’’                                                                   |
 | `units`                    | units of measure for variable value fields                                               | “MWh”                                                                                                                              |
 | `frequency`                | Frequency of date-time steps                                                             | Allowable values: “A” or “Y” (annual/yearly), “Q” (quarterly), “M” (monthly), “W” (weekly), “D” (daily), “H” (hourly), “O” (other) |
-| `data_source`              | Brief name of the agency or entity that supplies the data                                | “EIA”                                                                                                                              |
+| `data_source_brief_name`   | Brief name of the agency or entity that supplies the data                                | “EIA”                                                                                                                              |
 | `data_source_full_name`    | Full name of the agency or entity that supplies the data                                 | “U.S. Energy Information Administration”                                                                                           |
 | `url`                      | URL for the data source (if applicable)                                                  |                                                                                                                                    |
 | `api`                      | If data are retrieved via an API: URL of the API                                         |                                                                                                                                    |
@@ -151,7 +151,7 @@ structured very similarly:
         should always be populated.
       - If the `units` field is `NULL`, variable values will be
         interpreted as unit-less pure numbers.
-      - At least one of the `data_source` or `data_source_full_name`
+      - At least one of the `data_source_brief_name` or `data_source_full_name`
         fields should always be populated.
       - If the `api` field is populated, the `series_id` field should be
         also.
