@@ -34,36 +34,32 @@ energy_burden_county_percent_income_units <-list(c('county', 'avg_energy_burden_
 # Construct a data frame with only one row, if you have more than one dataset,
 # construct r2, r3,... if needed
 r1<- data.frame(db_table_name = "energy_burden_by_fuel_type", 
-                short_series_name = "Energy Burden by Fuel Type,",
-                full_series_name = 'Energy Cost Annually by Fuel Type',
+                short_series_name = "Energy burden by fuel type",
+                full_series_name = 'Energy cost annually by fuel type',
                 column2variable_name_map=I(energy_burden_by_fuel_type_cols),units=I(energy_burden_by_fuel_type_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA)
 r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
-                short_series_name = "Energy Burden by County,",
-                full_series_name = 'Energy Cost Annually per County',
+                short_series_name = "Energy burden by county",
+                full_series_name = 'Energy cost annually per county',
                 column2variable_name_map=I(energy_burden_county_expenditures_cols),units=I(energy_burden_county_expenditures_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA)
 r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
-                short_series_name = "Energy Burden per Percent Income,",
-                full_series_name = 'Energy Cost Anually per Percent Income',
+                short_series_name = "Energy burden per percent income",
+                full_series_name = 'Energy cost annually per percent income',
                 column2variable_name_map=I(energy_burden_county_percent_income_cols),units=I(energy_burden_county_percent_income_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA)
 
 library(plyr)
-# if you have more than one dataset,rbind the rows first,and then bind it to the metadata
-# Example
-# r1 <- rbind(r1,r2)
-rows<-rbind(r1, r2, r3)
-metadata <- rbind(rows)
+metadata <- rbind(r1, r2, r3)
 
 
-# WARNING
-# Do not run dbWriteTable before you check with Christina and Chloe
-# This will overwrite the existing metadata table in the db
+# Append your rows to the metadata table in our database
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+
+
