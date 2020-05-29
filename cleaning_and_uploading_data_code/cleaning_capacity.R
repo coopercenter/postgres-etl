@@ -3,7 +3,12 @@ library(readr)
 library(tidyverse)
 library(stringr) # for replacing strings
 library(here)
-here('data','Electric_Power_Capacity_By_Sector.csv')
+library("RPostgreSQL")
+
+db_driver = dbDriver("PostgreSQL")
+source(here('my_postgres_credentials.R'))
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
 #read in dataset
 electric_capacity_virginia <- read.csv(here('data','Electric_Power_Capacity_By_Sector.csv'))
 #subset data to include on energy generated for electric utility
@@ -60,7 +65,7 @@ electric_capacity_utility$Wood<-as.numeric(gsub(",", "", electric_capacity_utili
 rownames(electric_capacity_utility) <- c()
 
 #Write code to CSV file
-write.csv(electric_capacity_utility, "Electric_Utility_Capacity_Clean.csv")
+dbWriteTable(db, 'electric_capacity_utility', electric_capacity_utility, row.names=FALSE, overwrite = TRUE)
 
 
 
@@ -103,7 +108,7 @@ electric_capacity_IPP_CHP$Wood<-as.numeric(gsub(",", "", electric_capacity_IPP_C
 rownames(electric_capacity_IPP_CHP) <- c()
 
 #Write code to CSV file
-write.csv(electric_capacity_IPP_CHP, "Electric_IPP_CHP_Capacity_Clean.csv")
+dbWriteTable(db, 'electric_capacity_IPP_CHP', electric_capacity_IPP_CHP, row.names=FALSE, overwrite = TRUE)
 
 
 #create dataframe for total electricity generation
@@ -147,4 +152,4 @@ whole_capacity_industry$Wood<-as.numeric(gsub(",", "", whole_capacity_industry$W
 rownames(whole_capacity_industry) <- c()
 
 #Write code to CSV file
-write.csv(whole_capacity_industry, "Whole_Electric_Industry_Capacity_Clean.csv")
+dbWriteTable(db, 'whole_electric_industry_capacity', whole_capacity_industry, row.names=FALSE, overwrite = TRUE)
