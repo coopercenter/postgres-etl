@@ -6,10 +6,9 @@ library(here)
 library("RPostgreSQL")
 
 db_driver = dbDriver("PostgreSQL")
-db_host = "eo43.postgres.database.azure.com"
-db_user="ccps-ceps@eo43"
-ra_pwd = "apps88:Splash"
+source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
 script  <- "select * from whole_electric_industry_generation;"
 test = data.table(dbGetQuery(db, script))
 dbDisconnect(db)
