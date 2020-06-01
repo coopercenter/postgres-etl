@@ -20,3 +20,4 @@ colnames(capacity_factors_annual)[1] <- 'Year'
 
 dbWriteTable(db, 'capacity_factors_annual', capacity_factors_annual, row.names=FALSE, overwrite = TRUE)
 #close db connection
+dbDisconnect(db)

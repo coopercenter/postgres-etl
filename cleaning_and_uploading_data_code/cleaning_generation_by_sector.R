@@ -9,13 +9,12 @@ db_driver = dbDriver("PostgreSQL")
 source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
-script  <- "select * from whole_electric_industry_generation;"
-test = data.table(dbGetQuery(db, script))
-dbDisconnect(db)
 
-here('raw_data','generation_by_type_va.csv')
 #read in dataset
+here('raw_data','generation_by_type_va.csv')
 generation.by.sector <- read.csv(here('raw_data','generation_by_type_va.csv'))
+
+#----------------------------------------------------------------------------------------------------------
 #subset data to include on energy generated for electric utility
 electric_utility_generation <- generation.by.sector[3:23,]
 #store year as vector
@@ -70,9 +69,12 @@ electric_utility_generation$Wood<-as.numeric(gsub(",", "", electric_utility_gene
 rownames(electric_utility_generation) <- c()
 
 #write.csv(electric_utility_generation, "Electric_Utility_Generation.csv") -- remove statement
+
 #upload to db
+dbWriteTable(db, 'electric_utility_generation', electric_utility_generation, row.names=FALSE, overwrite = TRUE)
 
 
+#----------------------------------------------------------------------------------------------------------
 #create dataframe for electric IPP and CHP generation
 electric_generation_IPP_CHP <- as.data.frame(t(electric_generation_IPP_CHP))
 #replace column names with appropriate titles
@@ -110,9 +112,12 @@ electric_generation_IPP_CHP$Wood<-as.numeric(gsub(",", "", electric_generation_I
 rownames(electric_generation_IPP_CHP) <- c()
 
 #write.csv(electric_generation_IPP_CHP, "Electric_IPP_CHP_Generation.csv") -- remove statement
+
 #upload to db
+dbWriteTable(db, 'electric_ipp_chp_generation', electric_generation_IPP_CHP, row.names=FALSE, overwrite = TRUE)
 
 
+#----------------------------------------------------------------------------------------------------------
 #create dataframe for total electricity generation
 whole_electric_industry <- as.data.frame(t(whole_electric_industry))
 #replace column names with appropriate titles
@@ -153,5 +158,11 @@ whole_electric_industry$Wood<-as.numeric(gsub(",", "", whole_electric_industry$W
 rownames(whole_electric_industry) <- c()
 
 #write.csv(whole_electric_industry, "Whole_Electric_Industry_Generation.csv") -- remove statement
+
 #upload to db
+dbWriteTable(db, 'whole_electric_industry_generation', whole_electric_industry, row.names=FALSE, overwrite = TRUE)
+
+#----------------------------------------------------------------------------------------------------------
+#close db connection
+dbDisconnect(db)
 
