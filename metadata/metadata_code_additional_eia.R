@@ -78,7 +78,7 @@ eia_apis <- list('https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.M'
                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A'
 )
 
 eia_short_names<-list('Monthly coal generation',
@@ -98,7 +98,7 @@ eia_short_names<-list('Monthly coal generation',
                       'Total carbon dioxide emissions, all sectors',
                       'Total coal carbon dioxide emissions, all sectors',
                       'Total natural gas carbon dioxide emissions, all sectors',
-                      'Total petroleum carbon dioxide emissions, all sectors',
+                      'Total petroleum carbon dioxide emissions, all sectors'
 )
 
 col2var<-vector("list", length(series_id_list))
