@@ -1,9 +1,12 @@
-# This code extracts data tables from the US Energy Information Administration's
-# (EIA) API from a list of series ids previously identified and listed
-# in eia_series_ids.txt, and stores in a PostgreSQL instance.
-# This code does not handle metadata.
+# This script extracts datasets from the US Energy Information Administration's
+# (EIA) via API given a txt file with pre-identified series ids of the target
+# datasets or a variable storing the series ids, and uploads them to the postgres database
 
-# Loading the libraries used in this script
+# The script used to upload the metadata corresponding to the EIA datasets are 
+# stored in the metadata folder named metadata.R
+#----------------------------------------------------------------------------------------
+
+# Load the libraries used in this script
 library(httr)
 library(here)
 library(dplyr)
@@ -16,10 +19,9 @@ library(eia)
 library(stringr)
 
 # Make a list of series ids
-#---------------------------------------------------------------------------------
 # If you have a large number of datasets, create a txt file storing the series ids
 ## reads in a txt file containing the series ids of the datasets we need
-series_id_vec <- read_file(here("etl","series_ids.txt"))
+series_id_vec <- read_file(here("api_data_code","series_ids.txt"))
 
 ## transform the content to a list that we can later feed into the fetch function
 series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
@@ -30,7 +32,7 @@ series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
 ##            "SEDS.TEACB.VA.A","SEDS.TETCB.VA.A")
 #----------------------------------------------------------------------------
 
-# setting the url root for the EIA data
+# set the url root for the EIA data
 url_root <- "http://api.eia.gov/series/"
 
 # read in your eia api key by sourcing
@@ -71,7 +73,8 @@ for (i in 1:length(all_data_series)){
 #--------------------------------------------------------------------------------
 # No need to go beyond this line if you do not want to upload the dataset to the database
 
-# Connection to the database
+# Connect to the database
+# Check that the VPN is on
 # "my_postgres_credentials.R" contains the log-in informations of RAs
 source(here("api_data_code", "my_postgres_credentials.R"))
 db_driver = dbDriver("PostgreSQL")
