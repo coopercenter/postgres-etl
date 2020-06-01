@@ -9,8 +9,9 @@ db_driver = dbDriver("PostgreSQL")
 source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
+
 #read in dataset
-electric_capacity_virginia <- read.csv(here('data','Electric_Power_Capacity_By_Sector.csv'))
+electric_capacity_virginia <- read.csv(here('raw_data','electric_power_capacity_by_sector.csv'))
 #subset data to include on energy generated for electric utility
 electric_capacity_utility <- electric_capacity_virginia[3:21,]
 #store year as vector
@@ -153,3 +154,5 @@ rownames(whole_capacity_industry) <- c()
 
 #Write code to CSV file
 dbWriteTable(db, 'whole_electric_industry_capacity', whole_capacity_industry, row.names=FALSE, overwrite = TRUE)
+
+#close db connection

@@ -13,9 +13,9 @@ script  <- "select * from whole_electric_industry_generation;"
 test = data.table(dbGetQuery(db, script))
 dbDisconnect(db)
 
-here('data','Generation by Type Virginia.csv' )
+here('raw_data','generation_by_type_va.csv')
 #read in dataset
-generation.by.sector <- read.csv(here('data','Generation by Type Virginia.csv' ))
+generation.by.sector <- read.csv(here('raw_data','generation_by_type_va.csv'))
 #subset data to include on energy generated for electric utility
 electric_utility_generation <- generation.by.sector[3:23,]
 #store year as vector
@@ -68,9 +68,9 @@ electric_utility_generation$Solar<-as.numeric(gsub(",", "", electric_utility_gen
 electric_utility_generation$Wood<-as.numeric(gsub(",", "", electric_utility_generation$Wood))
 #Remove introduced row names
 rownames(electric_utility_generation) <- c()
-#Write code to CSV file
-write.csv(electric_utility_generation, "Electric_Utility_Generation.csv")
 
+#write.csv(electric_utility_generation, "Electric_Utility_Generation.csv") -- remove statement
+#upload to db
 
 
 #create dataframe for electric IPP and CHP generation
@@ -108,8 +108,9 @@ electric_generation_IPP_CHP$Petroleum<-as.numeric(gsub(",", "", electric_generat
 electric_generation_IPP_CHP$Solar<-as.numeric(gsub(",", "", electric_generation_IPP_CHP$Solar))
 electric_generation_IPP_CHP$Wood<-as.numeric(gsub(",", "", electric_generation_IPP_CHP$Wood))
 rownames(electric_generation_IPP_CHP) <- c()
-#Write code to CSV file
-write.csv(electric_generation_IPP_CHP, "Electric_IPP_CHP_Generation.csv")
+
+#write.csv(electric_generation_IPP_CHP, "Electric_IPP_CHP_Generation.csv") -- remove statement
+#upload to db
 
 
 #create dataframe for total electricity generation
@@ -150,12 +151,7 @@ whole_electric_industry$Solar<-as.numeric(gsub(",", "", whole_electric_industry$
 whole_electric_industry$Wood<-as.numeric(gsub(",", "", whole_electric_industry$Wood))
 #remove introduced row names
 rownames(whole_electric_industry) <- c()
-#Write code to CSV file
-write.csv(whole_electric_industry, "Whole_Electric_Industry_Generation.csv")
 
-
-whole_electric_industry_percentages <- as.data.frame(t(whole_electric_industry_percentages))
-
-ggplot(whole_electric_industry) + geom_line(aes(Year,Total_Electric_Industry))
-ggplot(whole_electric_industry) + geom_line(aes(Year,Natural_Gas))
+#write.csv(whole_electric_industry, "Whole_Electric_Industry_Generation.csv") -- remove statement
+#upload to db
 

@@ -1,6 +1,6 @@
 library(here)
 library(stringr)
-retail <- read.csv(here("data","raw_data","Retail_sales_of_electricity_Virginia_annual.csv"),header = F)
+retail <- read.csv(here('raw_data',"retail_sales_of_electricity_va_annual.csv"),header = F)
 retail <- retail[5:nrow(retail),]
 names(retail)<-lapply(retail[1,],as.character)
 retail <-retail[-1,]
@@ -11,4 +11,5 @@ colnames(retail)<-str_replace_all(colnames(retail),' ','_')
 retail_ordered <-retail[nrow(retail):1,]
 rownames(retail_ordered) <- NULL
 
-write.csv(retail_ordered,file = 'retail_sales_of_electricity_annual_clean.csv')
+#write.csv(retail_ordered,file = 'retail_sales_of_electricity_annual_clean.csv') -- remove statement
+#upload to db!

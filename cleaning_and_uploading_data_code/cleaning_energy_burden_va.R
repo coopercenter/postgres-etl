@@ -9,10 +9,11 @@ db_driver = dbDriver("PostgreSQL")
 source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
+
 #read in dataset
-energy_burden_by_fuel_type <- read_excel(here('data','raw_data','energy_burden_by_fuel_type.xlsx'))
-energy_burden_county_expenditures <- read_excel(here('data','raw_data','energy_burden_country_expenditures.xlsx'))
-energy_burden_county_percent_income <- read_excel(here('data','raw_data','energy_burden_county_percent_income.xlsx'))
+energy_burden_by_fuel_type <- read_excel(here('raw_data','energy_burden_by_fuel_type.xlsx'))
+energy_burden_county_expenditures <- read_excel(here('raw_data','energy_burden_county_expenditures.xlsx'))
+energy_burden_county_percent_income <- read_excel(here('raw_data','energy_burden_county_percent_income.xlsx'))
 
 #clean energy burden by fuel type
 energy_burden_by_fuel_type <- energy_burden_by_fuel_type[9:54,2:8]
@@ -41,4 +42,4 @@ upload(energy_burden_by_fuel_type)
 upload(energy_burden_county_expenditures)
 upload(energy_burden_county_percent_income)
 
-
+#close db connection
