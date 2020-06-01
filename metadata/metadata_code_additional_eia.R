@@ -61,10 +61,44 @@ get_name <- function(series_id) {
 # apply the function to the list of series id to get the names for the data tables
 eia_data_names <- lapply(series_id_list,get_name)
 
-eia_apis <- list(
+eia_apis <- list('https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.PEL-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NG-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NUC-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.DPV-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HYC-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TERCB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TECCB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEICB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEACB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A'
 )
 
-eia_short_names<-list(
+eia_short_names<-list('Monthly coal generation',
+                      'Annual coal generation',
+                      'Annual petroleum generation',
+                      'Annual natural gas generation',
+                      'Annual nuclear generation',
+                      'Annual utility scale solar generation',
+                      'Annual small scale solar generation',
+                      'Annual hydroelectric generation',
+                      'Annual wood derived fuel generation',
+                      'Annual other biomass generation',
+                      'Total energy consumed by the residential sector',
+                      'Total energy consumed by the commercial sector',
+                      'Total energy consumed by the industrial sector',
+                      'Total energy consumed by the transportation sector',
+                      'Total carbon dioxide emissions, all sectors',
+                      'Total coal carbon dioxide emissions, all sectors',
+                      'Total natural gas carbon dioxide emissions, all sectors',
+                      'Total petroleum carbon dioxide emissions, all sectors'
 )
 
 col2var<-vector("list", length(series_id_list))
