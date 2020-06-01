@@ -13,9 +13,10 @@ rm(ra_pwd)
 deep_solar <- read.csv(here('raw_data','deep_solar_tract.csv'))
 #summary(deep_solar)
 #deep_solar <- filter(deep_solar, state=='va')
-#write.csv(deep_solar, "Deep_Solar_Tract.csv")
+#write.csv(deep_solar, "Deep_Solar_Tract.csv") -- remove statement
 deep_solar <- deep_solar[,3:170]
 
 dbWriteTable(db,'deep_solar',deep_solar, row.names=FALSE)
 
 #close db connection
+dbDisconnect(db)

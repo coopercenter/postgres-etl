@@ -1,8 +1,15 @@
-library(tidyverse)
-library(readr)
 library(dplyr)
+library(tidyverse)
+library(stringr) # for replacing strings
 library(here)
+library("RPostgreSQL")
 
+db_driver = dbDriver("PostgreSQL")
+source(here('my_postgres_credentials.R'))
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
+
+#read dataset
 total <- read.csv(here('raw_data','consumption_total.csv'))
 
 va_total <-total[total[1]=='VA',2:59]
@@ -33,4 +40,8 @@ va_table <- data.frame(1960:2017,va_total,va_res,va_comm,va_ind,va_transp)
 colnames(va_table)<-c('year','total_production','residential_sector','commercial_sector','industrial_sector','transportation_sector')
 
 #write.csv(va_table,file = 'va_consumption_by_sector_1960_to_2017.csv') -- remove statement
+
 #upload to db
+dbWriteTable(db, 'va_consumption_by_sector_1960_to_2017', va_table, row.names=FALSE, overwrite = TRUE)
+#close db connection
+dbDisconnect(db)

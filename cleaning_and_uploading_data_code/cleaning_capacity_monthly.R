@@ -1,6 +1,13 @@
 library(dplyr)
 library(tidyverse)
 library(stringr) # for replacing strings
+library(here)
+library("RPostgreSQL")
+
+db_driver = dbDriver("PostgreSQL")
+source(here('my_postgres_credentials.R'))
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
 
 here('raw_data','capacity_factors_monthly.csv')
 #read in dataset
@@ -14,4 +21,8 @@ capacity.factors.monthly <- capacity.factors.monthly[-1,]
 colnames(capacity.factors.monthly)[1] <- 'Month'
 
 #write.csv(capacity.factors.monthly, "Capacity Factors Monthly .csv") -- remove statement
+
 #upload to db
+dbWriteTable(db, 'capacity_factors_monthly', capacity.factors.monthly, row.names=FALSE, overwrite = TRUE)
+#close db connection
+dbDisconnect(db)

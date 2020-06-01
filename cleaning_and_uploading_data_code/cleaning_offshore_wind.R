@@ -40,3 +40,4 @@ df_name <- deparse(substitute(total_production_forecast_offshore_wind))
 dbWriteTable(db, df_name, total_production_forecast_offshore_wind, row.names=FALSE, overwrite = TRUE)
 
 #close db connection
+dbDisconnect(db)

@@ -1,3 +1,14 @@
+library(dplyr)
+library(tidyverse)
+library(stringr) # for replacing strings
+library(here)
+library("RPostgreSQL")
+
+db_driver = dbDriver("PostgreSQL")
+source(here('my_postgres_credentials.R'))
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
+
 summary_e <- read.csv(here('raw_data','summary.csv'))
 install.packages('tidyverse')
 library(dplyr)
@@ -8,4 +19,8 @@ names(summary_e)<-c('Data','Value','Rank')
 summary_e <- summary_e[-1,]
 
 #write.csv(summary_e,file = 'electricity_summary.csv') -- remove statement
+
 #upload to db
+dbWriteTable(db, 'electricity_summary', summary_e, row.names=FALSE, overwrite = TRUE)
+#close db connection
+dbDisconnect(db)

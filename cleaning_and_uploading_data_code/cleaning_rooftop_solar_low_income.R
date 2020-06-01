@@ -21,3 +21,4 @@ upload <- function(df){
 upload(rooftop_solar_low_income)
 
 #close db connection
+dbDisconnect(db)

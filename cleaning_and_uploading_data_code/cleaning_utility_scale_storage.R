@@ -23,3 +23,4 @@ upload <- function(df){
 upload(utility_scale_storage_va)
 
 #close db connection
+dbDisconnect(db)

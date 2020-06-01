@@ -1,5 +1,14 @@
 library(dplyr)
+library(tidyverse)
 library(stringr) # for replacing strings
+library(here)
+library("RPostgreSQL")
+
+db_driver = dbDriver("PostgreSQL")
+source(here('my_postgres_credentials.R'))
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
+
 emission <- read.csv(here('raw_data', 'emission.csv'))
 
 emission <- as.data.frame(t(emission))
@@ -19,4 +28,9 @@ co2 <- emission_ordered[,c(1,15:19)]
 
 #write.csv(co2,file = 'CO2.csv') -- remove statement
 #write.csv(emission_ordered,file = 'all_emission_by_source.csv') -- remove statement
+
 #upload to db
+dbWriteTable(db, 'co2_by_source_va', co2, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'emission', emission, row.names=FALSE, overwrite = TRUE)
+#close db connection
+dbDisconnect(db)
