@@ -16,7 +16,6 @@ library(tidyverse)
 
 metadata <- dbGetQuery(db,'SELECT * from metadata')
 
-a<-metadata[-17,]
 
 ## read in my eia api key
 source(here("api_data_code","my_eia_api_key.R"))
@@ -124,11 +123,7 @@ for (i in 1:length(series_id_list)){
   metadata<-rbind(metadata,fit_meta[[i]])
 }
 
-db_driver = dbDriver("PostgreSQL")
-source(here("api_data_code", "my_postgres_credentials.R"))
-db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
-dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 
 
