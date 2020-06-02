@@ -14,10 +14,11 @@ fuel <- as.data.frame(t(fuel))
 fuel <- fuel[,2:10]
 names(fuel)<-lapply(fuel[1,],as.character)
 fuel <- fuel[-1,]
-colnames(fuel)[1] <- 'Year'
+
 fuel[,1] <-str_replace_all(fuel[,1],'Year','')
-colnames(fuel)<-tolower(colnames(fuel))
-colnames(fuel)<-str_replace_all(colnames(fuel),' ','_')
+colnames(fuel) <- c('year','coal','average_heat_value_coal','average_sulfur_content_coal',
+                    'petroleum','average_heat_value_petroleum','average_sulfur_content_petroleum',
+                    'natural_gas','average_heat_value_natural_gas')
 
 #upload to db
 dbWriteTable(db, 'fuel', fuel, row.names=FALSE, overwrite = TRUE)

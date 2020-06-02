@@ -28,6 +28,7 @@ co2 <- emission_ordered[,c(1,15:19)]
 colnames(co2)<-tolower(colnames(co2))
 colnames(emission_ordered)<-tolower(colnames(emission_ordered))
 sulfur<- emission_ordered[,c(1,3:7)]
+
 #upload to db
 dbWriteTable(db, 'co2_by_source_va', co2, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'emission', emission_ordered, row.names=FALSE, overwrite = TRUE)
