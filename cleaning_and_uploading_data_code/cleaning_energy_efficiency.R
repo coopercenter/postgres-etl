@@ -11,17 +11,23 @@ rm(ra_pwd)
 
 here('raw_data','energy_efficiency.csv')
 #read in dataset
-energy.efficiency <- read.csv(here('raw_data','energy_efficiency.csv'))
-energy.efficiency <- as.data.frame(t(energy.efficiency))
-energy.efficiency <- energy.efficiency[,2:44]
-names(energy.efficiency)<-lapply(energy.efficiency[1,],as.character)
-energy.efficiency <- energy.efficiency[-1,]
-colnames(energy.efficiency)[1] <- 'Year'
-energy.efficiency[,1] <- str_replace_all(energy.efficiency[,1], 'Year', '')
+energy_efficiency <- read.csv(here('raw_data','energy_efficiency.csv'))
+reporting_year_incremental_energy_savings <- energy_efficiency[,c(2,4:7)]
+for (i in 1:ncol(reporting_year_incremental_energy_savings)){
+  reporting_year_incremental_energy_savings[,i]<-as.numeric(gsub(",", "", reporting_year_incremental_energy_savings[,i]))
+}
+colnames(reporting_year_incremental_energy_savings) <- c('year', 'total','residential','commercial','industrial')
 
-#write.csv(energy.efficiency, "Energy_Efficiency_Clean.csv") -- remove statement
+incremental_life_cycle_energy_savings <- energy_efficiency[,c(2,25:28)]
+for (i in 1:ncol(incremental_life_cycle_energy_savings)){
+  incremental_life_cycle_energy_savings[,i]<-as.numeric(gsub(",", "", incremental_life_cycle_energy_savings[,i]))
+}
+colnames(incremental_life_cycle_energy_savings) <- c('year', 'total','residential','commercial','industrial')
 
+
+dbWriteTable(db, 'energy_savings_reporting_year_incremental', reporting_year_incremental_energy_savings, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'energy_savings_incremental_life_cycle', incremental_life_cycle_energy_savings, row.names=FALSE, overwrite = TRUE)
 #upload to db
-dbWriteTable(db, 'energy_efficiency', energy.efficiency, row.names=FALSE, overwrite = TRUE)
+#dbWriteTable(db, 'energy_efficiency', energy.efficiency, row.names=FALSE, overwrite = TRUE)
 #close db connection
 dbDisconnect(db)
