@@ -23,14 +23,18 @@ for (i in 1:ncol(emission)){
 }
 
 colnames(emission)<-str_replace_all(colnames(emission),' ','_')
-emission_ordered <-emission[nrow(emission):1,]
-co2 <- emission_ordered[,c(1,15:19)]
-colnames(co2)<-tolower(colnames(co2))
-colnames(emission_ordered)<-tolower(colnames(emission_ordered))
-sulfur<- emission_ordered[,c(1,3:7)]
+co2_emissions <- emission[,c(1,15:19)]
+colnames(co2_emissions)<-tolower(colnames(co2_emissions))
+sulfur_emissions <- emission[,c(1,3:7)]
+colnames(sulfur_emissions) <- tolower(colnames(sulfur_emissions))
+nitrogen_emissions <- emission[,c(1,9:13)]
+colnames(nitrogen_emissions) <- tolower(colnames(nitrogen_emissions))
+
 
 #upload to db
-dbWriteTable(db, 'co2_by_source_va', co2, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'emission', emission_ordered, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'emission', emission, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'emissions_co2_by_source_va', co2_emissions, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'emissions_no_by_source_va', nitrogen_emissions, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'emissions_so2_by_source_va', sulfur_emissions, row.names=FALSE, overwrite = TRUE)
 #close db connection
 dbDisconnect(db)
