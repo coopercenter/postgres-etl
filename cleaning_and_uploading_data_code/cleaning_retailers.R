@@ -16,12 +16,12 @@ retailers <- retailers[3:10,]
 names(retailers)<-lapply(retailers[1,],as.character)
 retailers <- retailers[-1,]
 colnames(retailers)<-str_replace_all(colnames(retailers),' ','_')
+colnames(retailers)<-tolower(colnames(retailers))
 
 for (i in 3:ncol(retailers)){
   retailers[,i]<-as.numeric(gsub(",", "", retailers[,i]))
 }
 
-#write.csv(retailers,file = 'retailers_clean.csv') -- remove statement
 
 #upload to db
 dbWriteTable(db, 'retailers', retailers, row.names=FALSE, overwrite = TRUE)

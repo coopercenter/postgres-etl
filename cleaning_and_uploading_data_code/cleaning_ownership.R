@@ -10,7 +10,7 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 #read in dataset
-ownership <- read.csv(here("raw data","ownership_raw.csv"))
+ownership <- read.csv(here("raw_data","ownership_raw.csv"))
 ownership<- ownership[3:10,]
 names(ownership)<-lapply(ownership[1,],as.character)
 ownership<-ownership[-1,]
@@ -21,8 +21,7 @@ for (i in 2:ncol(ownership)){
 
 colnames(ownership)<-str_replace_all(colnames(ownership),'\n','_')
 colnames(ownership)<-str_replace_all(colnames(ownership),'-','_')
-
-#write.csv(ownership,file = 'ownership_clean.csv') -- remove statement
+colnames(ownership)<-tolower(colnames(ownership))
 
 #upload to db
 dbWriteTable(db, 'ownership', ownership, row.names=FALSE, overwrite = TRUE)

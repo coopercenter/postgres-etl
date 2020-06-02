@@ -19,6 +19,8 @@ retail[,6:7]<-c(retail6,retail7)
 colnames(retail)<-str_replace_all(colnames(retail),' ','_')
 retail_ordered <-retail[nrow(retail):1,]
 rownames(retail_ordered) <- NULL
+colnames(retail_ordered)<-tolower(colnames(retail_ordered))
+
 
 #write.csv(retail_ordered,file = 'retail_sales_of_electricity_annual_clean.csv') -- remove statement
 

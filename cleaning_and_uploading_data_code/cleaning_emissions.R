@@ -25,9 +25,7 @@ for (i in 1:ncol(emission)){
 colnames(emission)<-str_replace_all(colnames(emission),' ','_')
 emission_ordered <-emission[nrow(emission):1,]
 co2 <- emission_ordered[,c(1,15:19)]
-
-#write.csv(co2,file = 'CO2.csv') -- remove statement
-#write.csv(emission_ordered,file = 'all_emission_by_source.csv') -- remove statement
+colnames(co2)<-tolower(colnames(co2))
 
 #upload to db
 dbWriteTable(db, 'co2_by_source_va', co2, row.names=FALSE, overwrite = TRUE)
