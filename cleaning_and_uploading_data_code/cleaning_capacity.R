@@ -109,7 +109,7 @@ electric_capacity_IPP_CHP$Wood<-as.numeric(gsub(",", "", electric_capacity_IPP_C
 rownames(electric_capacity_IPP_CHP) <- c()
 
 #Write code to CSV file
-dbWriteTable(db, 'electric_capacity_IPP_CHP', electric_capacity_IPP_CHP, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'electric_ipp_chp_capacity', electric_capacity_IPP_CHP, row.names=FALSE, overwrite = TRUE)
 
 
 #create dataframe for total electricity generation
@@ -156,3 +156,4 @@ rownames(whole_capacity_industry) <- c()
 dbWriteTable(db, 'whole_electric_industry_capacity', whole_capacity_industry, row.names=FALSE, overwrite = TRUE)
 
 #close db connection
+dbDisconnect(db)
