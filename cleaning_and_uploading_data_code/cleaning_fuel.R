@@ -9,15 +9,15 @@ source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
 
-fuel <- read.csv(here('raw_data','fuel.csv')) # is it fueld_uncleaned.csv instead??
+fuel <- read.csv(here('raw_data','fuel_uncleaned.csv')) 
 fuel <- as.data.frame(t(fuel))
 fuel <- fuel[,2:10]
 names(fuel)<-lapply(fuel[1,],as.character)
 fuel <- fuel[-1,]
 colnames(fuel)[1] <- 'Year'
 fuel[,1] <-str_replace_all(fuel[,1],'Year','')
-
-#write.csv(fuel,file = 'fuel.csv') -- remove statement
+colnames(fuel)<-tolower(colnames(fuel))
+colnames(fuel)<-str_replace_all(colnames(fuel),' ','_')
 
 #upload to db
 dbWriteTable(db, 'fuel', fuel, row.names=FALSE, overwrite = TRUE)
