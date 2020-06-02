@@ -16,7 +16,7 @@ names(capacity)<-lapply(capacity[1,],as.character)
 capacity <- capacity[-1,]
 colnames(capacity)<-tolower(colnames(capacity))
 colnames(capacity)<-str_replace_all(colnames(capacity),' ','_')
-
+capacity[,4]<-as.numeric(gsub(",", "", capacity[,4]))
 #upload to db
 dbWriteTable(db, 'plant_by_capacity_va', retail, row.names=FALSE, overwrite = TRUE)
 #close db connection
