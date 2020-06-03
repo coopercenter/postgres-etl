@@ -1,6 +1,8 @@
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
+library(eia)
+
 source(here("api_data_code", "my_postgres_credentials.R"))
 db_driver <- dbDriver("PostgreSQL")
 
@@ -8,12 +10,8 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 
 rm(ra_pwd)
 
-#sample code used to get the metadata for EIA datasets
-library(eia)
-library(here)
-library(RPostgreSQL)
-library(tidyverse)
 
+#sample code used to get the metadata for EIA datasets
 metadata <- dbGetQuery(db,'SELECT * from metadata')
 
 
@@ -125,6 +123,109 @@ for (i in 1:length(series_id_list)){
 
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
+
+
+## Close connection
+dbDisconnect(db)
+
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+source(here("api_data_code", "my_postgres_credentials.R"))
+db_driver <- dbDriver("PostgreSQL")
+
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+
+rm(ra_pwd)
+
+
+#sample code used to get the metadata for EIA datasets
+metadata <- dbGetQuery(db,'SELECT * from metadata')
+
+
+## read in my eia api key
+source(here("api_data_code","my_eia_api_key.R"))
+eia_set_key(eiaKey)
+
+series_id_list <- c('ELEC.SALES.VA-RES.A',
+                    'ELEC.SALES.VA-COM.A',
+                    'ELEC.SALES.VA-IND.A',
+                    'ELEC.SALES.VA-TRA.A',
+                    'ELEC.SALES.VA-OTH.A',
+                    'ELEC.SALES.VA-RES.M',
+                    'ELEC.SALES.VA-COM.M',
+                    'ELEC.SALES.VA-IND.M',
+                    'ELEC.SALES.VA-TRA.M',
+                    'ELEC.SALES.VA-OTH.M')
+
+## create a empty list to store the metadata tables
+all_eia_meta <- vector("list", length(series_id_list))
+
+## loops through the series id list and store the corresponding metadata table
+for (i in 1:length(series_id_list)){
+  all_eia_meta[[i]] <- eia_series(series_id_list[[i]],n=10)
+}
+
+# Fit the metadata tables into the standard structure
+## Create an empty list to store the reformatted metadata tables
+fit_meta <- vector("list", length(series_id_list))
+
+## create lists to store other info that is not in the metadata extracted using code
+
+get_name <- function(series_id) {
+  db_table_name <- str_to_lower(paste("eia", str_replace_all(series_id, "[.-]", "_"), sep="_"))
+  return(db_table_name)
+}
+
+# apply the function to the list of series id to get the names for the data tables
+eia_data_names <- lapply(series_id_list,get_name)
+
+eia_apis <- list('http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-RES.A',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-COM.A',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-IND.A',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-TRA.A',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-OTH.A',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-RES.M',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-COM.M',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-IND.M',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-TRA.M',
+                 'http://api.eia.gov/series/?api_key=YOUR_API_KEY_HERE&series_id=ELEC.SALES.VA-OTH.M'
+                 )
+
+eia_short_names<-list('Annual retail sales for residential sector',
+                      'Annual retail sales for commercial sector',
+                      'Annual retail sales for industrial sector',
+                      'Annual retail sales for transportation sector',
+                      'Annual retail sales for other sectors',
+                      'Monthly retail sales for residential sector',
+                      'Monthly retail sales for commercial sector',
+                      'Monthly retail sales for industrial sector',
+                      'Monthly retail sales for transportation sector',
+                      'Monthly retail sales for other sectors')
+
+col2var<-vector("list", length(series_id_list))
+cols<-vector("list", length(series_id_list))
+
+for (i in 1:length(series_id_list)){
+  col2var[[i]]<-all_eia_meta[[i]][['data']][[1]] %>% 
+    dplyr::summarise_all(class) %>% 
+    tidyr::gather(variable, class)
+  cols[[i]]<-c(col2var[[i]]$variable)
+}
+
+
+# Create metadata dataframes for each dataset and fill in the info
+for (i in 1:length(series_id_list)){
+  fit_meta[[i]]<-data.frame(db_table_name = eia_data_names[[i]],
+                            short_series_name= eia_short_names[[i]],
+                            full_series_name = all_eia_meta[[i]]$name,
+                            column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
+                            data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
+                            url=NA,api=eia_apis[[i]],
+                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA)
+  metadata<-rbind(metadata,fit_meta[[i]])
+}
+
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 
 ## Close connection
