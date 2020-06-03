@@ -9,7 +9,7 @@ source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
 
-capacity <- read.csv(here('raw_data','2A_Capacity.csv'))
+capacity <- read.csv(here('raw_data','plants_by_capacity.csv'))
 library(dplyr)
 capacity <- capacity[2:12,2:5]
 names(capacity)<-lapply(capacity[1,],as.character)
