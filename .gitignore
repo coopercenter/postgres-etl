@@ -28,3 +28,4 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 my_postgres_credentials.R
+my_fred_api_key.R
