@@ -36,7 +36,7 @@ energy_savings_incremental_life_cycle<-dbGetQuery(db,'SELECT * from energy_savin
 
 colnames(energy_savings_incremental_life_cycle)
 energy_savings_incremental_life_cycle_cols <- list(c('Year','Total','residential','commercial','industrial'))
-energy_savings_incremental_life_cycle_units <- 'MWh'
+energy_savings_incremental_life_cycle_units <- 'megawatthour'
 
 r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 short_series_name='Total megawatt hour incremental savings per sector per lifecycle',

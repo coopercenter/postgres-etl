@@ -3,7 +3,7 @@
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("api_data_code", "my_postgres_credentials.R"))
+source(here("my_postgres_credentials.R"))
 
 db_driver <- dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -57,7 +57,7 @@ r2<- data.frame(db_table_name = "fred_vangsp",
                 column2variable_name_map=I(gdp_col),units=I(gdp_meta$units),frequency=gdp_meta$frequency,
                 data_source_brief_name='FRED',data_source_full_name='Federal Reserve Economic Data',
                 url=NA,api='https://fred.stlouisfed.org/series/VANGSP',
-                series_id='VANGSP',json=NA,notes=NA, mandate=0, forecaste=0, corresponding_data=0,
+                series_id='VANGSP',json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
                 R_script='fetch_from_FRED_api.R')
 
 dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)

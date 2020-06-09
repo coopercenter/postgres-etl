@@ -40,7 +40,7 @@ r1<- data.frame(db_table_name = "energy_burden_by_fuel_type",
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
-                R_script='cleaning_eneryg_burden.R')
+                R_script='cleaning_energy_burden.R')
 
 r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
                 short_series_name = "Energy burden by county",
@@ -49,7 +49,7 @@ r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
-                R_script='cleaning_eneryg_burden.R')
+                R_script='cleaning_energy_burden.R')
 
 r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
                 short_series_name = "Energy burden per percent income",
@@ -58,7 +58,7 @@ r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
-                R_script='cleaning_eneryg_burden.R')
+                R_script='cleaning_energy_burden.R')
 
 library(plyr)
 metadata <- rbind(r1, r2, r3)

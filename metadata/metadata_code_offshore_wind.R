@@ -28,8 +28,8 @@ r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 full_series_name = 'Total megawatt predictions of offshore wind energy in phases from 2017 through 2033',
                 column2variable_name_map=I(offshore_mw_cols),units=I(offshore_mw_units),frequency='A',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
-                url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NULL,
+                url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',
+                api=NA, series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 # ----------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
                 column2variable_name_map=I(offshore_cf_cols),units=I(offshore_cf_units),frequency='A',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NULL,
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 # ----------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 column2variable_name_map=I(offshore_tp_cols),units=I(offshore_tp_units),frequency='Y',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NULL,
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 library(plyr)
