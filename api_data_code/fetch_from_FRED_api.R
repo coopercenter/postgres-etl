@@ -24,7 +24,22 @@ get_FRED_series <- function(api_key,series_id) {
   rd2 <- data.table(rd2)
   return(rd2)
 }
-data_series <- get_FRED_series(fredKey,"VAPOP")
+
+# Make a list of series ids
+# If you have a large number of datasets, create a txt file storing the series ids
+## reads in a txt file containing the series ids of the datasets we need. Makse sure to use series ID for FRED NOT for EIA.
+series_id_vec <- read_file(here("api_data_code","series_ids2.txt"))
+
+## transform the content to a list that we can later feed into the fetch function
+series_id_list <- unlist(strsplit(series_id_vec,'\r\n'))
+
+## create an empty list to store the data tables
+all_tables<- vector("list", length(series_id_list))
+
+# loops through the all data series and store the tables in to a big list
+for (i in 1:length(all_tables)){
+  all_tables[[i]]<-get_FRED_series(fredKey,series_id_list[[i]])
+}
 
 # Connection to the database
 # "my_postgres_login.R" contains the log-in informations of RAs
@@ -42,6 +57,8 @@ get_name <- function(series_id) {
 }
 
 # apply the function to the list of series id to get the names for the data tables
+## create an empty list to store thenames for the data tables
+db_table_names <- vector("list", length(series_id_list))
 db_table_names <- lapply(series_id_list,get_name)
 
 # Loops through the list of tables and write data series to the PostgreSQL database 
