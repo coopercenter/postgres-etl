@@ -15,7 +15,8 @@ colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("api_data_code", "my_postgres_credentials.R"))
+source(here("my_postgres_credentials.R"))
+
 db_driver <- dbDriver("PostgreSQL")
 
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -167,8 +168,8 @@ eia_short_names<-list('Total co2 emission',
                       'Total monthly conventional hydroelectric generation',
                       'Total monthly average retail price',
                       'Commercial monthly average retail price',
-                      'Residential monthly average retial price',
-                      'Industrial monthly average retial price',
+                      'Residential monthly average retail price',
+                      'Industrial monthly average retail price',
                       'Transportation monthly average retial price',
                       'Total monthly number of customer accounts',
                       'Total monthly nuclear generation',
@@ -185,7 +186,6 @@ eia_short_names<-list('Total co2 emission',
                       'Total monthly other biomass generation',
                       'Total monthly hydro electric pumped sotrage',
                       'Total monthly other generation',
-                      'Monthly coal generation',
                       'Annual coal generation',
                       'Annual petroleum generation',
                       'Annual natural gas generation',
@@ -234,15 +234,15 @@ for (i in 1:length(series_id_list)){
                             short_series_name= eia_short_names[[i]],
                             full_series_name = all_eia_meta[[i]]$name,
                             column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
-                            data_source='EIA',data_source_full_name='U.S. Energy Information Administration',
+                            data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                             url=eia_urls[[i]],api=eiaKey,
-                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
+                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
                             R_script="fetch_from_eia_api.R")
   metadata<-rbind(metadata,fit_meta[[i]])
 }
 
 db_driver = dbDriver("PostgreSQL")
-source(here("api_data_code", "my_postgres_credentials.R"))
+source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)

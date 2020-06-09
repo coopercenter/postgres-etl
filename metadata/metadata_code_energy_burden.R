@@ -5,7 +5,7 @@
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("etl", "my_postgres_credentials.R"))
+source(here('my_postgres_credentials.R'))
 db_driver <- dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
@@ -27,7 +27,7 @@ energy_burden_county_expenditures_cols<-list(colnames(energy_burden_county_expen
 energy_burden_county_percent_income_cols<-list(colnames(energy_burden_county_percent_income))
 
 # put the unit of each column into a list
-energy_burden_by_fuel_type_units <-list(c('Fuel_Type','percent','dollar','dollar','dollar','dollar','percent'))
+energy_burden_by_fuel_type_units <-list(c('fuel_type','percent','dollar','dollar','dollar','dollar','percent'))
 energy_burden_county_expenditures_units <-list(c('county', 'avg_annual_energy_cost'))
 energy_burden_county_percent_income_units <-list(c('county', 'avg_energy_burden_as_percent_income'))
 

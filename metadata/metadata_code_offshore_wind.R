@@ -3,7 +3,7 @@
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
-source(here("api_data_code", "my_postgres_credentials.R"))
+source(here("my_postgres_credentials.R"))
 db_driver <- dbDriver("PostgreSQL")
 
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
@@ -21,7 +21,7 @@ total_mw_offshore_wind<-dbGetQuery(db,'SELECT * from total_mw_offshore_wind')
 colnames(total_mw_offshore_wind)
 offshore_mw_cols <- list(c('Year','Total','CVOW_Pilot','CVOW_Commercial_Stage_I','CVOW_Commercial_Stage_II',
                     'CVOW_Commercial_Stage_III'))
-offshore_mw_units <-'megawatts'
+offshore_mw_units <-'megawatt'
 
 r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 short_series_name= 'Total megawatt predictions of offshore wind',
