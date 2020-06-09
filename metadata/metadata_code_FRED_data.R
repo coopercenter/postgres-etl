@@ -16,8 +16,10 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 
 # ----------------------------------------------------------------------------------
 res_pop<-dbGetQuery(db,'SELECT * FROM residential_population_va')
-
 res_col <- list(c('realtime_start','realtime_end','date','value'))
+
+gdp <-dbGetQuery(db,'SELECT * FROM fred_vangsp')
+gdp_col <- list(c('date', 'value'))
 
 get_FRED_meta <- function(api_key,series_id) {
   require(jsonlite)
@@ -38,6 +40,7 @@ get_FRED_meta <- function(api_key,series_id) {
 
 source(here("api_data_code","my_fred_api_key.R"))
 pop_meta <- get_FRED_meta(fredKey,"VAPOP")
+gdp_meta <- get_FRED_meta(fredKey,"VANGSP")
 
 r1<- data.frame(db_table_name = "residential_population_va",
                 short_series_name= 'VA residential population',
@@ -45,7 +48,20 @@ r1<- data.frame(db_table_name = "residential_population_va",
                 column2variable_name_map=I(res_col),units=I(pop_meta$units),frequency=pop_meta$frequency,
                 data_source_brief_name='FRED',data_source_full_name='Federal Reserve Economic Data',
                 url=NA,api='https://fred.stlouisfed.org/series/VAPOP',
-                series_id='VAPOP',json=NA,notes=NA)
+                series_id='VAPOP',json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
+                R_script='fetch_from_FRED_api.R')
 
+r2<- data.frame(db_table_name = "fred_vangsp",
+                short_series_name= 'VA GDP',
+                full_series_name = 'Virginia Gross Domesic Product for Virginia from 1997 to 2019',
+                column2variable_name_map=I(gdp_col),units=I(gdp_meta$units),frequency=gdp_meta$frequency,
+                data_source_brief_name='FRED',data_source_full_name='Federal Reserve Economic Data',
+                url=NA,api='https://fred.stlouisfed.org/series/VANGSP',
+                series_id='VANGSP',json=NA,notes=NA, mandate=0, forecaste=0, corresponding_data=0,
+                R_script='fetch_from_FRED_api.R')
 
 dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = r2, append = TRUE, overwrite = FALSE, row.names = FALSE)
+
+## Close connection
+dbDisconnect(db)

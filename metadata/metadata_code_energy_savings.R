@@ -28,7 +28,8 @@ r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 column2variable_name_map=I(energy_savings_reporting_year_incremental_cols),units=I(energy_savings_reporting_year_incremental_units),frequency='A',
                 data_source_brief_name='EIA State Electricity Profile',data_source_full_name='Energy Information Administration 2018 VA Electricity Profile',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=0, 
+                R_script='cleaning_energy_efficiency.R')
 
 # ----------------------------------------------------------------------------------
 energy_savings_incremental_life_cycle<-dbGetQuery(db,'SELECT * from energy_savings_incremental_life_cycle')
@@ -43,10 +44,12 @@ r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 column2variable_name_map=I(energy_savings_incremental_life_cycle_cols),units=I(energy_savings_incremental_life_cycle_units),frequency='A',
                 data_source_brief_name='EIA State Electricity Profile',data_source_full_name='Energy Information Administration 2018 VA Electricity Profile',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=0, 
+                R_script='cleaning_energy_efficiency.R')
 
 library(plyr)
 metadata<-rbind(r1,r2)
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
-
+## Close connection
+dbDisconnect(db)
