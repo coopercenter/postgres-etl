@@ -29,7 +29,8 @@ r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
                 column2variable_name_map=I(co2_by_source_cols ),units=I(co2_by_source_units),frequency='A',
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_emissions.R')
 
 # ----------------------------------------------------------------------------------
 emissions_no_by_source_va<-dbGetQuery(db,'SELECT * from emissions_no_by_source_va')
@@ -45,7 +46,8 @@ r2<- data.frame(db_table_name = "emissions_no_by_source_va",
                 column2variable_name_map=I(no_by_source_cols),units=I(no_by_source_units),frequency='A',
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_emissions.R')
 
 # ----------------------------------------------------------------------------------
 emissions_so2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_so2_by_source_va')
@@ -59,8 +61,12 @@ r3<- data.frame(db_table_name = "emissions_so2_by_source_va",
                 column2variable_name_map=I(so2_by_source_cols),units=I(so2_by_source_units),frequency='A',
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_emissions.R')
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+
+## Close connection
+dbDisconnect(db)

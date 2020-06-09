@@ -39,21 +39,26 @@ r1<- data.frame(db_table_name = "energy_burden_by_fuel_type",
                 column2variable_name_map=I(energy_burden_by_fuel_type_cols),units=I(energy_burden_by_fuel_type_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_eneryg_burden.R')
+
 r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
                 short_series_name = "Energy burden by county",
                 full_series_name = 'Energy cost annually per county',
                 column2variable_name_map=I(energy_burden_county_expenditures_cols),units=I(energy_burden_county_expenditures_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_eneryg_burden.R')
+
 r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
                 short_series_name = "Energy burden per percent income",
                 full_series_name = 'Energy cost annually per percent income',
                 column2variable_name_map=I(energy_burden_county_percent_income_cols),units=I(energy_burden_county_percent_income_units),frequency='O',
                 data_source_brief_name='LEAD',data_source_full_name='Low-Income Energy Affordability Data Tool',
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
-                series_id=NA,json=NA,notes=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                R_script='cleaning_eneryg_burden.R')
 
 library(plyr)
 metadata <- rbind(r1, r2, r3)
@@ -62,4 +67,5 @@ metadata <- rbind(r1, r2, r3)
 # Append your rows to the metadata table in our database
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
-
+#close db connection
+dbDisconnect(db)

@@ -1,11 +1,11 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 13, nrow = 0))
+metadata<-data.frame(matrix(ncol = 17, nrow = 0))
 
 # Specify the column names
 colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
                         'column2variable_name_map','units','frequency',
                         'data_source_brief_name','data_source_full_name','url',
-                        'api','series_id','json','notes')
+                        'api','series_id','json','notes', 'mandate', 'forecast','corresponding_data','R_script')
 
 #--------------------------------------------------------------------------------------
 # Sample Code used to manually write the metadata
@@ -124,8 +124,37 @@ eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M'
-)
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.M',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.PEL-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NG-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NUC-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.DPV-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HYC-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TERCB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TECCB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEICB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEACB.VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.A',
+                 'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.M',
+                 'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.M'
+                  )
+
 
 eia_short_names<-list('Total co2 emission',
                       'Total energy consumption',
@@ -155,8 +184,38 @@ eia_short_names<-list('Total co2 emission',
                       'Total monthly wood and wood derived fuels generation',
                       'Total monthly other biomass generation',
                       'Total monthly hydro electric pumped sotrage',
-                      'Total monthly other generation'
+                      'Total monthly other generation',
+                      'Monthly coal generation',
+                      'Annual coal generation',
+                      'Annual petroleum generation',
+                      'Annual natural gas generation',
+                      'Annual nuclear generation',
+                      'Annual utility scale solar generation',
+                      'Annual small scale solar generation',
+                      'Annual hydroelectric generation',
+                      'Annual wood derived fuel generation',
+                      'Annual other biomass generation',
+                      'Total energy consumed by the residential sector',
+                      'Total energy consumed by the commercial sector',
+                      'Total energy consumed by the industrial sector',
+                      'Total energy consumed by the transportation sector',
+                      'Total carbon dioxide emissions, all sectors',
+                      'Total coal carbon dioxide emissions, all sectors',
+                      'Total natural gas carbon dioxide emissions, all sectors',
+                      'Total petroleum carbon dioxide emissions, all sectors',
+                      'Annual retail sales for residential sector',
+                      'Annual retail sales for commercial sector',
+                      'Annual retail sales for industrial sector',
+                      'Annual retail sales for transportation sector',
+                      'Annual retail sales for other sectors',
+                      'Monthly retail sales for residential sector',
+                      'Monthly retail sales for commercial sector',
+                      'Monthly retail sales for industrial sector',
+                      'Monthly retail sales for transportation sector',
+                      'Monthly retail sales for other sectors'
                       )
+
+
 
 col2var<-vector("list", length(series_id_list))
 cols<-vector("list", length(series_id_list))
@@ -177,7 +236,8 @@ for (i in 1:length(series_id_list)){
                             column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
                             data_source='EIA',data_source_full_name='U.S. Energy Information Administration',
                             url=eia_urls[[i]],api=eiaKey,
-                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA)
+                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
+                            R_script="fetch_from_eia_api.R")
   metadata<-rbind(metadata,fit_meta[[i]])
 }
 
