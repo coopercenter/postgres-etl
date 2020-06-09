@@ -53,7 +53,7 @@ dbWriteTable(db, 'generator_2015', generator_2015, row.names=FALSE, overwrite = 
 dbWriteTable(db, 'generator_2016', generator_2016, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'generator_2017', generator_2017, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'generator_2018', generator_2018, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'generator_2019', generator_2019, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'generator_2019_early_release', generator_2019, row.names=FALSE, overwrite = TRUE)
 
 #close db connection
 dbDisconnect(db)
