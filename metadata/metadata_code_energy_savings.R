@@ -19,8 +19,8 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 energy_savings_reporting_year_incremental<-dbGetQuery(db,'SELECT * from energy_savings_reporting_year_incremental')
 
 colnames(energy_savings_reporting_year_incremental)
-energy_savings_reporting_year_incremental_cols <- list(c('Year','Total','residential','commercial','industrial'))
-energy_savings_reporting_year_incremental_units <-'MWh'
+energy_savings_reporting_year_incremental_cols <- list(c('year','total','residential','commercial','industrial'))
+energy_savings_reporting_year_incremental_units <-'megawatthour'
 
 r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 short_series_name= 'Total megawatt hour incremental savings per sector per year',

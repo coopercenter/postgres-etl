@@ -21,7 +21,7 @@ emissions_co2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_co2_by_source
 colnames(emissions_co2_by_source_va)
 co2_by_source_cols <- list(c('Year','Coal','Natural_gas','other','petroleum',
                              'total'))
-co2_by_source_units <-'megawatt hour'
+co2_by_source_units <-'megawatthour'
 
 r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
                 short_series_name= 'Total megawatt hour of co2 emissions',
