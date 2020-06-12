@@ -1,6 +1,7 @@
 library(here)
 library('RPostgreSQL')
 library(tidyverse)
+source(here("api_data_code","my_eia_api_key.R"))
 #source(here("my_postgres_credentials.R"))
 #db_driver <- dbDriver("PostgreSQL")
 
@@ -25,26 +26,46 @@ states = c("AK","AL","AR","AZ","CA",
 
 # ----------------------------------------------------------------------------------
 all_r1_year <- NULL
+
 for(state in states){
   gen_by_source_cols <- list(c('year','coal','oil','gas','nuclear',
                                'wind','utility_solar','distributed_solar',
                                'hydropower','wood','other_biomass','total'))
-  gen_by_source_units <-'gigawatt hours'
+  gen_by_source_units <-'gigawatthours'
+  
+  series_ids=list(c(paste0("ELEC.GEN.COW-",state,"-99.A"),
+              paste0("ELEC.GEN.PEL-",state,"-99.A"),
+              paste0("ELEC.GEN.NG-",state,"-99.A"),
+              paste0("ELEC.GEN.NUC-",state,"-99.A"),
+              paste0("ELEC.GEN.WND-",state,"-99.A"),
+              paste0("ELEC.GEN.SUN-",state,"-99.A"),
+              paste0("ELEC.GEN.DPV-",state,"-99.A"),
+              paste0("ELEC.GEN.HYC-",state,"-99.A"),
+              paste0("ELEC.GEN.WWW-",state,"-99.A"),
+              paste0("ELEC.GEN.WAS-",state,"-99.A"),
+              paste0("ELEC.GEN.ALL-",state,"-99.A"))
+  )
+  
+  api_link <- vector("list", length(series_ids))
+  
+  for (i in 1:length(series_ids)){
+    api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_ids[[i]],sep='')
+  }
+  
   
   r1_year <- data.frame(db_table_name = paste0("eia_elec_gen_",str_to_lower(state),"_a",sep =""),
-                  short_series_name= 'Total gigawatt hour of generation by state',
-                  full_series_name = 'Total gigawatt hour of generation by state in phases from 2001 through 2020',
-                  column2variable_name_map=I(gen_by_source_cols ),units=I(gen_by_source_units),frequency='A',
+                  short_series_name= paste('Total annual generation for ',state,sep=''),
+                  full_series_name = paste('Net generation : by fuel : ',state,' : annual',sep=''),
+                  column2variable_name_map=I(gen_by_source_cols), units=I(gen_by_source_units),frequency='A',
                   data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
-                  url='https://www.eia.gov/electricity/data/browser/',api=NA,
-                  series_id="ELEC.GEN.ALL-",state,"-99.A",json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                  url=NA, api=I(api_link),
+                  series_id=I(series_ids),json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
                   R_script='generation_all_states.R')
   
   if (is.null(all_r1_year))
   {all_r1_year <- r1_year}
   else
   {all_r1_year <-  rbind(all_r1_year, r1_year)}
-  
   
 }
 
@@ -53,15 +74,34 @@ for(state in states){
   gen_by_source_cols <- list(c('year','coal','oil','gas','nuclear',
                                'wind','utility_solar','distributed_solar',
                                'hydropower','wood','other_biomass','total'))
-  gen_by_source_units <-'gigawatt hours'
+  gen_by_source_units <-'gigawatthours'
+  
+  series_ids=list(c(paste0("ELEC.GEN.COW-",state,"-99.M"),
+                    paste0("ELEC.GEN.PEL-",state,"-99.M"),
+                    paste0("ELEC.GEN.NG-",state,"-99.M"),
+                    paste0("ELEC.GEN.NUC-",state,"-99.M"),
+                    paste0("ELEC.GEN.WND-",state,"-99.M"),
+                    paste0("ELEC.GEN.SUN-",state,"-99.M"),
+                    paste0("ELEC.GEN.DPV-",state,"-99.M"),
+                    paste0("ELEC.GEN.HYC-",state,"-99.M"),
+                    paste0("ELEC.GEN.WWW-",state,"-99.M"),
+                    paste0("ELEC.GEN.WAS-",state,"-99.M"),
+                    paste0("ELEC.GEN.ALL-",state,"-99.M"))
+  )
+  
+  api_link <- vector("list", length(series_ids))
+  
+  for (i in 1:length(series_ids)){
+    api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_ids[[i]],sep='')
+  }
   
   r1_month<- data.frame(db_table_name = paste0("eia_elec_gen_",str_to_lower(state),"_m",sep =""),
-                  short_series_name= 'Total gigawatt hour of generation by state',
-                  full_series_name = 'Total gigawatt hour of generation by state in phases from 2001 through 2020',
-                  column2variable_name_map=I(gen_by_source_cols ),units=I(gen_by_source_units),frequency='A',
+                  short_series_name= paste('Total monthly generation for ',state, sep=''),
+                  full_series_name = paste('Net generation : by fuel : ',state,' : monthly',sep=''),
+                  column2variable_name_map=I(gen_by_source_cols), units=I(gen_by_source_units),frequency='M',
                   data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
-                  url='https://www.eia.gov/electricity/data/browser/',api=NA,
-                  series_id="ELEC.GEN.ALL-",state,"-99.M",json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                  url=NA, api=I(api_link),
+                  series_id=I(series_ids),json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
                   R_script='generation_all_states.R')
   
   if (is.null(all_r1_month))
