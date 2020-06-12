@@ -2,15 +2,15 @@ library(here)
 library('RPostgreSQL')
 library(tidyverse)
 source(here("api_data_code","my_eia_api_key.R"))
-#source(here("my_postgres_credentials.R"))
-#db_driver <- dbDriver("PostgreSQL")
+source(here("my_postgres_credentials.R"))
+db_driver <- dbDriver("PostgreSQL")
 
-#db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-#rm(ra_pwd)
+rm(ra_pwd)
 
 # check the connection
-#dbExistsTable(db, "metadata")
+dbExistsTable(db, "metadata")
 # TRUE
 
 states = c("AK","AL","AR","AZ","CA",
@@ -111,7 +111,7 @@ for(state in states){
   
 }
 
-
+r1 <- rbind(all_r1_year,all_r1_month)
 dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 
