@@ -11,11 +11,12 @@ rm(ra_pwd)
 
 #read in dataset
 capacity_factors_annual <- read.csv(here('raw_data','capacity_factors_annual.csv'))
-capacity_factors_annual <- as.data.frame(t(capacity_factors_annual))
-capacity_factors_annual <- capacity_factors_annual[2:20,]
-names(capacity_factors_annual)<-lapply(capacity_factors_annual[1,],as.character)
-capacity_factors_annual <- capacity_factors_annual[-1,]
-capacity_factors_annual <- capacity_factors_annual[-1,]
+capacity_factors_annual <- as.data.frame(capacity_factors_annual)
+capacity_factors_annual <- capacity_factors_annual[,2:20]
+capacity_factors_annual <- capacity_factors_annual[-c(2)]
+#names(capacity_factors_annual)<-lapply(capacity_factors_annual[1,],as.character)
+#capacity_factors_annual <- capacity_factors_annual[-1,]
+#capacity_factors_annual <- capacity_factors_annual[-1,]
 colnames(capacity_factors_annual)[1] <- 'Year'
 
 dbWriteTable(db, 'capacity_factors_annual', capacity_factors_annual, row.names=FALSE, overwrite = TRUE)
