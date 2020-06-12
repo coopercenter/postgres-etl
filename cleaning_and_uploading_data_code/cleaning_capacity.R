@@ -12,6 +12,8 @@ rm(ra_pwd)
 
 #read in dataset
 electric_capacity_virginia <- read.csv(here('raw_data','electric_power_capacity_by_sector.csv'))
+
+#---------------------------------------------------------------------------------------
 #subset data to include on energy generated for electric utility
 electric_capacity_utility <- electric_capacity_virginia[3:21,]
 #store year as vector
@@ -66,10 +68,10 @@ electric_capacity_utility$Wood<-as.numeric(gsub(",", "", electric_capacity_utili
 rownames(electric_capacity_utility) <- c()
 
 #Write code to CSV file
-dbWriteTable(db, 'electric_capacity_utility', electric_capacity_utility, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'electric_utility_capacity', electric_capacity_utility, row.names=FALSE, overwrite = TRUE)
 
 
-
+#---------------------------------------------------------------------------------------
 #create dataframe for electric IPP and CHP generation
 electric_capacity_IPP_CHP <- as.data.frame(t(electric_capacity_IPP_CHP))
 #replace column names with appropriate titles
@@ -111,7 +113,7 @@ rownames(electric_capacity_IPP_CHP) <- c()
 #Write code to CSV file
 dbWriteTable(db, 'electric_ipp_chp_capacity', electric_capacity_IPP_CHP, row.names=FALSE, overwrite = TRUE)
 
-
+#---------------------------------------------------------------------------------------
 #create dataframe for total electricity generation
 whole_capacity_industry <- as.data.frame(t(whole_capacity_industry))
 #replace column names with appropriate titles
@@ -155,5 +157,6 @@ rownames(whole_capacity_industry) <- c()
 #Write code to CSV file
 dbWriteTable(db, 'whole_electric_industry_capacity', whole_capacity_industry, row.names=FALSE, overwrite = TRUE)
 
+#---------------------------------------------------------------------------------------
 #close db connection
 dbDisconnect(db)

@@ -19,58 +19,58 @@ dbExistsTable(db, "metadata")
 r1<- data.frame(db_table_name = "generator_2014",
                 short_series_name= 'Virginia generator data 2014',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2014',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "generator_2015",
                 short_series_name= 'Virginia generator data 2015',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2015',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 # ----------------------------------------------------------------------------------
 
 r3<- data.frame(db_table_name = "generator_2016",
                 short_series_name= 'Virginia generator data 2016',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2016',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 # ----------------------------------------------------------------------------------
 
 r4<- data.frame(db_table_name = "generator_2017",
                 short_series_name= 'Virginia generator data 2017',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2017',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 # ----------------------------------------------------------------------------------
 r5<- data.frame(db_table_name = "generator_2018",
                 short_series_name= 'Virginia generator data 2018',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2018',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 # ----------------------------------------------------------------------------------
 
 r6<- data.frame(db_table_name = "generator_2019_early_release",
                 short_series_name= 'Virginia generator data 2019 early release',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2019, pending data validation',
-                column2variable_name_map=NA,units='MW',frequency='A',
+                column2variable_name_map=NA,units='megawatt',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_generator_data.R')
 
 
 library(plyr)
