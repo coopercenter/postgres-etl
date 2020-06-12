@@ -84,7 +84,8 @@ for(state in states){
                        "hydropower",
                        "wood",
                        "other_biomass",
-                       "total"))
+                       "total")
+        )
         
         series_list$fuel<-as.character(series_list$fuel)
         
