@@ -9,31 +9,7 @@ library(data.table)
 library(eia)
 library('RPostgreSQL')
 
-# Connection to the database
-# "my_postgres_credentials.R" contains the log-in informations of RAs
-source(here("my_postgres_credentials.R"))
-db_driver <- dbDriver("PostgreSQL")
-db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-rm(ra_pwd)
-
-# check the connection
-# if this returns true, it means that you are connected to the database now
-dbExistsTable(db, "metadata")
-
-
-source(here("my_eia_api_key.R"))
-
-states = c("AK","AL","AR","AZ","CA",
-           "CO","CT","DE","FL","GA",
-           "HI","IA","ID","IL","IN",
-           "KS","KY","LA","MA","MD",
-           "ME","MI","MN","MO","MS",
-           "MT","NC","ND","NE","NH",
-           "NJ","NM","NV","NY","OH",
-           "OK","OR","PA","RI","SC",
-           "SD","TN","TX","UT","VA",
-           "VT","WA","WI","WV","WY")
-
+source(here("api_data_code","my_eia_api_key.R"))
 
 #Generating datasets for annual state generation ----
 
@@ -69,6 +45,17 @@ get_EIA_series <- function(eiaKey,series_id) {
         )
         return(rd2) 
 }
+
+states = c("AK","AL","AR","AZ","CA",
+           "CO","CT","DE","FL","GA",
+           "HI","IA","ID","IL","IN",
+           "KS","KY","LA","MA","MD",
+           "ME","MI","MN","MO","MS",
+           "MT","NC","ND","NE","NH",
+           "NJ","NM","NV","NY","OH",
+           "OK","OR","PA","RI","SC",
+           "SD","TN","TX","UT","VA",
+           "VT","WA","WI","WV","WY")
 
 gen_by_state_annual<-NULL
 
@@ -107,10 +94,10 @@ for(state in states){
                 table <- series_list[row,"series_id"]
                 fuel <- series_list[row,"fuel"]
                 
-                possibleError <- tryCatch(eia_series(table,key=my_api_key),error=function(e) e) #not every state has data for each fuel type, which would result in an error
+                possibleError <- tryCatch(eia_series(table,key=eiaKey),error=function(e) e) #not every state has data for each fuel type, which would result in an error
                 if(inherits(possibleError, "error")) next #so if data for a particular fuel type is missing it will instead move to the next fuel listed in series_id
                 
-                dt <- get_EIA_series(my_api_key,table)
+                dt <- get_EIA_series(eiaKey,table)
                 setnames(dt,old="value",new=fuel)
                 
                 if (is.null(all_generation))
@@ -130,9 +117,6 @@ for(state in states){
         #the sum of generation for all the fuel types is obtained by summing up the second column through the second to last column
         #the first column is year, the last column is total, but different states will have different amounts of columns depending on which fuel types EIA provides data for
         all_generation[,other:=total-rowSums(.SD),.SDcols=2:(col_count-1)] 
-
-        dt_name <- str_to_lower(paste("eia_elec_gen",state,"a",sep="_"))
-        assign(dt_name,all_generation)
         gen_by_state_annual[[state]]<-all_generation
         
         rm(all_generation, dt)
@@ -218,10 +202,10 @@ for(state in states){
                 table <- series_list[row,"series_id"]
                 fuel <- series_list[row,"fuel"]
                 
-                possibleError <- tryCatch(eia_series(table,key=my_api_key),error=function(e) e) #not every state has data for each fuel type, which would result in an error
+                possibleError <- tryCatch(eia_series(table,key=eiaKey),error=function(e) e) #not every state has data for each fuel type, which would result in an error
                 if(inherits(possibleError, "error")) next #so if data for a particular fuel type is missing it will instead move to the next fuel listed in series_id
                 
-                dt <- get_EIA_series_2(my_api_key,table)
+                dt <- get_EIA_series_2(eiaKey,table)
                 setnames(dt,old="value",new=fuel)
                 
                 if (is.null(all_generation))
@@ -251,13 +235,29 @@ for(state in states){
 
 
 #Uploading to database ----
+# Connection to the database
+# "my_postgres_credentials.R" contains the log-in informations of RAs
+source(here("my_postgres_credentials.R"))
+db_driver <- dbDriver("PostgreSQL")
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
+
+# check the connection
+# if this returns true, it means that you are connected to the database now
+dbExistsTable(db, "metadata")
+
+dt_name_annual<-NULL
+dt_name_monthly<-NULL
+
+for (i in 1:50){
+        dt_name_annual[i]<-str_to_lower(paste("eia_elec_gen", str_to_lower(states[i]),"a",sep="_"))
+        dt_name_monthly[i]<-str_to_lower(paste("eia_elec_gen", str_to_lower(states[i]),"m",sep="_"))
+}
 
 #Upload individual states annual and monthly generation dataframes to database.
 for (i in 1:50){
-        dt_name_annual <- str_to_lower(paste("eia_elec_gen", str_to_lower(states[i]),"a",sep="_"))
-        dt_name_monthly <- str_to_lower(paste("eia_elec_gen", str_to_lower(states[i]),"m",sep="_"))
-        dbWriteTable(db, dt_name_annual, value = gen_by_state_annual[i], append = FALSE, overwrite = TRUE, row.names = FALSE)
-        dbWriteTable(db, dt_name_monthly, value = gen_by_state_monthly[i], append = FALSE, overwrite = TRUE, row.names = FALSE)
+        dbWriteTable(db, dt_name_annual[i], value = gen_by_state_annual[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
+        dbWriteTable(db, dt_name_monthly[i], value = gen_by_state_monthly[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
 }
 #Upload total annual and monthly generation dataframes to database.
 dbWriteTable(db, "gen_by_state_annually_all_states", value = gen_by_state_annual, append = FALSE, overwrite = TRUE, row.names = FALSE)
