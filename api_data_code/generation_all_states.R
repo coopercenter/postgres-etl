@@ -259,7 +259,13 @@ for (i in 1:50){
 for (i in 1:50){
         dbWriteTable(db, dt_name_annual[i], value = gen_by_state_annual[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
         dbWriteTable(db, dt_name_monthly[i], value = gen_by_state_monthly[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
-}
+        time <- lubridate::with_tz(Sys.time(), "UTC")
+        data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
+                                              "' WHERE db_table_name = '",dt_name_annual[i],"';", sep=''))
+        data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
+                                              "' WHERE db_table_name = '",dt_name_monthly[i],"';", sep=''))
+        }
+
 #Upload total annual and monthly generation dataframes to database.
 dbWriteTable(db, "gen_by_state_annually_all_states", value = gen_by_state_annual, append = FALSE, overwrite = TRUE, row.names = FALSE)
 dbWriteTable(db, "gen_by_state_monthly_all_states", value = gen_by_state_monthly, append = FALSE, overwrite = TRUE, row.names = FALSE)
