@@ -24,6 +24,9 @@ VCEA_storage <- select(VCEA, c(1,6:7))
 
 #Creating apco_dominion_energy_effciency
 VCEA_energy_effciency <- select(VCEA, c(1,8:9))
+#Make sure the values in this table are represented as percentage.
+VCEA_energy_effciency$apco_energy_efficiency_as_share_of_2019_sales <- VCEA_energy_effciency$apco_energy_efficiency_as_share_of_2019_sales*100
+VCEA_energy_effciency$dominion_energy_efficiency_as_share_of_2019_sales <- VCEA_energy_effciency$dominion_energy_efficiency_as_share_of_2019_sales*100
 
 
 #upload to db
