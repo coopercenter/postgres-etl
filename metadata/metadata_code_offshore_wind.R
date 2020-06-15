@@ -38,7 +38,7 @@ net_capacity_factor_offshore_wind<-dbGetQuery(db,'SELECT * from net_capacity_fac
 colnames(net_capacity_factor_offshore_wind)
 offshore_cf_cols <- list(c('Year','Pilot','Stage_I','Stage_II',
                            'Stage_III'))
-offshore_cf_units <- 'CF'
+offshore_cf_units <- 'percent'
 
 r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
                 short_series_name='Capacity factor predictions of offshore wind',
