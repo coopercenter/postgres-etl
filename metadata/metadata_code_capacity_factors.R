@@ -22,11 +22,11 @@ annual_cf_cols <- list(colnames(annual_cf))
 annual_cf_units <-'megawatt'
 
 r1<- data.frame(db_table_name = "capacity_factors_annual",
-                short_series_name= '',
-                full_series_name = '',
+                short_series_name= 'capacity factors in Virginia, annual',
+                full_series_name = 'capacity factors in Virginia by fuel type, annual',
                 column2variable_name_map=I(annual_cf_cols),units=I(annual_cf_units),frequency='A',
-                data_source_brief_name='',data_source_full_name='',
-                url='',
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
+                url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
                 R_script='cleaning_annual_capacity_factors.R')
 
@@ -38,11 +38,11 @@ monthly_cf_cols <- list(colnames(monthly_cf))
 monthly_cf_units <-'megawatt'
 
 r1<- data.frame(db_table_name = "capacity_factors_annual",
-                short_series_name= '',
-                full_series_name = '',
+                short_series_name= 'capacity factors in Virginia, monthly',
+                full_series_name = 'capacity factors in Virginia by fuel type, monthly',
                 column2variable_name_map=I(annual_cf_cols),units=I(annual_cf_units),frequency='A',
-                data_source_brief_name='',data_source_full_name='',
-                url='',
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
+                url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
                 R_script='cleaning_capacity_monthly.R')
 
