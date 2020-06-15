@@ -97,64 +97,69 @@ get_name <- function(series_id) {
 # apply the function to the list of series id to get the names for the data tables
 eia_data_names <- lapply(series_id_list,get_name)
 
-eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=12&sdid=ELEC.GEN.HYC-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-ALL.M',
-                 'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-COM.M',
-                 'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-RES.M',
-                 'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-IND.M',
-                 'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-TRA.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1718389&sdid=ELEC.CUSTOMERS.VA-ALL.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NUC-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.COW-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NG-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.AOR-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
-                 'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.M',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.PEL-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NG-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NUC-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.DPV-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HYC-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.A',
-                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TERCB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TECCB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEICB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEACB.VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.A',
-                 'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.M',
-                 'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.M'
-                  )
+# eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=12&sdid=ELEC.GEN.HYC-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-ALL.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-COM.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-RES.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-IND.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-TRA.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1718389&sdid=ELEC.CUSTOMERS.VA-ALL.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NUC-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.COW-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NG-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.AOR-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
+#                  'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.PEL-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NG-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NUC-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.DPV-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HYC-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TERCB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TECCB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEICB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEACB.VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.A',
+#                  'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.M',
+#                  'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.M'
+#                   )
+
+api_link <- vector("list", length(series_id_list))
+
+for (i in 1:length(series_id_list)){
+  api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_id_list[[i]],sep='')
+}
 
 
 eia_short_names<-list('Total co2 emission',
@@ -235,7 +240,7 @@ for (i in 1:length(series_id_list)){
                             full_series_name = all_eia_meta[[i]]$name,
                             column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
                             data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
-                            url=eia_urls[[i]],api=eiaKey,
+                            url=NA, api=api_link[[i]],
                             series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
                             R_script="fetch_from_eia_api.R")
   metadata<-rbind(metadata,fit_meta[[i]])
@@ -245,8 +250,8 @@ db_driver = dbDriver("PostgreSQL")
 source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
-
+#dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 
 ## Close connection
