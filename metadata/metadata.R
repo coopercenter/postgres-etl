@@ -1,11 +1,12 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 17, nrow = 0))
+metadata<-data.frame(matrix(ncol = 19, nrow = 0))
 
 # Specify the column names
 colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
                         'column2variable_name_map','units','frequency',
                         'data_source_brief_name','data_source_full_name','url',
-                        'api','series_id','json','notes', 'mandate', 'forecast','corresponding_data','R_script')
+                        'api','series_id','json','notes', 'mandate', 'forecast','corresponding_data','R_script',
+                        'latest_data_update','last_db_refresh')
 
 #--------------------------------------------------------------------------------------
 # Sample Code used to manually write the metadata
@@ -82,6 +83,7 @@ all_eia_meta <- vector("list", length(series_id_list))
 for (i in 1:length(series_id_list)){
   all_eia_meta[[i]] <- eia_series(series_id_list[[i]],n=10)
 }
+
 
 # Fit the metadata tables into the standard structure
 ## Create an empty list to store the reformatted metadata tables
@@ -232,6 +234,13 @@ for (i in 1:length(series_id_list)){
   cols[[i]]<-c(col2var[[i]]$variable)
 }
 
+data_update <- vector('list', length(series_id_list))
+for (i in 1:length(series_id_list)) {
+  data_update[[i]] <- all_eia_meta[[i]]$updated
+  data_update[[i]] <- gsub("T", " ", data_update[[i]])
+  data_update[[i]] <- gsub("-0400", "", data_update[[i]])
+  data_update[[i]] <- strptime(data_update[[i]], format="%Y-%m-%d %H:%M:%S")
+}
 
 # Create metadata dataframes for each dataset and fill in the info
 for (i in 1:length(series_id_list)){
@@ -242,7 +251,8 @@ for (i in 1:length(series_id_list)){
                             data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                             url=NA, api=api_link[[i]],
                             series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
-                            R_script="fetch_from_eia_api.R")
+                            R_script="fetch_from_eia_api.R", latest_data_update=data_update[[i]],
+                            last_db_refresh= lubridate::with_tz(Sys.time(), "UTC"))
   metadata<-rbind(metadata,fit_meta[[i]])
 }
 
@@ -250,9 +260,22 @@ db_driver = dbDriver("PostgreSQL")
 source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-#dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
+#dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+#dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'test', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+
+# setting column constraints
+set_pk <- dbSendQuery(db, "ALTER TABLE test ADD PRIMARY KEY (db_table_name);")
+set_freq <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN frequency TYPE char(1)")
+set_mandate <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN mandate TYPE BOOLEAN") #there is an error here
+set_forecast <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN forecast TYPE BOOLEAN") #there is an error here
+set_data_update <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
+set_db_refresh <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
+
+
+# Check if column constraints are true
+data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'test';")
 
 ## Close connection
 dbDisconnect(db)
