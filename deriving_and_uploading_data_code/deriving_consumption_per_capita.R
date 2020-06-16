@@ -14,10 +14,11 @@ dbExistsTable(db, "metadata")
 
 # get the datasets
 pop <- dbGetQuery(db,'SELECT * from residential_population_va')
-pop_s60<- as.numeric(pop[61:119,4])
+# unit of population is thousands of persons
+pop_s60<- as.numeric(pop[61:119,4])*1000
 tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
-library(dplyr)
-tot_s60<- tot_consumption[nrow(tot_consumption):1,1]
+# unit of population is billion btu
+tot_s60<- tot_consumption[nrow(tot_consumption):1,1]*1000000000
 
 # derive the values
 c_per_cap <- tot_s60/pop_s60
