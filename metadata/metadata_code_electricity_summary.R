@@ -27,7 +27,8 @@ r1 <- data.frame(db_table_name = "electricity_summary",
                  notes= "From EIA-860 (Annual Electric Generator Report), 
                  EIA-861 (Annual Electric Power Industry Report), 
                  EIA-923 (Power Plant Operations Report and predecessor forms)", 
-                 mandate=0, forecast=0, corresponding_data=NA, R_script='cleaning_electricity_summary.R')
+                 data_type='cross-sectional', data_context='historical', 
+                 corresponding_data=NA, R_script='cleaning_electricity_summary.R')
 
 # ----------------------------------------------------------------------------------
 library(plyr)
