@@ -17,9 +17,9 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 
 con_per_cap<-dbGetQuery(db,'SELECT * from carbon_dioxide_emissions_per_capita_va')
 con_per_cap_cols <- list(c('year','emissions_per_capita'))
-con_per_cap_units <-'Billion Btu per million persons'
+con_per_cap_units <-'Metric tons CO2 per person'
 
-r1<- data.frame(db_table_name = "carbon_dioxide_emissions_per_capita_va",
+r1<- data.frame(db_table_name = "co2_emission_per_capita_va",
                 short_series_name= 'VA CO2 emission per capita',
                 full_series_name = 'Virginia carbon dioxide emissions per capita from 1980 through 2017',
                 column2variable_name_map=I(con_per_cap_cols),units=I(con_per_cap_units),frequency='A',

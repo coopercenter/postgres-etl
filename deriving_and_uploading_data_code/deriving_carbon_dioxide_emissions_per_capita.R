@@ -28,6 +28,6 @@ e_per_cap_df <- data.frame(1980:2017,e_per_cap)
 colnames(e_per_cap_df)<- c('year','co2_emission_per_capita')
 
 #upload to db
-dbWriteTable(db, 'co2_emission_per_capita', e_per_cap_df, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'co2_emission_per_capita_va', e_per_cap_df, row.names=FALSE, overwrite = TRUE)
 #close db connection
 dbDisconnect(db)
