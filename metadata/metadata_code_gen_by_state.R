@@ -65,7 +65,8 @@ for(state in states){
                   column2variable_name_map=I(gen_by_source_cols), units=I(gen_by_source_units),frequency='A',
                   data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                   url=NA, api=I(api_link),
-                  series_id=I(series_ids),json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                  series_id=I(series_ids),json=NA,notes=NA, data_type='time-series', data_context='historical', 
+                  corresponding_data=NA, 
                   R_script='generation_all_states.R', latest_data_update=data_update,
                   last_db_refresh=lubridate::with_tz(Sys.time(), "UTC"))
   
@@ -114,7 +115,8 @@ for(state in states){
                   column2variable_name_map=I(gen_by_source_cols), units=I(gen_by_source_units),frequency='M',
                   data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                   url=NA, api=I(api_link),
-                  series_id=I(series_ids),json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, 
+                  series_id=I(series_ids),json=NA,notes=NA, data_type='time-series', data_context='historical', 
+                  corresponding_data=NA, 
                   R_script='generation_all_states.R', latest_data_update=data_update,
                   last_db_refresh=lubridate::with_tz(Sys.time(), "UTC"))
   
