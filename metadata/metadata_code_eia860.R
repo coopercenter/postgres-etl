@@ -19,29 +19,32 @@ dbExistsTable(db, "metadata")
 r1<- data.frame(db_table_name = "eia860_generator_y2018",
                 short_series_name= 'Virginia generator data',
                 full_series_name = 'In depth Virginia data about existing and planned generators',
-                column2variable_name_map=NA,units='megawatt',frequency='A',
-                data_source_brief_name='EIA',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
+                column2variable_name_map=NA, units=NA, frequency=NA,
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                corresponding_data=NA, R_script=NA)
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "eia860_plant_y2018",
                 short_series_name= 'Virginia plant data',
                 full_series_name = 'In depth Virginia data about existing and planned plants',
-                column2variable_name_map=NA,units='megawatt',frequency='A',
-                data_source_brief_name='EIA',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
+                column2variable_name_map=NA, units=NA, frequency=NA,
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                corresponding_data=NA, R_script=NA)
 
 # ----------------------------------------------------------------------------------
 
 r3<- data.frame(db_table_name = "eia860_utility_y2018",
                 short_series_name= 'Virginia utility data',
                 full_series_name = 'In depth Virginia data about existing and planned plants and generators',
-                column2variable_name_map=NA,units='megawatt',frequency='A',
-                data_source_brief_name='EIA',data_source_full_name='Energy Information Administration 860 Detailed Data, 2018',
+                column2variable_name_map=NA, units=NA, frequency=NA,
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA, R_script=NA)
+                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                corresponding_data=NA, R_script=NA)
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)
