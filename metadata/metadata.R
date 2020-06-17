@@ -5,7 +5,7 @@ metadata<-data.frame(matrix(ncol = 19, nrow = 0))
 colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
                         'column2variable_name_map','units','frequency',
                         'data_source_brief_name','data_source_full_name','url',
-                        'api','series_id','json','notes', 'mandate', 'forecast','corresponding_data','R_script',
+                        'api','series_id','json','notes', 'data_type','data_context','corresponding_data','R_script',
                         'latest_data_update','last_db_refresh')
 
 #--------------------------------------------------------------------------------------
@@ -66,6 +66,8 @@ library(eia)
 library(here)
 library(RPostgreSQL)
 library(tidyverse)
+library(units)
+library(mgsub)
 
 
 ## read in my eia api key
@@ -99,66 +101,8 @@ get_name <- function(series_id) {
 # apply the function to the list of series id to get the names for the data tables
 eia_data_names <- lapply(series_id_list,get_name)
 
-# eia_urls <- list('https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-EC-TO-VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TETCB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=SEDS.TEPRB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.SALES.VA-ALL.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1&sdid=ELEC.GEN.ALL-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1736519&sdid=ELEC.GEN.ALL-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1718408&sdid=ELEC.GEN.TSN-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=12&sdid=ELEC.GEN.HYC-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-ALL.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-COM.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-RES.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-IND.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=40&sdid=ELEC.PRICE.VA-TRA.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1718389&sdid=ELEC.CUSTOMERS.VA-ALL.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NUC-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.COW-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.NG-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.AOR-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.PEL-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.SUN-VA-99.M',
-#                  'Fhttps://www.eia.gov/opendata/qb.php?category=11&sdid=ELEC.GEN.DPV-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-2.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-98.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SPV-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HPS-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.OTH-VA-99.M',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.COW-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.PEL-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NG-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.NUC-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.SUN-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.DPV-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.HYC-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WWW-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=ELEC.GEN.WAS-VA-99.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TERCB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TECCB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEICB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=711238&sdid=SEDS.TEACB.VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-TO-VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-CO-VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-NG-VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?sdid=EMISS.CO2-TOTV-TT-PE-VA.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.A',
-#                  'https://www.eia.gov/opendata/qb.php?category=1002&sdid=ELEC.SALES.VA-RES.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1003&sdid=ELEC.SALES.VA-COM.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1004&sdid=ELEC.SALES.VA-IND.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1005&sdid=ELEC.SALES.VA-TRA.M',
-#                  'https://www.eia.gov/opendata/qb.php?category=1006&sdid=ELEC.SALES.VA-OTH.M'
-#                   )
 
 api_link <- vector("list", length(series_id_list))
-
 for (i in 1:length(series_id_list)){
   api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_id_list[[i]],sep='')
 }
@@ -242,15 +186,33 @@ for (i in 1:length(series_id_list)) {
   data_update[[i]] <- strptime(data_update[[i]], format="%Y-%m-%d %H:%M:%S")
 }
 
+
+replace_unit <- function(string){
+  unit <- mgsub(string,
+    c('kilowatthour','kilowatthours','megawatthour','megawatthours','gigawatthour','gigawatthours',
+      'kilowatt','kilowatts','megawatt','megawatts','gigawatt','gigawatts', 'million metric tons'),
+    c('kWh','kWh','MWh','MWh','GWh','GWh',
+      'kW','kW','MW','MW','GW','GW','mmt'))
+  return(unit)
+}
+
+eia_units <- vector('list', length(series_id_list))
+for (i in 1:length(series_id_list)) {
+  eia_unit <- all_eia_meta[[i]]$units
+  eia_units[[i]] <- replace_unit(eia_unit)
+}
+
+
 # Create metadata dataframes for each dataset and fill in the info
 for (i in 1:length(series_id_list)){
   fit_meta[[i]]<-data.frame(db_table_name = eia_data_names[[i]],
                             short_series_name= eia_short_names[[i]],
                             full_series_name = all_eia_meta[[i]]$name,
-                            column2variable_name_map=I(list(cols[[i]])),units=all_eia_meta[[i]]$units,frequency=all_eia_meta[[i]]$f,
+                            column2variable_name_map=I(list(cols[[i]])),units=eia_units[[i]],frequency=all_eia_meta[[i]]$f,
                             data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                             url=NA, api=api_link[[i]],
-                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, mandate=0, forecast=0, corresponding_data=NA,
+                            series_id=all_eia_meta[[i]]$series_id,json=NA,notes=NA, data_type='time-series',
+                            data_context='historical', corresponding_data=NA,
                             R_script="fetch_from_eia_api.R", latest_data_update=data_update[[i]],
                             last_db_refresh= lubridate::with_tz(Sys.time(), "UTC"))
   metadata<-rbind(metadata,fit_meta[[i]])
@@ -261,21 +223,20 @@ source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 
-#dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 #dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
-dbWriteTable(db, 'test', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+#dbWriteTable(db, 'test', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 # setting column constraints
-set_pk <- dbSendQuery(db, "ALTER TABLE test ADD PRIMARY KEY (db_table_name);")
-set_freq <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN frequency TYPE char(1)")
-set_mandate <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN mandate TYPE BOOLEAN") #there is an error here
-set_forecast <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN forecast TYPE BOOLEAN") #there is an error here
-set_data_update <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
-set_db_refresh <- dbSendQuery(db, "ALTER TABLE test ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
+set_pk <- dbSendQuery(db, "ALTER TABLE metadata ADD PRIMARY KEY (db_table_name);")
+set_freq <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN frequency TYPE char(1)")
+set_corr_data <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE varchar(500)")
+set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
+set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
 
 
 # Check if column constraints are true
-data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'test';")
+data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'metadata';")
 
 ## Close connection
 dbDisconnect(db)
