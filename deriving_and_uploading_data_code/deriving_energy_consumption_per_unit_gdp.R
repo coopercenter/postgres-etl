@@ -33,6 +33,6 @@ c_per_gdp_df <- data.frame(1997:2018,c_per_gdp)
 colnames(c_per_gdp_df)<- c('year','consumption_per_unit_gdp')
 
 #upload to db
-dbWriteTable(db, 'energy_consumption_per_unit_gdp', c_per_gdp_df, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'energy_consumption_per_unit_gdp_va', c_per_gdp_df, row.names=FALSE, overwrite = TRUE)
 #close db connection
 dbDisconnect(db)
