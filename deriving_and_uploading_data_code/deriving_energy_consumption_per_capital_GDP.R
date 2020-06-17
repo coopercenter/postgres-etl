@@ -1,0 +1,41 @@
+# Connection to the database
+# "my_postgres_credentials.R" contains the log-in informations of RAs
+library(here)
+library('RPostgreSQL')
+library(tidyverse)
+source(here("my_postgres_credentials.R"))
+
+db_driver <- dbDriver("PostgreSQL")
+db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+rm(ra_pwd)
+
+# check the connection
+dbExistsTable(db, "metadata")
+
+# get the datasets
+pop <- dbGetQuery(db,'SELECT * from residential_population_va')
+gdp<- dbGetQuery(db,'SELECT * from fred_vangsp')
+
+# unit of population is thousands of persons
+pop_s60<- as.numeric(pop[61:119,4])*1000
+# unit is in million of dollar
+gdp_s60<-as.numeric(gdp[1:23,2])*1000000
+
+tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
+# unit of population is billion btu
+tot_s60<- tot_consumption[nrow(tot_consumption):1,1]
+
+# derive the values
+c_per_cap <- tot_s60/pop_s60 
+c_per_cap_df <- data.frame(1960:2018,c_per_cap)
+colnames(c_per_cap_df)<- c('year','consumption_per_capita')
+
+#derive the values 
+c_per_gdp <- (tot_s60/gdp_s60 )*1000000 # Multiply to get rid of scientific notation
+c_per_gdp_df <- data.frame(1960:2018,c_per_gdp)
+colnames(c_per_gdp_df)<- c('year','consumption_per_million_gdp') # I'm not sure about this part
+
+#upload to db
+dbWriteTable(db, 'energy_consumption_per_capita_va', c_per_cap_df, row.names=FALSE, overwrite = TRUE)
+#close db connection
+dbDisconnect(db)
