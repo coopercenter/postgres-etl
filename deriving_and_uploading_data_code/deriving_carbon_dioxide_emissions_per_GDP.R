@@ -21,8 +21,8 @@ tot_emission <- dbGetQuery(db,'SELECT * from eia_emiss_co2_totv_tt_to_va_a')
 tot_s60<- tot_emission[21:1,1]*1000000 #1997 to 2017
 
 # derive the values
-e_per_gdp <- (tot_s60/gdp_s60)*1000
-e_per_gdp_df <- data.frame(1997:2017,c_per_cap)
+e_per_gdp <- tot_s60/gdp_s60
+e_per_gdp_df <- data.frame(1997:2017,e_per_gdp)
 colnames(e_per_gdp_df)<- c('year','co2_emission_per_unit_of_GDP')
 
 #upload to db
