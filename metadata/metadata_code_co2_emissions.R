@@ -26,7 +26,8 @@ r1<- data.frame(db_table_name = "co2_emission_per_thousand_dollars_of_gdp_va",
                 url=NA,api=I(list(c('https://fred.stlouisfed.org/series/VANGSP','https://fred.stlouisfed.org/series/VAPOP'))),
                 series_id=I(list(c('VANGSP','VAPOP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('fred_vangsp','residential_population_va'))), 
-                R_script='deriving_co2_emissions.R')
+                R_script='deriving_co2_emissions.R',
+                latest_data_update=, last_db_refresh=)
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -41,7 +42,8 @@ r2<- data.frame(db_table_name = "co2_emission_per_capita_va",
                 url=NA,api=I(list(c('http://api.eia.gov/series/?api_key=7ee3cdbf1ded6bcfb9de1e50d722ebd4&series_id=EMISS.CO2-TOTV-TT-TO-VA.A','https://fred.stlouisfed.org/series/VAPOP'))),
                 series_id=I(list(c('EMISS.CO2-TOTV-TT-TO-VA.A','VAPOP'))),json=NA,notes=NA, data_type='time-series',
                 data_context='historical', corresponding_data=I(list(c('eia_emiss_co2_totv_tt_to_va_a','residential_population_va'))), 
-                R_script='deriving_co2_emissions.R')
+                R_script='deriving_co2_emissions.R',
+                latest_data_update=, last_db_refresh=)
 
 #-----------------------------------------------------------------------------------------------------
 

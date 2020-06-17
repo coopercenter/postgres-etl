@@ -23,7 +23,8 @@ r1<- data.frame(db_table_name = "eia860_generator_y2018",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
-                corresponding_data=NA, R_script=NA)
+                corresponding_data=NA, R_script=NA, 
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "eia860_plant_y2018",
@@ -33,7 +34,8 @@ r2<- data.frame(db_table_name = "eia860_plant_y2018",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
-                corresponding_data=NA, R_script=NA)
+                corresponding_data=NA, R_script=NA,
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 
@@ -44,7 +46,8 @@ r3<- data.frame(db_table_name = "eia860_utility_y2018",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
-                corresponding_data=NA, R_script=NA)
+                corresponding_data=NA, R_script=NA,
+                latest_data_update=, last_db_refresh=)
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)

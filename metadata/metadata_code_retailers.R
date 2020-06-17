@@ -26,7 +26,8 @@ r1 <- data.frame(db_table_name = "retailers",
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= 'From EIA-861 (Annual Electric Power Industry Report)',
                  data_type='cross-sectional', data_context='historical', corresponding_data=NA, 
-                 R_script='cleaning_retailers.R')
+                 R_script='cleaning_retailers.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 library(plyr)

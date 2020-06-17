@@ -28,7 +28,8 @@ r1<- data.frame(db_table_name = "capacity_factors_annual",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
-                corresponding_data=NA, R_script='cleaning_annual_capacity_factors.R')
+                corresponding_data=NA, R_script='cleaning_annual_capacity_factors.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 
@@ -44,7 +45,8 @@ r1<- data.frame(db_table_name = "capacity_factors_monthly",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
-                corresponding_data=NA, R_script='cleaning_capacity_monthly.R')
+                corresponding_data=NA, R_script='cleaning_capacity_monthly.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 

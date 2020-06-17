@@ -22,7 +22,8 @@ r1<- data.frame(db_table_name = "generator_2014",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "generator_2015",
@@ -32,7 +33,8 @@ r2<- data.frame(db_table_name = "generator_2015",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 
@@ -43,7 +45,8 @@ r3<- data.frame(db_table_name = "generator_2016",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 
@@ -54,7 +57,8 @@ r4<- data.frame(db_table_name = "generator_2017",
                 data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 r5<- data.frame(db_table_name = "generator_2018",
@@ -64,7 +68,8 @@ r5<- data.frame(db_table_name = "generator_2018",
                 data_source_brief_name='EIA 860 Data',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 
@@ -75,7 +80,8 @@ r6<- data.frame(db_table_name = "generator_2019_early_release",
                 data_source_brief_name='EIA 860 Data',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
-                corresponding_data=NA, R_script='cleaning_generator_data.R')
+                corresponding_data=NA, R_script='cleaning_generator_data.R',
+                latest_data_update=, last_db_refresh=)
 
 library(plyr)
 metadata<-rbind(r1,r2,r3,r4,r5,r6)

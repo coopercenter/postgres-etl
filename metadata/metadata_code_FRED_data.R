@@ -50,7 +50,8 @@ r1<- data.frame(db_table_name = "residential_population_va",
                 url=NA,api='https://fred.stlouisfed.org/series/VAPOP',
                 series_id='VAPOP',json=NA,notes=NA, data_type='time-series', data_context='historical', 
                 corresponding_data=NA,
-                R_script='fetch_from_FRED_api.R')
+                R_script='fetch_from_FRED_api.R',
+                latest_data_update=, last_db_refresh=)
 
 r2<- data.frame(db_table_name = "fred_vangsp",
                 short_series_name= 'VA GDP',
@@ -60,7 +61,8 @@ r2<- data.frame(db_table_name = "fred_vangsp",
                 url=NA,api='https://fred.stlouisfed.org/series/VANGSP',
                 series_id='VANGSP',json=NA,notes=NA, data_type='time-series', data_context='historical', 
                 corresponding_data=NA,
-                R_script='fetch_from_FRED_api.R')
+                R_script='fetch_from_FRED_api.R',
+                latest_data_update=, last_db_refresh=)
 
 dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 dbWriteTable(db, 'metadata', value = r2, append = TRUE, overwrite = FALSE, row.names = FALSE)
