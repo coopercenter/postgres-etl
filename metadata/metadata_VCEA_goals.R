@@ -24,7 +24,8 @@ r1 <- data.frame(db_table_name = "VCEA_energy_efficiency",
                 data_source_brief_name='UVA ELC', data_source_full_name='Environmental Law and Regulatory Clinic at the University of Virginia',
                 url=NA, api=NA, series_id=NA,json=NA, 
                 notes= NA, data_type='time-series', data_contex='mandate',
-                corresponding_data=NA, R_script='cleaning_VCEA_goals.R')
+                corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 VCEA_ws <- dbGetQuery(db,'SELECT * from "VCEA_onshore_wind_solar"')
@@ -38,7 +39,8 @@ r2 <- data.frame(db_table_name = "VCEA_onshore_wind_solar",
                 url=NA, api=NA, series_id=NA, json=NA,
                 notes= NA, 
                 data_type='time-series', data_contex='mandate', 
-                corresponding_data=NA, R_script='cleaning_VCEA_goals.R')
+                corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 VCEA_portfolio <- dbGetQuery(db,'SELECT * from "VCEA_renewable_portfolio_standards"')
@@ -52,7 +54,8 @@ r3 <- data.frame(db_table_name = "VCEA_renewable_portfolio_standards",
                  url=NA,api=NA, series_id=NA, json=NA, 
                  notes= NA, 
                  data_type='time-series', data_contex='mandate', 
-                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R')
+                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 VCEA_storage <- dbGetQuery(db,'SELECT * from "VCEA_storage"')
@@ -66,7 +69,8 @@ r4 <- data.frame(db_table_name = "VCEA_storage",
                  url=NA, api=NA, series_id=NA, json=NA, 
                  notes= NA, 
                  data_type='time-series', data_contex='mandate', 
-                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R')
+                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 

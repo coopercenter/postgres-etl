@@ -30,7 +30,8 @@ r1 <- data.frame(db_table_name = "fuel",
                  notes= 'From EIA-423 (Monthly Cost and Quality of Fuels for Electric Plants Report),
                  EIA-923 (Power Plant Operations Report), and Federal Energy Regulatory Commission 
                  (FERC) Form 423 (Monthly Cost and Quality of Fuels for Electric Plants)', 
-                 data_type='time-series', data_context='historical', corresponding_data=NA, R_script='cleaning_fuel.R')
+                 data_type='time-series', data_context='historical', corresponding_data=NA, R_script='cleaning_fuel.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 library(plyr)

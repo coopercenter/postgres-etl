@@ -44,7 +44,8 @@ r1<- data.frame(db_table_name = "energy_burden_by_fuel_type",
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, 
-                R_script='cleaning_energy_burden.R')
+                R_script='cleaning_energy_burden.R',
+                latest_data_update=, last_db_refresh=)
 
 r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
                 short_series_name = "Energy burden by county",
@@ -54,7 +55,8 @@ r2<- data.frame(db_table_name = "energy_burden_county_expenditures",
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, 
-                R_script='cleaning_energy_burden.R')
+                R_script='cleaning_energy_burden.R',
+                latest_data_update=, last_db_refresh=)
 
 r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
                 short_series_name = "Energy burden per percent income",
@@ -64,7 +66,8 @@ r3<- data.frame(db_table_name = "energy_burden_county_percent_income",
                 url='https://www.energy.gov/eere/slsc/maps/lead-tool',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, 
-                R_script='cleaning_energy_burden.R')
+                R_script='cleaning_energy_burden.R',
+                latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 library(plyr)

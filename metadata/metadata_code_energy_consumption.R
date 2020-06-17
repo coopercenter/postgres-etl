@@ -26,7 +26,8 @@ r1 <- data.frame(db_table_name = "energy_consumption_per_capita_va",
                 url=NA,api=I(list(c('http://api.eia.gov/series/?api_key=7ee3cdbf1ded6bcfb9de1e50d722ebd4&series_id=SEDS.TETCB.VA.A','https://fred.stlouisfed.org/series/VAPOP'))),
                 series_id=I(list(c('SEDS.TETCB.VA.A','VAPOP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('eia_seds_tetcb_va_a','residential_population_va'))), 
-                R_script='deriving_energy_consumption.R')
+                R_script='deriving_energy_consumption.R',
+                latest_data_update=, last_db_refresh=)
 
 #-----------------------------------------------------------------------------------------------------
 energy_consumption_per_gdp_cols <- list(c('year','energy_consumption_per_unit_of_GDP'))
@@ -40,7 +41,8 @@ r2 <- data.frame(db_table_name = "energy_consumption_per_gdp_va",
                 url=NA,api=I(list(c('http://api.eia.gov/series/?api_key=7ee3cdbf1ded6bcfb9de1e50d722ebd4&series_id=SEDS.TETCB.VA.A,https://fred.stlouisfed.org/series/VANGSP'))),
                 series_id=I(list(c('SEDS.TETCB.VA.A','VANGSP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('fred_vangsp','residential_population_va'))), 
-                R_script='deriving_energy_consumption.R')
+                R_script='deriving_energy_consumption.R',
+                latest_data_update=, last_db_refresh=)
 
 #-----------------------------------------------------------------------------------------------------
 

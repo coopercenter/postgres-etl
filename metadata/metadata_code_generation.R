@@ -26,7 +26,8 @@ r1 <- data.frame(db_table_name = "electric_ipp_chp_generation",
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
-                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R')
+                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 elec_utility_gen <- dbGetQuery(db,'SELECT * from electric_utility_generation')
@@ -40,7 +41,8 @@ r2 <- data.frame(db_table_name = "electric_utility_generation",
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
-                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R')
+                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 whole_elec_gen <- dbGetQuery(db,'SELECT * from whole_electric_industry_generation')
@@ -54,7 +56,8 @@ r3 <- data.frame(db_table_name = "whole_electric_industry_generation",
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
-                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R')
+                 corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 library(plyr)

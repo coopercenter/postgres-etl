@@ -25,7 +25,8 @@ r1 <- data.frame(db_table_name = "electric_ipp_chp_capacity",
                  data_source_brief_name='EIA', data_source_full_name='U.S. Energy Information Administration',
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, data_type='time-series',data_context='historical',
-                 corresponding_data=NA, R_script='cleaning_capacity.R')
+                 corresponding_data=NA, R_script='cleaning_capacity.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 elec_utility_capacity <- dbGetQuery(db,'SELECT * from electric_utility_capacity')
@@ -38,7 +39,8 @@ r2 <- data.frame(db_table_name = "electric_utility_capacity",
                  data_source_brief_name='EIA', data_source_full_name='U.S. Energy Information Administration',
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, data_type='time-series',data_context='historical',
-                 corresponding_data=NA, R_script='cleaning_capacity.R')
+                 corresponding_data=NA, R_script='cleaning_capacity.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 whole_elec_capacity <- dbGetQuery(db,'SELECT * from whole_electric_industry_capacity')
@@ -51,7 +53,8 @@ r3 <- data.frame(db_table_name = "whole_electric_industry_capacity",
                  data_source_brief_name='EIA', data_source_full_name='U.S. Energy Information Administration',
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= NA, data_type='time-series',data_context='historical',
-                 corresponding_data=NA, R_script='cleaning_capacity.R')
+                 corresponding_data=NA, R_script='cleaning_capacity.R',
+                 latest_data_update=, last_db_refresh=)
 
 # ----------------------------------------------------------------------------------
 library(plyr)
