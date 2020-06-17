@@ -17,11 +17,8 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 
 # ----------------------------------------------------------------------------------
 total_mw_offshore_wind<-dbGetQuery(db,'SELECT * from total_mw_offshore_wind')
-
-colnames(total_mw_offshore_wind)
-offshore_mw_cols <- list(c('Year','Total','CVOW_Pilot','CVOW_Commercial_Stage_I','CVOW_Commercial_Stage_II',
-                    'CVOW_Commercial_Stage_III'))
-offshore_mw_units <-'megawatt'
+offshore_mw_cols <- list(colnames(total_mw_offshore_wind))
+offshore_mw_units <-'MW'
 
 r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 short_series_name= 'Total megawatt predictions of offshore wind',
@@ -29,15 +26,12 @@ r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 column2variable_name_map=I(offshore_mw_cols),units=I(offshore_mw_units),frequency='A',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',
-                api=NA, series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
+                api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 # ----------------------------------------------------------------------------------
 net_capacity_factor_offshore_wind<-dbGetQuery(db,'SELECT * from net_capacity_factor_offshore_wind')
-
-colnames(net_capacity_factor_offshore_wind)
-offshore_cf_cols <- list(c('Year','Pilot','Stage_I','Stage_II',
-                           'Stage_III'))
+offshore_cf_cols <- list(colnames(net_capacity_factor_offshore_wind))
 offshore_cf_units <- 'percent'
 
 r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
@@ -46,21 +40,21 @@ r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
                 column2variable_name_map=I(offshore_cf_cols),units=I(offshore_cf_units),frequency='A',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
+                series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 # ----------------------------------------------------------------------------------
 total_production_forecast_offshore_wind<-dbGetQuery(db,'SELECT * from total_production_forecast_offshore_wind')
-colnames(total_production_forecast_offshore_wind)
-offshore_tp_cols <- list(c('Year','Total_Production_GWh'))
-offshore_tp_units <- 'gigawatt'
+offshore_tp_cols <- list(colnames(total_production_forecast_offshore_wind))
+offshore_tp_units <- 'GW'
+
 r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 short_series_name = 'Total production forecast of offshore wind',
                 full_series_name = 'Total production forecast of offshore wind energy in phases from 2017 through 2035',
-                column2variable_name_map=I(offshore_tp_cols),units=I(offshore_tp_units),frequency='Y',
+                column2variable_name_map=I(offshore_tp_cols),units=I(offshore_tp_units),frequency='A',
                 data_source_brief_name='DEIRP',data_source_full_name='Dominion Energy 2020 Integrated Resource Plan',
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
-                series_id=NA,json=NA,notes=NA, mandate=0, forecast=1, corresponding_data=NA,
+                series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R')
 
 library(plyr)
