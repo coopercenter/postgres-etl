@@ -18,7 +18,7 @@ pop <- dbGetQuery(db,'SELECT * from residential_population_va')
 # unit of population is thousands of persons
 pop_s60<- as.numeric(pop[61:119,4])*1000
 tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
-# unit of population is billion btu
+# unit of consumption is billion btu
 tot_s60<- tot_consumption[nrow(tot_consumption):1,1]
 
 # derive the values
@@ -40,9 +40,10 @@ tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
 # unit of GDP is in million of dollar
 gdp_s97<-as.numeric(gdp[1:22,2])*1000000
 
-# unit of population is billion btu
+# unit of consumption is billion btu
 tot_s97 <- tot_consumption[1:22,]
 tot_s97<- tot_s97[nrow(tot_s97):1,1]*1000000000
+# now it's btu
 
 # derive the values
 c_per_gdp <- tot_s97/gdp_s97

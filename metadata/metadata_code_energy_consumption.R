@@ -31,7 +31,7 @@ r1 <- data.frame(db_table_name = "energy_consumption_per_capita_va",
 
 #-----------------------------------------------------------------------------------------------------
 energy_consumption_per_gdp_cols <- list(c('year','energy_consumption_per_unit_of_GDP'))
-energy_consumption_per_gdp_units <-'Billion Btu per million dollars'
+energy_consumption_per_gdp_units <-'Btu per dollar of GDP'
 
 r2 <- data.frame(db_table_name = "energy_consumption_per_gdp_va",
                 short_series_name= 'VA energy consumption per unit of gdp',
