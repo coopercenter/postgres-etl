@@ -97,13 +97,13 @@ db_table_names <- lapply(series_id_list,get_name)
 # Note: This code OVERWRITES EXISTING TABLE!
 
 for (i in 1:length(all_data_series)){
-  #dbWriteTable(db, db_table_names[[i]], value = all_tables[[i]], append = FALSE, overwrite = TRUE, row.names = FALSE)
-  #dbGetQuery(db, paste("SELECT * from",db_table_names[[i]])) %>% as_tibble() -> df_postgres
-  #data_refresh <- dbSendQuery(db, paste("UPDATE metadata SET last_db_refresh = ",lubridate::with_tz(Sys.time(), "UTC"),
-  #                                      ", WHERE db_table_name = ",db_table_names[[i]],";"))
-  time <- lubridate::with_tz(Sys.time(), "UTC")
-  data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
-                                        "' WHERE db_table_name = '",db_table_names[[i]],"';", sep=''))
+  dbWriteTable(db, db_table_names[[i]], value = all_tables[[i]], append = FALSE, overwrite = TRUE, row.names = FALSE)
+  dbGetQuery(db, paste("SELECT * from",db_table_names[[i]])) %>% as_tibble() -> df_postgres
+  data_refresh <- dbSendQuery(db, paste("UPDATE metadata SET last_db_refresh = ",lubridate::with_tz(Sys.time(), "UTC"),
+                                        ", WHERE db_table_name = ",db_table_names[[i]],";"))
+  #time <- lubridate::with_tz(Sys.time(), "UTC")
+  #data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
+  #                                     "' WHERE db_table_name = '",db_table_names[[i]],"';", sep=''))
 }
 
 # Close connection

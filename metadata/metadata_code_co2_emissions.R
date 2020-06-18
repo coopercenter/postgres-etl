@@ -27,7 +27,7 @@ r1<- data.frame(db_table_name = "co2_emission_per_thousand_dollars_of_gdp_va",
                 series_id=I(list(c('VANGSP','VAPOP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('fred_vangsp','residential_population_va'))), 
                 R_script='deriving_co2_emissions.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2017', last_db_refresh='2020-06-17')
 
 #-----------------------------------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ r2<- data.frame(db_table_name = "co2_emission_per_capita_va",
                 series_id=I(list(c('EMISS.CO2-TOTV-TT-TO-VA.A','VAPOP'))),json=NA,notes=NA, data_type='time-series',
                 data_context='historical', corresponding_data=I(list(c('eia_emiss_co2_totv_tt_to_va_a','residential_population_va'))), 
                 R_script='deriving_co2_emissions.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2017', last_db_refresh='2020-06-17')
 
 #-----------------------------------------------------------------------------------------------------
 

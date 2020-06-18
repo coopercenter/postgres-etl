@@ -27,7 +27,7 @@ r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_energy_efficiency.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 energy_savings_incremental_life_cycle<-dbGetQuery(db,'SELECT * from energy_savings_incremental_life_cycle')
@@ -38,11 +38,11 @@ r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 short_series_name='Total megawatt hour incremental savings per sector per lifecycle',
                 full_series_name = 'Total megawatt hour incremental savings per sector per lifecycle from 2017 through 2035',
                 column2variable_name_map=I(energy_savings_incremental_life_cycle_cols),units=I(energy_savings_incremental_life_cycle_units),frequency='A',
-                data_source_brief_name='EIA State Electricity Profile',data_source_full_name='Energy Information Administration 2018 VA Electricity Profile',
+                data_source_brief_name='EIA State Electricity Profile',data_source_full_name='U.S. Energy Information Administration 2018 VA Electricity Profile',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_energy_efficiency.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)

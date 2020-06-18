@@ -7,7 +7,6 @@ source(here("my_postgres_credentials.R"))
 
 db_driver <- dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -27,7 +26,7 @@ r1 <- data.frame(db_table_name = "electric_ipp_chp_generation",
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
                  corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 elec_utility_gen <- dbGetQuery(db,'SELECT * from electric_utility_generation')
@@ -42,7 +41,7 @@ r2 <- data.frame(db_table_name = "electric_utility_generation",
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
                  corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 whole_elec_gen <- dbGetQuery(db,'SELECT * from whole_electric_industry_generation')
@@ -57,7 +56,7 @@ r3 <- data.frame(db_table_name = "whole_electric_industry_generation",
                  notes= NA, 
                  data_type='time-series', data_context='historical', 
                  corresponding_data=NA, R_script='cleaning_generation_by_sector.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)

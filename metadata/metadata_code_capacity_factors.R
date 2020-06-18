@@ -4,10 +4,9 @@ library(here)
 library('RPostgreSQL')
 library(tidyverse)
 source(here("my_postgres_credentials.R"))
+
 db_driver <- dbDriver("PostgreSQL")
-
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -29,7 +28,7 @@ r1<- data.frame(db_table_name = "capacity_factors_annual",
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
                 corresponding_data=NA, R_script='cleaning_annual_capacity_factors.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -46,7 +45,7 @@ r1<- data.frame(db_table_name = "capacity_factors_monthly",
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
                 corresponding_data=NA, R_script='cleaning_capacity_monthly.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 

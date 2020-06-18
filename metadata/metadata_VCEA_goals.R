@@ -25,7 +25,7 @@ r1 <- data.frame(db_table_name = "VCEA_energy_efficiency",
                 url=NA, api=NA, series_id=NA,json=NA, 
                 notes= NA, data_type='time-series', data_contex='mandate',
                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2019', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_ws <- dbGetQuery(db,'SELECT * from "VCEA_onshore_wind_solar"')
@@ -40,7 +40,7 @@ r2 <- data.frame(db_table_name = "VCEA_onshore_wind_solar",
                 notes= NA, 
                 data_type='time-series', data_contex='mandate', 
                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2019', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_portfolio <- dbGetQuery(db,'SELECT * from "VCEA_renewable_portfolio_standards"')
@@ -55,7 +55,7 @@ r3 <- data.frame(db_table_name = "VCEA_renewable_portfolio_standards",
                  notes= NA, 
                  data_type='time-series', data_contex='mandate', 
                  corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2019', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_storage <- dbGetQuery(db,'SELECT * from "VCEA_storage"')
@@ -70,7 +70,7 @@ r4 <- data.frame(db_table_name = "VCEA_storage",
                  notes= NA, 
                  data_type='time-series', data_contex='mandate', 
                  corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2019', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 

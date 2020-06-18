@@ -51,7 +51,7 @@ r1<- data.frame(db_table_name = "residential_population_va",
                 series_id='VAPOP',json=NA,notes=NA, data_type='time-series', data_context='historical', 
                 corresponding_data=NA,
                 R_script='fetch_from_FRED_api.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2019-01-01', last_db_refresh='2020-05-01')
 
 r2<- data.frame(db_table_name = "fred_vangsp",
                 short_series_name= 'VA GDP',
@@ -62,7 +62,7 @@ r2<- data.frame(db_table_name = "fred_vangsp",
                 series_id='VANGSP',json=NA,notes=NA, data_type='time-series', data_context='historical', 
                 corresponding_data=NA,
                 R_script='fetch_from_FRED_api.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2019-01-01', last_db_refresh='2020-05-01')
 
 dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 dbWriteTable(db, 'metadata', value = r2, append = TRUE, overwrite = FALSE, row.names = FALSE)
