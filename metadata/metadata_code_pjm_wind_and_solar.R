@@ -4,10 +4,9 @@ library(here)
 library('RPostgreSQL')
 library(tidyverse)
 source(here("my_postgres_credentials.R"))
+
 db_driver <- dbDriver("PostgreSQL")
-
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -26,7 +25,7 @@ r1<- data.frame(db_table_name = "pjm_solar",
                 url='https://www.pjm.com/planning/services-requests/interconnection-queues.aspx',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
                 corresponding_data='pjm_solar.xlsx', R_script='cleaning_pjm_wind_and_solar', 
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=, last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 pjm_wind<-dbGetQuery (db,'SELECT * from pjm_wind')
@@ -39,7 +38,7 @@ r2<- data.frame(db_table_name = "pjm_wind",
                 url='https://www.pjm.com/planning/services-requests/interconnection-queues.aspx',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
                 corresponding_data='pjm_wind.xlsx', R_script='cleaning_pjm_wind_and_solar', 
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=, last_db_refresh='2020-06-17')
 
 library(plyr)
 metadata<-rbind(r1,r2)

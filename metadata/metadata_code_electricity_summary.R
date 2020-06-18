@@ -7,7 +7,6 @@ source(here("my_postgres_credentials.R"))
 
 db_driver <- dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -29,7 +28,7 @@ r1 <- data.frame(db_table_name = "electricity_summary",
                  EIA-923 (Power Plant Operations Report and predecessor forms)", 
                  data_type='cross-sectional', data_context='historical', 
                  corresponding_data=NA, R_script='cleaning_electricity_summary.R',
-                 latest_data_update=, last_db_refresh=)
+                 latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)

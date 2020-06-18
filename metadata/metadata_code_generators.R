@@ -23,7 +23,7 @@ r1<- data.frame(db_table_name = "generator_2014",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "generator_2015",
@@ -34,7 +34,7 @@ r2<- data.frame(db_table_name = "generator_2015",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ r3<- data.frame(db_table_name = "generator_2016",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ r4<- data.frame(db_table_name = "generator_2017",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 r5<- data.frame(db_table_name = "generator_2018",
@@ -69,7 +69,7 @@ r5<- data.frame(db_table_name = "generator_2018",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -81,7 +81,9 @@ r6<- data.frame(db_table_name = "generator_2019_early_release",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical', 
                 corresponding_data=NA, R_script='cleaning_generator_data.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update=NA, last_db_refresh='2020-05-01')
+
+
 
 library(plyr)
 metadata<-rbind(r1,r2,r3,r4,r5,r6)

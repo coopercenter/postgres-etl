@@ -4,10 +4,9 @@ library(here)
 library('RPostgreSQL')
 library(tidyverse)
 source(here("my_postgres_credentials.R"))
+
 db_driver <- dbDriver("PostgreSQL")
-
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -28,7 +27,7 @@ r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2020', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 net_capacity_factor_offshore_wind<-dbGetQuery(db,'SELECT * from net_capacity_factor_offshore_wind')
@@ -43,7 +42,7 @@ r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2020', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 total_production_forecast_offshore_wind<-dbGetQuery(db,'SELECT * from total_production_forecast_offshore_wind')
@@ -58,7 +57,7 @@ r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2020', last_db_refresh='2020-05-01')
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)

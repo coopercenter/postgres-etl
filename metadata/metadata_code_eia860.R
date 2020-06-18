@@ -4,10 +4,9 @@ library(here)
 library('RPostgreSQL')
 library(tidyverse)
 source(here("my_postgres_credentials.R"))
+
 db_driver <- dbDriver("PostgreSQL")
-
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
@@ -20,22 +19,22 @@ r1<- data.frame(db_table_name = "eia860_generator_y2018",
                 short_series_name= 'Virginia generator data',
                 full_series_name = 'In depth Virginia data about existing and planned generators',
                 column2variable_name_map=NA, units=NA, frequency=NA,
-                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA, 
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "eia860_plant_y2018",
                 short_series_name= 'Virginia plant data',
                 full_series_name = 'In depth Virginia data about existing and planned plants',
                 column2variable_name_map=NA, units=NA, frequency=NA,
-                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA,
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -43,11 +42,11 @@ r3<- data.frame(db_table_name = "eia860_utility_y2018",
                 short_series_name= 'Virginia utility data',
                 full_series_name = 'In depth Virginia data about existing and planned plants and generators',
                 column2variable_name_map=NA, units=NA, frequency=NA,
-                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration 860 Detailed Data, 2018',
+                data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
-                series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
+                series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA,
-                latest_data_update=, last_db_refresh=)
+                latest_data_update='2018', last_db_refresh='2020-05-01')
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)

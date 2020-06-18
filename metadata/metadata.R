@@ -231,8 +231,8 @@ dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE,
 set_pk <- dbSendQuery(db, "ALTER TABLE metadata ADD PRIMARY KEY (db_table_name);")
 set_freq <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN frequency TYPE char(1)")
 set_corr_data <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE varchar(500)")
-set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
-set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
+#set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
+#set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
 
 
 # Check if column constraints are true

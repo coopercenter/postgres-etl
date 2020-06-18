@@ -33,7 +33,7 @@ VCEA_energy_effciency$dominion_energy_efficiency_as_share_of_2019_sales <- VCEA_
 dbWriteTable(db, 'VCEA_renewable_portfolio_standards', VCEA_renewable_portfolio_standards, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'VCEA_onshore_wind_solar', VCEA_onshore_wind_solar, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'VCEA_storage',VCEA_storage, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'VCEA_energy_effciency', VCEA_energy_effciency, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'VCEA_energy_efficiency', VCEA_energy_effciency, row.names=FALSE, overwrite = TRUE)
 
 #close db connection
 dbDisconnect(db)
