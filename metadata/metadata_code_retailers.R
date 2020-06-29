@@ -20,7 +20,7 @@ retailers_cols <- list(colnames(retailers))
 r1 <- data.frame(db_table_name = "retailers",
                  short_series_name= 'The top five retailers of electricity in Virginia, with end-use sectors 2018',
                  full_series_name = 'The top five retailers of electricity in Virginia, with end-use sectors 2018',
-                 column2variable_name_map=I(retailers_cols), units='megawatthour', frequency=NA,
+                 column2variable_name_map=I(retailers_cols), units='MWh', frequency=NA,
                  data_source_brief_name='EIA', data_source_full_name='U.S. Energy Information Administration',
                  url='https://www.eia.gov/electricity/state/virginia/', api=NA, series_id=NA,json=NA, 
                  notes= 'From EIA-861 (Annual Electric Power Industry Report)',

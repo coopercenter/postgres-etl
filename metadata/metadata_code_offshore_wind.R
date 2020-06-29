@@ -17,7 +17,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # ----------------------------------------------------------------------------------
 total_mw_offshore_wind<-dbGetQuery(db,'SELECT * from total_mw_offshore_wind')
 offshore_mw_cols <- list(colnames(total_mw_offshore_wind))
-offshore_mw_units <-'megawatt'
+offshore_mw_units <-'MW'
 
 r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 short_series_name= 'Total megawatt predictions of offshore wind',
@@ -47,7 +47,7 @@ r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
 # ----------------------------------------------------------------------------------
 total_production_forecast_offshore_wind<-dbGetQuery(db,'SELECT * from total_production_forecast_offshore_wind')
 offshore_tp_cols <- list(colnames(total_production_forecast_offshore_wind))
-offshore_tp_units <- 'gigawatt'
+offshore_tp_units <- 'GW'
 
 r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 short_series_name = 'Total production forecast of offshore wind',
