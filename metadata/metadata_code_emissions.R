@@ -17,7 +17,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # ----------------------------------------------------------------------------------
 emissions_co2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_co2_by_source_va')
 co2_by_source_cols <- list(colnames(emissions_co2_by_source_va))
-co2_by_source_units <-'megawatthour'
+co2_by_source_units <-'MWh'
 
 r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
                 short_series_name= 'Total megawatt hour of carbon dioxide emissions',
@@ -32,7 +32,7 @@ r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
 # ----------------------------------------------------------------------------------
 emissions_no_by_source_va<-dbGetQuery(db,'SELECT * from emissions_no_by_source_va')
 no_by_source_cols <- list(colnames(emissions_no_by_source_va))
-no_by_source_units <- 'megawatthour'
+no_by_source_units <- 'MWh'
 
 r2<- data.frame(db_table_name = "emissions_no_by_source_va",
                 short_series_name='Total megawatt hour of nitrogen oxide emissions',
@@ -47,7 +47,7 @@ r2<- data.frame(db_table_name = "emissions_no_by_source_va",
 # ----------------------------------------------------------------------------------
 emissions_so2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_so2_by_source_va')
 so2_by_source_cols<- list(colnames(emissions_so2_by_source_va))
-so2_by_source_units <- 'megawatthour'
+so2_by_source_units <- 'MWh'
 
 r3<- data.frame(db_table_name = "emissions_so2_by_source_va",
                 short_series_name = 'Total megawatt hour of sulfur dioxide emissions',

@@ -18,7 +18,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 annual_cf <- dbGetQuery(db,'SELECT * from capacity_factors_annual')
 
 annual_cf_cols <- list(colnames(annual_cf))
-annual_cf_units <-'megawatt'
+annual_cf_units <-'MW'
 
 r1<- data.frame(db_table_name = "capacity_factors_annual",
                 short_series_name= 'capacity factors in Virginia, annual',
@@ -35,7 +35,7 @@ r1<- data.frame(db_table_name = "capacity_factors_annual",
 monthly_cf <- dbGetQuery(db,'SELECT * from capacity_factors_monthly')
 
 monthly_cf_cols <- list(colnames(monthly_cf))
-monthly_cf_units <-'megawatt'
+monthly_cf_units <-'MW'
 
 r2<- data.frame(db_table_name = "capacity_factors_monthly",
                 short_series_name= 'capacity factors in Virginia, monthly',
