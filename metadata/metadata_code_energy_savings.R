@@ -17,7 +17,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # ----------------------------------------------------------------------------------
 energy_savings_reporting_year_incremental<-dbGetQuery(db,'SELECT * from energy_savings_reporting_year_incremental')
 energy_savings_reporting_year_incremental_cols <- list(colnames(energy_savings_reporting_year_incremental))
-energy_savings_reporting_year_incremental_units <-'MWh'
+energy_savings_reporting_year_incremental_units <-'megawatthour'
 
 r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 short_series_name= 'Total megawatt hour incremental savings per sector per year',
@@ -27,12 +27,12 @@ r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_energy_efficiency.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 energy_savings_incremental_life_cycle<-dbGetQuery(db,'SELECT * from energy_savings_incremental_life_cycle')
 energy_savings_incremental_life_cycle_cols <- list(colnames(energy_savings_incremental_life_cycle))
-energy_savings_incremental_life_cycle_units <- 'MWh'
+energy_savings_incremental_life_cycle_units <- 'megawatthour'
 
 r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 short_series_name='Total megawatt hour incremental savings per sector per lifecycle',
@@ -42,12 +42,12 @@ r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_energy_efficiency.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)
 metadata<-rbind(r1,r2)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

@@ -74,7 +74,7 @@ library(plyr)
 metadata <- rbind(r1, r2, r3)
 
 # Append your rows to the metadata table in our database
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 #close db connection
 dbDisconnect(db)

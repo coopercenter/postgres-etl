@@ -23,9 +23,9 @@ r1 <- data.frame(db_table_name = "VCEA_energy_efficiency",
                 column2variable_name_map=I(VCEA_energy_efficiency_cols), units='percent', frequency='A',
                 data_source_brief_name='UVA ELC', data_source_full_name='Environmental Law and Regulatory Clinic at the University of Virginia',
                 url=NA, api=NA, series_id=NA,json=NA, 
-                notes= NA, data_type='time-series', data_contex='mandate',
+                notes= NA, data_type='time-series', data_context='mandate',
                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                latest_data_update='2019', last_db_refresh='2020-06-17')
+                latest_data_update='2019-12-31', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_ws <- dbGetQuery(db,'SELECT * from "VCEA_onshore_wind_solar"')
@@ -34,13 +34,13 @@ VCEA_ws_cols <- list(colnames(VCEA_ws))
 r2 <- data.frame(db_table_name = "VCEA_onshore_wind_solar",
                 short_series_name= 'Procurement targets for renewable installations by wind or solar',
                 full_series_name = 'Procurement Targets : Onshore : Wind : Solar : MegaWatts',
-                column2variable_name_map=I(VCEA_ws_cols), units='MW', frequency='A',
+                column2variable_name_map=I(VCEA_ws_cols), units='megawatt', frequency='A',
                 data_source_brief_name='UVA ELC', data_source_full_name='Environmental Law and Regulatory Clinic at the University of Virginia',
                 url=NA, api=NA, series_id=NA, json=NA,
                 notes= NA, 
-                data_type='time-series', data_contex='mandate', 
+                data_type='time-series', data_context='mandate', 
                 corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                latest_data_update='2019', last_db_refresh='2020-06-17')
+                latest_data_update='2019-12-31', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_portfolio <- dbGetQuery(db,'SELECT * from "VCEA_renewable_portfolio_standards"')
@@ -49,13 +49,13 @@ VCEA_portfolio_cols <- list(colnames(VCEA_portfolio))
 r3 <- data.frame(db_table_name = "VCEA_renewable_portfolio_standards",
                  short_series_name= 'Renewable Portfolio Standard',
                  full_series_name = 'Renewable Portfolio Standard',
-                 column2variable_name_map=I(VCEA_portfolio_cols), units='MW', frequency='A',
+                 column2variable_name_map=I(VCEA_portfolio_cols), units='megawatt', frequency='A',
                  data_source_brief_name='UVA ELC', data_source_full_name='Environmental Law and Regulatory Clinic at the University of Virginia',
                  url=NA,api=NA, series_id=NA, json=NA, 
                  notes= NA, 
-                 data_type='time-series', data_contex='mandate', 
+                 data_type='time-series', data_context='mandate', 
                  corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                 latest_data_update='2019', last_db_refresh='2020-06-17')
+                 latest_data_update='2019-12-31', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 VCEA_storage <- dbGetQuery(db,'SELECT * from "VCEA_storage"')
@@ -64,19 +64,19 @@ VCEA_storage_cols <- list(colnames(VCEA_storage))
 r4 <- data.frame(db_table_name = "VCEA_storage",
                  short_series_name= 'Procurement targets for energy storage',
                  full_series_name = 'Storage Goals : MegaWatts',
-                 column2variable_name_map=I(VCEA_storage_cols), units='MW', frequency='A',
+                 column2variable_name_map=I(VCEA_storage_cols), units='megawatt', frequency='A',
                  data_source_brief_name='UVA ELC', data_source_full_name='Environmental Law and Regulatory Clinic at the University of Virginia',
                  url=NA, api=NA, series_id=NA, json=NA, 
                  notes= NA, 
-                 data_type='time-series', data_contex='mandate', 
+                 data_type='time-series', data_context='mandate', 
                  corresponding_data=NA, R_script='cleaning_VCEA_goals.R',
-                 latest_data_update='2019', last_db_refresh='2020-06-17')
+                 latest_data_update='2019-12-31', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
 
 library(plyr)
 metadata <- rbind(r1,r2,r3,r4)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

@@ -30,11 +30,11 @@ r1 <- data.frame(db_table_name = "fuel",
                  EIA-923 (Power Plant Operations Report), and Federal Energy Regulatory Commission 
                  (FERC) Form 423 (Monthly Cost and Quality of Fuels for Electric Plants)', 
                  data_type='time-series', data_context='historical', corresponding_data=NA, R_script='cleaning_fuel.R',
-                 latest_data_update='2018', last_db_refresh='2020-05-01')
+                 latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)
-dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

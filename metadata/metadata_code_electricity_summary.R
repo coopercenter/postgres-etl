@@ -28,11 +28,11 @@ r1 <- data.frame(db_table_name = "electricity_summary",
                  EIA-923 (Power Plant Operations Report and predecessor forms)", 
                  data_type='cross-sectional', data_context='historical', 
                  corresponding_data=NA, R_script='cleaning_electricity_summary.R',
-                 latest_data_update='2018', last_db_refresh='2020-05-01')
+                 latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)
-dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

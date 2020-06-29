@@ -23,7 +23,7 @@ r1<- data.frame(db_table_name = "eia860_generator_y2018",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA, 
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 r2<- data.frame(db_table_name = "eia860_plant_y2018",
@@ -34,7 +34,7 @@ r2<- data.frame(db_table_name = "eia860_plant_y2018",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA,
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
@@ -46,11 +46,11 @@ r3<- data.frame(db_table_name = "eia860_utility_y2018",
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
                 series_id=NA,json=NA,notes='From EIA 860', data_type='cross-sectional', data_context='historical',
                 corresponding_data=NA, R_script=NA,
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

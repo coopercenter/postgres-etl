@@ -18,7 +18,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 annual_cf <- dbGetQuery(db,'SELECT * from capacity_factors_annual')
 
 annual_cf_cols <- list(colnames(annual_cf))
-annual_cf_units <-'MW'
+annual_cf_units <-'megawatt'
 
 r1<- data.frame(db_table_name = "capacity_factors_annual",
                 short_series_name= 'capacity factors in Virginia, annual',
@@ -28,16 +28,16 @@ r1<- data.frame(db_table_name = "capacity_factors_annual",
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
                 corresponding_data=NA, R_script='cleaning_annual_capacity_factors.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
 monthly_cf <- dbGetQuery(db,'SELECT * from capacity_factors_monthly')
 
 monthly_cf_cols <- list(colnames(monthly_cf))
-monthly_cf_units <-'MW'
+monthly_cf_units <-'megawatt'
 
-r1<- data.frame(db_table_name = "capacity_factors_monthly",
+r2<- data.frame(db_table_name = "capacity_factors_monthly",
                 short_series_name= 'capacity factors in Virginia, monthly',
                 full_series_name = 'capacity factors in Virginia by fuel type, monthly',
                 column2variable_name_map=I(monthly_cf_cols), units=monthly_cf_units, frequency='A',
@@ -45,13 +45,13 @@ r1<- data.frame(db_table_name = "capacity_factors_monthly",
                 url='https://www.eia.gov/electricity/state/virginia/',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series',data_context='historical',
                 corresponding_data=NA, R_script='cleaning_capacity_monthly.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 
 library(plyr)
 metadata <- rbind(r1,r2)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

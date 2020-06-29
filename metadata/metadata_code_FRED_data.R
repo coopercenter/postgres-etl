@@ -64,8 +64,8 @@ r2<- data.frame(db_table_name = "fred_vangsp",
                 R_script='fetch_from_FRED_api.R',
                 latest_data_update='2019-01-01', last_db_refresh='2020-05-01')
 
-dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
-dbWriteTable(db, 'metadata', value = r2, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = r2, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

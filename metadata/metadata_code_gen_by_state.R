@@ -33,7 +33,7 @@ for(state in states){
   gen_by_source_cols <- list(c('year','coal','oil','gas','nuclear',
                                'wind','utility_solar','distributed_solar',
                                'hydropower','wood','other_biomass','total'))
-  gen_by_source_units <-'GWh'
+  gen_by_source_units <-'gigawatthour'
   
   series_ids=list(c(paste0("ELEC.GEN.COW-",state,"-99.A"),
               paste0("ELEC.GEN.PEL-",state,"-99.A"),
@@ -82,7 +82,7 @@ for(state in states){
   gen_by_source_cols <- list(c('year','coal','oil','gas','nuclear',
                                'wind','utility_solar','distributed_solar',
                                'hydropower','wood','other_biomass','total'))
-  gen_by_source_units <-'GWh'
+  gen_by_source_units <-'gigawatthour'
   
   series_ids=list(c(paste0("ELEC.GEN.COW-",state,"-99.M"),
                     paste0("ELEC.GEN.PEL-",state,"-99.M"),
@@ -128,6 +128,5 @@ for(state in states){
 }
 
 r1 <- rbind(all_r1_year,all_r1_month)
-#dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
-dbWriteTable(db, 'test', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 

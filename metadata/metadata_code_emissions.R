@@ -17,7 +17,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # ----------------------------------------------------------------------------------
 emissions_co2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_co2_by_source_va')
 co2_by_source_cols <- list(colnames(emissions_co2_by_source_va))
-co2_by_source_units <-'MWh'
+co2_by_source_units <-'megawatthour'
 
 r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
                 short_series_name= 'Total megawatt hour of carbon dioxide emissions',
@@ -27,12 +27,12 @@ r1<- data.frame(db_table_name = "emissions_co2_by_source_va",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_emissions.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 emissions_no_by_source_va<-dbGetQuery(db,'SELECT * from emissions_no_by_source_va')
 no_by_source_cols <- list(colnames(emissions_no_by_source_va))
-no_by_source_units <- 'MWh'
+no_by_source_units <- 'megawatthour'
 
 r2<- data.frame(db_table_name = "emissions_no_by_source_va",
                 short_series_name='Total megawatt hour of nitrogen oxide emissions',
@@ -42,12 +42,12 @@ r2<- data.frame(db_table_name = "emissions_no_by_source_va",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_emissions.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 emissions_so2_by_source_va<-dbGetQuery(db,'SELECT * from emissions_so2_by_source_va')
 so2_by_source_cols<- list(colnames(emissions_so2_by_source_va))
-so2_by_source_units <- 'MWh'
+so2_by_source_units <- 'megawatthour'
 
 r3<- data.frame(db_table_name = "emissions_so2_by_source_va",
                 short_series_name = 'Total megawatt hour of sulfur dioxide emissions',
@@ -57,12 +57,12 @@ r3<- data.frame(db_table_name = "emissions_so2_by_source_va",
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
                 R_script='cleaning_emissions.R',
-                latest_data_update='2018', last_db_refresh='2020-05-01')
+                latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 library(plyr)
 metadata<-rbind(r1,r2,r3)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

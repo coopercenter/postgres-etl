@@ -17,7 +17,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # ----------------------------------------------------------------------------------
 total_mw_offshore_wind<-dbGetQuery(db,'SELECT * from total_mw_offshore_wind')
 offshore_mw_cols <- list(colnames(total_mw_offshore_wind))
-offshore_mw_units <-'MW'
+offshore_mw_units <-'megawatt'
 
 r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 short_series_name= 'Total megawatt predictions of offshore wind',
@@ -27,7 +27,7 @@ r1<- data.frame(db_table_name = "total_mw_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',
                 api=NA, series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update='2020', last_db_refresh='2020-05-01')
+                latest_data_update='2020-01-01', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 net_capacity_factor_offshore_wind<-dbGetQuery(db,'SELECT * from net_capacity_factor_offshore_wind')
@@ -42,12 +42,12 @@ r2<- data.frame(db_table_name = "net_capacity_factor_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update='2020', last_db_refresh='2020-05-01')
+                latest_data_update='2020-01-01', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
 total_production_forecast_offshore_wind<-dbGetQuery(db,'SELECT * from total_production_forecast_offshore_wind')
 offshore_tp_cols <- list(colnames(total_production_forecast_offshore_wind))
-offshore_tp_units <- 'GW'
+offshore_tp_units <- 'gigawatt'
 
 r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 short_series_name = 'Total production forecast of offshore wind',
@@ -57,11 +57,11 @@ r3<- data.frame(db_table_name = "total_production_forecast_offshore_wind",
                 url='https://www.dominionenergy.com/library/domcom/media/about-us/making-energy/2020-va-integrated-resource-plan.pdf?modified=20200501191108',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='forecast', corresponding_data=NA,
                 R_script='cleaning_offshore_wind.R',
-                latest_data_update='2020', last_db_refresh='2020-05-01')
+                latest_data_update='2020-01-01', last_db_refresh='2020-05-01')
 
 library(plyr)
 metadata<-rbind(r1,r2,r3)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

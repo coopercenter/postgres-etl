@@ -27,7 +27,7 @@ r1 <- data.frame(db_table_name = "energy_consumption_per_capita_va",
                 series_id=I(list(c('SEDS.TETCB.VA.A','VAPOP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('eia_seds_tetcb_va_a','residential_population_va'))), 
                 R_script='deriving_energy_consumption.R',
-                latest_data_update='2018', last_db_refresh='2020-06-17')
+                latest_data_update='2018-12-31', last_db_refresh='2020-06-17')
 
 #-----------------------------------------------------------------------------------------------------
 energy_consumption_per_gdp_cols <- list(c('year','consumption_per_unit_of_gdp'))
@@ -42,14 +42,14 @@ r2 <- data.frame(db_table_name = "energy_consumption_per_unit_of_gdp_va",
                 series_id=I(list(c('SEDS.TETCB.VA.A','VANGSP'))),json=NA,notes=NA, data_type='time-series', 
                 data_context='historical', corresponding_data=I(list(c('fred_vangsp','residential_population_va'))), 
                 R_script='deriving_energy_consumption.R',
-                latest_data_update='2018', last_db_refresh='2020-06-17')
+                latest_data_update='2018-12-31', last_db_refresh='2020-06-17')
 
 #-----------------------------------------------------------------------------------------------------
 
 #upload to db
 library(plyr)
 metadata<-rbind(r1,r2)
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 #close connection
 dbDisconnect(db)
