@@ -6,7 +6,7 @@ library("RPostgreSQL")
 library(readxl)
 
 db_driver = dbDriver("PostgreSQL")
-source(here('raw_data'))
+source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
 
