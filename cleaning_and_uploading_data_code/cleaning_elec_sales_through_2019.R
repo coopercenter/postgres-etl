@@ -14,9 +14,6 @@ rm(ra_pwd)
 elec_sales_through_2019 <- read_excel(here('raw_data','elec_sales_forecasts_2019-12.xlsx'),sheet = "Annual",col_names = TRUE)
 elec_sales_through_2019 <- select(elec_sales_through_2019, c(1,3,5,15,17))
 
-#replacing row names 
-colnames(elec_sales_through_2019)<- c("Year", "APCO GWh","Dominion GWh", "APCO GWh Forecast","Dominion Gwh Forecast")
-
 #upload to db
 dbWriteTable(db, 'elec_sales_through_2019', elec_sales_through_2019, row.names=FALSE, overwrite = TRUE)
 
