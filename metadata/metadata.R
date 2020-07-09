@@ -163,7 +163,11 @@ eia_short_names<-list('Total co2 emission',
                       'Monthly retail sales for commercial sector',
                       'Monthly retail sales for industrial sector',
                       'Monthly retail sales for transportation sector',
-                      'Monthly retail sales for other sectors'
+                      'Monthly retail sales for other sectors',
+                      'Annual hydro-electric pumped storage generation',
+                      'Annual other renewables generation',
+                      'Annual other generation',
+                      'Annual utility-scale photovoltaic generation',
                       )
 
 
