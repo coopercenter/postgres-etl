@@ -1,5 +1,5 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 19, nrow = 0))
+metadata<-data.frame(matrix(ncol = 60, nrow = 0))
 
 # Specify the column names
 colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
@@ -167,7 +167,7 @@ eia_short_names<-list('Total co2 emission',
                       'Annual hydro-electric pumped storage generation',
                       'Annual other renewables generation',
                       'Annual other generation',
-                      'Annual utility-scale photovoltaic generation',
+                      'Annual utility-scale photovoltaic generation'
                       )
 
 
@@ -227,7 +227,7 @@ source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 
-dbWriteTable(db, 'metadata2', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 #dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 #dbWriteTable(db, 'test', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
