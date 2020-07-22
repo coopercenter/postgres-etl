@@ -226,8 +226,6 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 
 
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
-#dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
-#dbWriteTable(db, 'test', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 # setting column constraints
 set_pk <- dbSendQuery(db, "ALTER TABLE metadata2 ADD PRIMARY KEY (db_table_name);")
