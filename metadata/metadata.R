@@ -1,5 +1,5 @@
 # Creating the dataframe for metadata
-metadata<-data.frame(matrix(ncol = 60, nrow = 0))
+metadata<-data.frame(matrix(ncol = 19, nrow = 0))
 
 # Specify the column names
 colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
@@ -19,9 +19,7 @@ library(tidyverse)
 source(here("my_postgres_credentials.R"))
 
 db_driver <- dbDriver("PostgreSQL")
-
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-
 rm(ra_pwd)
 
 # check the connection
