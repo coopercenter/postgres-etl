@@ -25,22 +25,3 @@ dbWriteTable(db, 'virginia_annual_savings_through_2022', virginia_annual_savings
 #close db connection
 dbDisconnect(db)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

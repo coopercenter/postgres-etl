@@ -71,23 +71,3 @@ dbWriteTable(db, 'city_emission_factors_2016', city_emission_factors_data, row.n
 
 #close db connection
 dbDisconnect(db)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

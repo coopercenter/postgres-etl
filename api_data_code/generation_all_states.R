@@ -245,7 +245,7 @@ rm(ra_pwd)
 
 # check the connection
 # if this returns true, it means that you are connected to the database now
-dbExistsTable(db, "metadata")
+#dbExistsTable(db, "metadata")
 
 dt_name_annual<-NULL
 dt_name_monthly<-NULL
@@ -259,11 +259,11 @@ for (i in 1:50){
 for (i in 1:50){
         dbWriteTable(db, dt_name_annual[i], value = gen_by_state_annual[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
         dbWriteTable(db, dt_name_monthly[i], value = gen_by_state_monthly[[states[i]]], append = FALSE, overwrite = TRUE, row.names = FALSE)
-        time <- lubridate::with_tz(Sys.time(), "UTC")
-        data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
-                                              "' WHERE db_table_name = '",dt_name_annual[i],"';", sep=''))
-        data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
-                                              "' WHERE db_table_name = '",dt_name_monthly[i],"';", sep=''))
+        #time <- lubridate::with_tz(Sys.time(), "UTC")
+        #data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
+        #                                      "' WHERE db_table_name = '",dt_name_annual[i],"';", sep=''))
+        #data_refresh <- dbSendQuery(db, paste("UPDATE test SET last_db_refresh = '",time,
+        #                                      "' WHERE db_table_name = '",dt_name_monthly[i],"';", sep=''))
         }
 
 #Upload total annual and monthly generation dataframes to database.

@@ -34,7 +34,7 @@ data_series[[2]] <- data_series_VANGSP
 
 # Connection to the database
 # "my_postgres_login.R" contains the log-in informations of RAs
-source(here("api_data_code","my_postgres_credentials.R"))
+source(here("my_postgres_credentials.R"))
 db_driver = dbDriver("PostgreSQL")
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
