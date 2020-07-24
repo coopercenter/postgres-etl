@@ -1,3 +1,16 @@
+## IMPORTANT:
+#  Refer to the data_management_plan.md in postgres-etl repo
+
+# Creating the dataframe for metadata
+metadata<-data.frame(matrix(ncol = 19, nrow = 0))
+
+# Specify the column names
+colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
+                        'column2variable_name_map','units','frequency',
+                        'data_source_brief_name','data_source_full_name','url',
+                        'api','series_id','json','notes', 'data_type','data_context','corresponding_data','R_script',
+                        'latest_data_update','last_db_refresh')
+#-----------------------------------------------------------------------------------------------------------
 # Connection to the database
 # "my_postgres_credentials.R" contains the log-in informations of RAs
 library(here)
