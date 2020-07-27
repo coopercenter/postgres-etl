@@ -11,7 +11,7 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 #read in dataset
-utility_scale_storage_va <- read_excel(here('raw_data','utility_scale_storage.xls'))
+utility_scale_storage_va <- read_excel(here('raw_data','utility_scale_storage.xlsx'))
 colnames(utility_scale_storage_va)<-str_replace_all(colnames(utility_scale_storage_va),' ','_')
 utility_scale_storage_va %>% filter(State_Code=='VA') -> utility_scale_storage_va
 
