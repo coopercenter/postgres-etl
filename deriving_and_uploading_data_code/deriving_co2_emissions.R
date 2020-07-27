@@ -30,7 +30,7 @@ colnames(e_per_gdp_df)<- c('year','co2_emission_per_thousand_dollars_of_gdp')
 dbWriteTable(db, 'co2_emission_per_thousand_dollars_of_gdp_va', e_per_gdp_df, row.names=FALSE, overwrite = TRUE)
 #-------------------------------------------------------------------------------------------------------
 # get the datasets of population from 1980 to 2017
-pop <- dbGetQuery(db,'SELECT * from residential_population_va')
+pop <- dbGetQuery(db,'SELECT * from fred_vapop')
 # unit of population is thousands of persons
 pop_s80<- as.numeric(pop[81:118,4])*1000 
 #Now this information will show total persons.

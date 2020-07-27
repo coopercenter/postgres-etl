@@ -14,7 +14,7 @@ dbExistsTable(db, "metadata")
 
 #-----------------------------------------------------------------------------------------------
 # get the datasets
-pop <- dbGetQuery(db,'SELECT * from residential_population_va')
+pop <- dbGetQuery(db,'SELECT * from fred_vapop')
 # unit of population is thousands of persons
 pop_s60<- as.numeric(pop[61:119,4])*1000
 tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')

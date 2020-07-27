@@ -32,7 +32,7 @@ colnames(nitrogen_emissions) <- tolower(colnames(nitrogen_emissions))
 
 
 #upload to db
-dbWriteTable(db, 'emission', emission, row.names=FALSE, overwrite = TRUE)
+# dbWriteTable(db, 'emission', emission, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'emissions_co2_by_source_va', co2_emissions, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'emissions_no_by_source_va', nitrogen_emissions, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'emissions_so2_by_source_va', sulfur_emissions, row.names=FALSE, overwrite = TRUE)

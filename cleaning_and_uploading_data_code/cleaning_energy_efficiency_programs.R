@@ -12,7 +12,7 @@ rm(ra_pwd)
 
 #read in dataset
 current_EE_programs <- read_excel(here('raw_data','energy_efficiency_programs.xlsx'), col_names = TRUE)
-dominion_current_EE_data_through_2018 <- dominion_current_EE_programs[c(2,4:8),]
+dominion_current_EE_data_through_2018 <- current_EE_programs[c(2,4:8),]
 
 #upload to db
 dbWriteTable(db, 'current_ee_programs', current_EE_programs, row.names=FALSE, overwrite = TRUE)
