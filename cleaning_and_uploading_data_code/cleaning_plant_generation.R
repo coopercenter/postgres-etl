@@ -19,7 +19,6 @@ names(generation) <- lapply(generation[1, ], as.character)
 generation <- generation[-1, ] 
 rownames(generation) <- c()
 
-#write.csv(generation, "Plant_Generation_Data_Virginia.csv") -- remove statement
 
 #upload to db
 dbWriteTable(db, 'plant_generation_data_va', generation, row.names=FALSE, overwrite = TRUE)
