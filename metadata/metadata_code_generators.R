@@ -73,7 +73,7 @@ r5<- data.frame(db_table_name = "generator_2018",
 
 # ----------------------------------------------------------------------------------
 
-r6<- data.frame(db_table_name = "generator_2019",
+r6<- data.frame(db_table_name = "generator_2019_early_release",
                 short_series_name= 'Virginia generator data 2019',
                 full_series_name = 'In depth Virginia data about existing and planned generators 2019',
                 column2variable_name_map=NA,units='MW',frequency='A',

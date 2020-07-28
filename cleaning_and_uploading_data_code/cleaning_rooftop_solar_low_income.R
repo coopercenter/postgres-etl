@@ -9,7 +9,10 @@ db_driver = dbDriver("PostgreSQL")
 source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
+
 #read in dataset
+#dataset is too large to push to github -- manually downloaded .csv from website to local computer
+#website where dataset is from can be found in metadata table
 rooftop_solar_low_income <- read.csv(here('raw_data','rooftop_solar_low_income.csv'))
 rooftop_solar_low_income %>% filter(state_name =='Virginia') -> rooftop_solar_low_income
 
