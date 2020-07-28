@@ -128,5 +128,5 @@ for(state in states){
 }
 
 r1 <- rbind(all_r1_year,all_r1_month)
-dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 

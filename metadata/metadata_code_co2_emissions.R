@@ -50,7 +50,7 @@ r2<- data.frame(db_table_name = "co2_emission_per_capita_va",
 #upload to db
 library(plyr)
 metadata<-rbind(r1,r2)
-dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 #close connection
 dbDisconnect(db)

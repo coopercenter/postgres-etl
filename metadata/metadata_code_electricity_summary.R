@@ -32,7 +32,7 @@ r1 <- data.frame(db_table_name = "electricity_summary",
 
 # ----------------------------------------------------------------------------------
 library(plyr)
-dbWriteTable(db, 'metadata2', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

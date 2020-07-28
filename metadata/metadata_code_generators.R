@@ -73,9 +73,9 @@ r5<- data.frame(db_table_name = "generator_2018",
 
 # ----------------------------------------------------------------------------------
 
-r6<- data.frame(db_table_name = "generator_2019_early_release",
-                short_series_name= 'Virginia generator data 2019 early release',
-                full_series_name = 'In depth Virginia data about existing and planned generators 2019, pending data validation',
+r6<- data.frame(db_table_name = "generator_2019",
+                short_series_name= 'Virginia generator data 2019',
+                full_series_name = 'In depth Virginia data about existing and planned generators 2019',
                 column2variable_name_map=NA,units='MW',frequency='A',
                 data_source_brief_name='EIA 860 Data',data_source_full_name='U.S. Energy Information Administration',
                 url='https://www.eia.gov/electricity/data/eia860/',api=NA,
@@ -87,4 +87,4 @@ r6<- data.frame(db_table_name = "generator_2019_early_release",
 
 library(plyr)
 metadata<-rbind(r1,r2,r3,r4,r5,r6)
-dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)

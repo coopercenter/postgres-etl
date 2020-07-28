@@ -61,7 +61,7 @@ r3 <- data.frame(db_table_name = "whole_electric_industry_generation",
 # ----------------------------------------------------------------------------------
 library(plyr)
 metadata <- rbind(r1,r2,r3)
-dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)

@@ -33,7 +33,7 @@ r1 <- data.frame(db_table_name = "energy_consumption_per_capita_va",
 energy_consumption_per_gdp_cols <- list(c('year','consumption_per_unit_of_gdp'))
 energy_consumption_per_gdp_units <-'Btu per dollar of GDP'
 
-r2 <- data.frame(db_table_name = "energy_consumption_per_unit_of_gdp_va",
+r2 <- data.frame(db_table_name = "energy_consumption_per_unit_gdp_va",
                 short_series_name= 'VA energy consumption per unit of gdp',
                 full_series_name = 'Virginia energy consumption per unit of gdp from 1997 through 2019',
                 column2variable_name_map=I(energy_consumption_per_gdp_cols),units=I(energy_consumption_per_gdp_units),frequency='A',
@@ -49,7 +49,7 @@ r2 <- data.frame(db_table_name = "energy_consumption_per_unit_of_gdp_va",
 #upload to db
 library(plyr)
 metadata<-rbind(r1,r2)
-dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 #close connection
 dbDisconnect(db)

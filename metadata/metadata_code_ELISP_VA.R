@@ -1,5 +1,5 @@
 ##updating metadata
-
+install.packages('mgsub')
 # Creating the dataframe for metadata
 metadata<-data.frame(matrix(ncol = 19, nrow = 0))
 
@@ -23,10 +23,7 @@ library(mgsub)
 source(here("api_data_code","my_eia_api_key.R"))
 eia_set_key(eiaKey)
 
-series_id_list <- list('ELEC.GEN.HPS-VA-99.A',
-                       'ELEC.GEN.AOR-VA-99.A',
-                       'ELEC.GEN.OTH-VA-99.A',
-                       'ELEC.GEN.SPV-VA-99.A')
+series_id_list <- list('SEDS.ELISP.VA.A')
 
 all_eia_meta <- vector("list", length(series_id_list))
 
@@ -55,8 +52,9 @@ for (i in 1:length(series_id_list)){
   api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_id_list[[i]],sep='')
 }
 
-#manually list out short names for eia -- do not forget to add these short names to the metadata.R as well
-eia_short_names<-list()
+
+eia_short_names<-list('Annual net interstate flow of electricity')
+                     
 
 col2var<-vector("list", length(series_id_list))
 cols<-vector("list", length(series_id_list))
@@ -78,10 +76,8 @@ for (i in 1:length(series_id_list)) {
 
 replace_unit <- function(string){
   unit <- mgsub(string,
-                c('kilowatthour','kilowatthours','megawatthour','megawatthours','gigawatthour','gigawatthours',
-                  'kilowatt','kilowatts','megawatt','megawatts','gigawatt','gigawatts', 'million metric tons'),
-                c('kWh','kWh','MWh','MWh','GWh','GWh',
-                  'kW','kW','MW','MW','GW','GW','mmt'))
+                c('kilowatthour'),
+                c('kWh'))
   return(unit)
 }
 
@@ -112,4 +108,3 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 
 
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
-

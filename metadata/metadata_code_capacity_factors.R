@@ -51,7 +51,7 @@ r2<- data.frame(db_table_name = "capacity_factors_monthly",
 
 library(plyr)
 metadata <- rbind(r1,r2)
-dbWriteTable(db, 'metadata2', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
 dbDisconnect(db)
