@@ -3,6 +3,7 @@ library(tidyverse)
 library(stringr) # for replacing strings
 library(here)
 library("RPostgreSQL")
+library(readxl)
 
 db_driver = dbDriver("PostgreSQL")
 source(here('my_postgres_credentials.R'))
@@ -10,7 +11,7 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 # read in dataset
-generation <- here('raw_data','plant_generation_va.csv')
+generation <- read.csv(here('raw_data','plant_generation_va.csv'))
 summary(generation)
 generation <- select(generation, X, X.1, X.2, X.3)
 generation <- generation[2:12,]
