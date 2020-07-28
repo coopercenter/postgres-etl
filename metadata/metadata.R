@@ -165,7 +165,8 @@ eia_short_names<-list('Total co2 emission',
                       'Annual hydro-electric pumped storage generation',
                       'Annual other renewables generation',
                       'Annual other generation',
-                      'Annual utility-scale photovoltaic generation'
+                      'Annual utility-scale photovoltaic generation',
+                      'Annual net interstate flow of electricity'
                       )
 
 
