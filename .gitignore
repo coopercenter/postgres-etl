@@ -30,3 +30,4 @@ vignettes/*.pdf
 my_postgres_credentials.R
 my_fred_api_key.R
 *.bat
+raw_data/rooftop_solar_low_income.csv
