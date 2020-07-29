@@ -15,7 +15,7 @@ metadata <- dbGetQuery(db,'SELECT * from metadata')
 # TRUE
 
 # ----------------------------------------------------------------------------------
-res_pop<-dbGetQuery(db,'SELECT * FROM residential_population_va')
+res_pop<-dbGetQuery(db,'SELECT * FROM fred_vapop')
 res_col <- list(c('realtime_start','realtime_end','date','value'))
 
 gdp <-dbGetQuery(db,'SELECT * FROM fred_vangsp')
@@ -42,7 +42,7 @@ source(here("api_data_code","my_fred_api_key.R"))
 pop_meta <- get_FRED_meta(fredKey,"VAPOP")
 gdp_meta <- get_FRED_meta(fredKey,"VANGSP")
 
-r1<- data.frame(db_table_name = "residential_population_va",
+r1<- data.frame(db_table_name = "fred_vapop",
                 short_series_name= 'VA residential population',
                 full_series_name = 'Virginia residential population',
                 column2variable_name_map=I(res_col),units=I(pop_meta$units),frequency=pop_meta$frequency,
