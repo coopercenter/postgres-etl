@@ -9,54 +9,54 @@ colnames(metadata) <- c('db_table_name','short_series_name','full_series_name',
                         'latest_data_update','last_db_refresh')
 
 #--------------------------------------------------------------------------------------
-# Sample Code used to manually write the metadata
-
-# Connection to the database
-# "my_postgres_credentials.R" contains the log-in informations of RAs
-library(here)
-library('RPostgreSQL')
-library(tidyverse)
-source(here("my_postgres_credentials.R"))
-
-db_driver <- dbDriver("PostgreSQL")
-db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
-rm(ra_pwd)
-
-# check the connection
-# if this returns true, it means that you are connected to the database now
-dbExistsTable(db, "metadata")
-
-# get the cleaned dataset from the database
-## fuel_cleaned should be replaced by the name of your dataset in the database
-## (coordinate with Jackson)
-
-# put the column names into a list
-fuel_cols<-list(colnames(fuel))
-
-# put the unit of each column into a list
-fuel_units <-list(c('Year','dollars_per_million_Btu','Btu_per_pound','percent',
-                    'dollars_per_million_Btu','Btu_per_pound','percent',
-                    'dollars_per_million_Btu','Btu_per_cubic_foot'))
-
-# Construct a data frame with only one row, if you have more than one dataset,
-# construct r2, r3,... if needed
-r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and quality",
-                full_series_name = 'Electric power delivered fuel prices and quality for coal, petroleum, Natural gas, 1990 through 2018',
-                column2variable_name_map=I(fuel_cols),units=I(fuel_units),frequency='Y',
-                data_source='EIA',data_source_full_name='U.S. Energy Information Administration',
-                url='https://www.eia.gov/electricity/state/virginia/state_tables.php',api=NA,
-                series_id=NA,json=NA,notes=NA)
-
-library(plyr)
-# if you have more than one dataset,rbind the rows first,and then bind it to the metadata
-# Example
-# r1 <- rbind(r1,r2)
-metadata<-rbind(metadata,r1)
-
-# WARNING
-# Do not run dbWriteTable before you check with Christina and Chloe
-# This will overwrite the existing metadata table in the db
-dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
+# # Sample Code used to manually write the metadata
+# 
+# # Connection to the database
+# # "my_postgres_credentials.R" contains the log-in informations of RAs
+# library(here)
+# library('RPostgreSQL')
+# library(tidyverse)
+# source(here("my_postgres_credentials.R"))
+# 
+# db_driver <- dbDriver("PostgreSQL")
+# db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
+# rm(ra_pwd)
+# 
+# # check the connection
+# # if this returns true, it means that you are connected to the database now
+# dbExistsTable(db, "metadata")
+# 
+# # get the cleaned dataset from the database
+# ## fuel_cleaned should be replaced by the name of your dataset in the database
+# ## (coordinate with Jackson)
+# 
+# # put the column names into a list
+# fuel_cols<-list(colnames(fuel))
+# 
+# # put the unit of each column into a list
+# fuel_units <-list(c('Year','dollars_per_million_Btu','Btu_per_pound','percent',
+#                     'dollars_per_million_Btu','Btu_per_pound','percent',
+#                     'dollars_per_million_Btu','Btu_per_cubic_foot'))
+# 
+# # Construct a data frame with only one row, if you have more than one dataset,
+# # construct r2, r3,... if needed
+# r1<- data.frame(db_table_name = "fuel", short_series_name = "fuel price and quality",
+#                 full_series_name = 'Electric power delivered fuel prices and quality for coal, petroleum, Natural gas, 1990 through 2018',
+#                 column2variable_name_map=I(fuel_cols),units=I(fuel_units),frequency='Y',
+#                 data_source='EIA',data_source_full_name='U.S. Energy Information Administration',
+#                 url='https://www.eia.gov/electricity/state/virginia/state_tables.php',api=NA,
+#                 series_id=NA,json=NA,notes=NA)
+# 
+# library(plyr)
+# # if you have more than one dataset,rbind the rows first,and then bind it to the metadata
+# # Example
+# # r1 <- rbind(r1,r2)
+# metadata<-rbind(metadata,r1)
+# 
+# # WARNING
+# # Do not run dbWriteTable before you check with Christina and Chloe
+# # This will overwrite the existing metadata table in the db
+# dbWriteTable(con, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 #------------------------------------------------------------------------------------
 #sample code used to get the metadata for EIA datasets
@@ -225,7 +225,6 @@ db_driver = dbDriver("PostgreSQL")
 source(here("my_postgres_credentials.R"))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
-
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 # setting column constraints
@@ -238,9 +237,8 @@ set_notes <- dbSendQuery(db, "ALTER TABLE metadata2 ALTER COLUMN notes TYPE VARC
 #set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
 #set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
 
-
 # Check if column constraints are true
-data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'metadata2';")
+#data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'metadata2';")
 
 ## Close connection
 dbDisconnect(db)
