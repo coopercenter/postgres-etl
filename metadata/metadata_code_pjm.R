@@ -2,7 +2,6 @@
 # "my_postgres_credentials.R" contains the log-in informations of RAs
 library(here)
 library('RPostgreSQL')
-library(plyr)
 library(tidyverse)
 source(here("my_postgres_credentials.R"))
 
@@ -50,9 +49,9 @@ pjm_storage<-dbGetQuery (db,'SELECT * from pjm_storage')
 pjm_storage_cols<-list(colnames(pjm_storage))
 
 r3 <- data.frame(db_table_name = "pjm_storage",
-                short_series_name= '',
-                full_series_name = '',
-                column2variable_name_map=I(pjm_storage_cols), units='', frequency=NA,
+                short_series_name= 'Data on active storage plants in Virginia',
+                full_series_name = 'Data on active storage plants in Virginia with service dates',
+                column2variable_name_map=I(pjm_storage_cols), units='MW', frequency=NA,
                 data_source_brief_name='PJM',data_source_full_name='PJM Interconnection LLC',
                 url='https://www.pjm.com/planning/services-requests/interconnection-queues.aspx',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='cross-sectional', data_context='historical',
@@ -73,11 +72,11 @@ r4 <- data.frame(db_table_name = 'pjm_gats_generators',
                 series_id = NA, json = NA, notes = NA, data_type = 'cross-sectional',
                 data_context = 'historical', corresponding_data = NA,
                 R_script = 'cleaning_pjm.R', latest_data_update = '2020-07-23',
-                last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
+                last_db_refresh = '2020-06-17')
 
 # ----------------------------------------------------------------------------------
 
-
+library(plyr)
 metadata <- rbind(r1,r2,r3,r4)
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
