@@ -49,11 +49,11 @@ city_residential_data <- not_NAICS_data[, c(1:5, 6:16)]
 city_commercial_data <- not_NAICS_data[, c(1:5, 17:32)]
 city_on_road_data <- not_NAICS_data[, c(1:5, 33:38)]
 city_industry_data <- not_NAICS_data[, c(1:5, 39:47)]
-city_residential_emissions_data <- not_NAICS_data[, c(1:5, 48:49)]
-city_commercial_emissions_data <- not_NAICS_data[, c(1:5, 50:51)]
-city_industry_emissions_data <- not_NAICS_data[, c(1:5, 52:53)]
-city_on_road_emissions_data <- not_NAICS_data[, c(1:5, 54:55)]
-city_emission_factors_data <- not_NAICS_data[, c(1:5, 56:59)]
+# city_residential_emissions_data <- not_NAICS_data[, c(1:5, 48:49)]
+# city_commercial_emissions_data <- not_NAICS_data[, c(1:5, 50:51)]
+# city_industry_emissions_data <- not_NAICS_data[, c(1:5, 52:53)]
+# city_on_road_emissions_data <- not_NAICS_data[, c(1:5, 54:55)]
+# city_emission_factors_data <- not_NAICS_data[, c(1:5, 56:59)]
 
 city_emissions <- not_NAICS_data[,c(1:5, 48:59)]
 
@@ -63,6 +63,7 @@ dbWriteTable(db, 'city_commercial_expenditures_consumption_2016', city_commercia
 dbWriteTable(db, 'city_on_road_expenditures_consumption_2016', city_on_road_data, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'city_industry_expenditures_consumption_2016', city_industry_data, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'city_emissions_2016', city_emissions, row.names=FALSE, overwrite=TRUE)
+
 # dbWriteTable(db, 'city_residential_emissions_2016', city_residential_emissions_data, row.names=FALSE, overwrite = TRUE)
 # dbWriteTable(db, 'city_commercial_emissions_2016', city_commercial_emissions_data, row.names=FALSE, overwrite = TRUE)
 # dbWriteTable(db, 'city_industry_emissions_2016', city_industry_emissions_data, row.names=FALSE, overwrite = TRUE)

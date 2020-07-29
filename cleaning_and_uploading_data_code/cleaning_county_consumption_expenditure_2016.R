@@ -6,7 +6,7 @@ library("RPostgreSQL")
 library(readxl)
 
 db_driver = dbDriver("PostgreSQL")
-source(here('raw_data'))
+source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
 
@@ -49,22 +49,25 @@ county_residential_data <- not_NAICS_data[, c(1:5, 6:16)]
 county_commercial_data <- not_NAICS_data[, c(1:5, 17:30)]
 county_on_road_data <- not_NAICS_data[, c(1:5, 33:38)]
 county_industry_data <- not_NAICS_data[, c(1:5, 39:46)]
-county_residential_emissions_data <- not_NAICS_data[, c(1:5, 48:49)]
-county_commercial_emissions_data <- not_NAICS_data[, c(1:5, 50:51)]
-county_industry_emissions_data <- not_NAICS_data[, c(1:5, 52:53)]
-county_on_road_emissions_data <- not_NAICS_data[, c(1:5, 54:55)]
-county_emission_factors_data <- not_NAICS_data[, c(1:5, 56:59)]
+county_emissions <- not_NAICS_data[, c(1:5, 48:59)]
+# county_residential_emissions_data <- not_NAICS_data[, c(1:5, 48:49)]
+# county_commercial_emissions_data <- not_NAICS_data[, c(1:5, 50:51)]
+# county_industry_emissions_data <- not_NAICS_data[, c(1:5, 52:53)]
+# county_on_road_emissions_data <- not_NAICS_data[, c(1:5, 54:55)]
+# county_emission_factors_data <- not_NAICS_data[, c(1:5, 56:59)]
 
 #upload to db
 dbWriteTable(db, 'county_residential_expenditures_consumption_2016', county_residential_data, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'county_commercial_expenditures_consumption_2016', county_commercial_data, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'county_on_road_expenditures_consumption_2016', county_on_road_data, row.names=FALSE, overwrite = TRUE)
 dbWriteTable(db, 'county_industry_expenditures_consumption_2016', county_industry_data, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'county_residential_emissions_2016', county_residential_emissions_data, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'county_commercial_emissions_2016', county_commercial_emissions_data, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'county_industry_emissions_2016', county_industry_emissions_data, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'county_on_road_emissions_2016', county_on_road_emissions_data, row.names=FALSE, overwrite = TRUE)
-dbWriteTable(db, 'county_emission_factors_2016', county_emission_factors_data, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, 'county_emissions_2016', county_emissions, row.names=FALSE, overwrite = TRUE)
+
+# dbWriteTable(db, 'county_residential_emissions_2016', county_residential_emissions_data, row.names=FALSE, overwrite = TRUE)
+# dbWriteTable(db, 'county_commercial_emissions_2016', county_commercial_emissions_data, row.names=FALSE, overwrite = TRUE)
+# dbWriteTable(db, 'county_industry_emissions_2016', county_industry_emissions_data, row.names=FALSE, overwrite = TRUE)
+# dbWriteTable(db, 'county_on_road_emissions_2016', county_on_road_emissions_data, row.names=FALSE, overwrite = TRUE)
+# dbWriteTable(db, 'county_emission_factors_2016', county_emission_factors_data, row.names=FALSE, overwrite = TRUE)
 
 
 #close db connection
