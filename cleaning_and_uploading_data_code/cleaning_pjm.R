@@ -11,14 +11,14 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 #-----------------------------------------------------------------------------------
-#PJM Wind
-pjm_wind <- read_excel(here('raw_data','pjm_wind.xlsx'))
-dbWriteTable(db, 'pjm_wind', pjm_wind, row.names=FALSE, overwrite = TRUE)
-
-#-----------------------------------------------------------------------------------
 #PJM Solar
 pjm_solar <- read_excel(here('raw_data','pjm_solar.xlsx'))
 dbWriteTable(db, 'pjm_solar', pjm_solar, row.names=FALSE, overwrite = TRUE)
+
+#-----------------------------------------------------------------------------------
+#PJM Wind
+pjm_wind <- read_excel(here('raw_data','pjm_wind.xlsx'))
+dbWriteTable(db, 'pjm_wind', pjm_wind, row.names=FALSE, overwrite = TRUE)
 
 #-----------------------------------------------------------------------------------
 #PJM Storage
