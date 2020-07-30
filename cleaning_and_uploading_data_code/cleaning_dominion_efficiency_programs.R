@@ -51,7 +51,6 @@ for (i in 1:ncol(net_savings_dominion)){
 
 #-----------------------------------------------------------------------------------
 #clean program participants
-
 colnames(program_participants_dominion) <- c('...','2017','2016','2015','2014','2013')
 program_participants_dominion <- as.data.frame(t(program_participants_dominion))
 names(program_participants_dominion)<-lapply(program_participants_dominion[1,],as.character)

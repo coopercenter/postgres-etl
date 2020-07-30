@@ -27,7 +27,7 @@ photovoltaic_capacity <- meter[,c(1,3:12)]
 
 
 colnames(photovoltaic_capacity) <- c('year', 'total_capacity', 'residential',
-                                  'commercial', 'industrial', 'transpotation','customers','residential_customers',
+                                  'commercial', 'industrial', 'transportation','customers','residential_customers',
                                   'commercial_customers','industrial_customers','transportation_customers')
 rownames(photovoltaic_capacity) <- c()
 
@@ -43,7 +43,7 @@ dbWriteTable(db, 'photovoltaic_net_metering', photovoltaic_capacity, row.names=F
 wind_capacity <- meter[,c(1,14:23)]
 
 colnames(wind_capacity) <- c('year', 'total_capacity', 'residential',
-                                     'commercial', 'industrial', 'transpotation','customers','residential_customers',
+                                     'commercial', 'industrial', 'transportation','customers','residential_customers',
                                      'commercial_customers','industrial_customers','transportation_customers')
 rownames(wind_capacity) <- c()
 
