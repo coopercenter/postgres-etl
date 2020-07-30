@@ -87,7 +87,7 @@ r5 <- data.frame(db_table_name = 'clean_energy_renewable_goals',
                  series_id = NA, json = NA, notes = NA, data_type = 'time-series',
                  data_context = 'mandate', corresponding_data = NA,
                  R_script = 'cleaning_VCEA_goals.R', latest_data_update = NA, #check with data source last time it was updated
-                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
+                 last_db_refresh = '2020-07-30')
 
 # ----------------------------------------------------------------------------------
 
