@@ -46,4 +46,4 @@ r1<- data.frame(db_table_name = 'deep_solar',
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 
-dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
+dbWriteTable(db, 'metadata', value = r1, append = TRUE, overwrite = FALSE, row.names = FALSE)
