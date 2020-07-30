@@ -1,0 +1,4018 @@
+----------------------------------------------------------------------
+-----------------------------api_data_code----------------------------
+----------------------------------------------------------------------
+-------------------------fetch_from_eia_api.R-------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Loading required package: DBI
+Key stored successfully in package environment.
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------fetch_from_FRED_api.R------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+Loading required package: DBI
+Loading required package: jsonlite
+Loading required package: data.table
+
+Attaching package: 'data.table'
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+Warning message:
+In rm(password) : object 'password' not found
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+------------------------generation_all_states.R-----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+
+Attaching package: 'jsonlite'
+
+The following object is masked from 'package:purrr':
+
+    flatten
+
+
+Attaching package: 'data.table'
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+The following object is masked from 'package:purrr':
+
+    transpose
+
+Loading required package: DBI
+[1] "Retrieving: ELEC.GEN.COW-AK-99.A"
+[1] "Net generation : coal : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-AK-99.A"
+[1] "Net generation : petroleum liquids : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-AK-99.A"
+[1] "Net generation : natural gas : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-AK-99.A"
+[1] "Net generation : wind : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-AK-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-AK-99.A"
+[1] "Net generation : conventional hydroelectric : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-AK-99.A"
+[1] "Net generation : wood and wood-derived fuels : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-AK-99.A"
+[1] "Net generation : other biomass : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-AK-99.A"
+[1] "Net generation : all fuels : Alaska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-AL-99.A"
+[1] "Net generation : coal : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-AL-99.A"
+[1] "Net generation : petroleum liquids : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-AL-99.A"
+[1] "Net generation : natural gas : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-AL-99.A"
+[1] "Net generation : nuclear : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-AL-99.A"
+[1] "Net generation : all utility-scale solar : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-AL-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-AL-99.A"
+[1] "Net generation : conventional hydroelectric : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-AL-99.A"
+[1] "Net generation : wood and wood-derived fuels : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-AL-99.A"
+[1] "Net generation : other biomass : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-AL-99.A"
+[1] "Net generation : all fuels : Alabama : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-AR-99.A"
+[1] "Net generation : coal : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-AR-99.A"
+[1] "Net generation : petroleum liquids : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-AR-99.A"
+[1] "Net generation : natural gas : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-AR-99.A"
+[1] "Net generation : nuclear : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-AR-99.A"
+[1] "Net generation : all utility-scale solar : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-AR-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-AR-99.A"
+[1] "Net generation : conventional hydroelectric : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-AR-99.A"
+[1] "Net generation : wood and wood-derived fuels : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-AR-99.A"
+[1] "Net generation : other biomass : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-AR-99.A"
+[1] "Net generation : all fuels : Arkansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-AZ-99.A"
+[1] "Net generation : coal : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-AZ-99.A"
+[1] "Net generation : petroleum liquids : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-AZ-99.A"
+[1] "Net generation : natural gas : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-AZ-99.A"
+[1] "Net generation : nuclear : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-AZ-99.A"
+[1] "Net generation : wind : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-AZ-99.A"
+[1] "Net generation : all utility-scale solar : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-AZ-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-AZ-99.A"
+[1] "Net generation : conventional hydroelectric : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-AZ-99.A"
+[1] "Net generation : wood and wood-derived fuels : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-AZ-99.A"
+[1] "Net generation : other biomass : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-AZ-99.A"
+[1] "Net generation : all fuels : Arizona : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-CA-99.A"
+[1] "Net generation : coal : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-CA-99.A"
+[1] "Net generation : petroleum liquids : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-CA-99.A"
+[1] "Net generation : natural gas : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-CA-99.A"
+[1] "Net generation : nuclear : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-CA-99.A"
+[1] "Net generation : wind : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-CA-99.A"
+[1] "Net generation : all utility-scale solar : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-CA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-CA-99.A"
+[1] "Net generation : conventional hydroelectric : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-CA-99.A"
+[1] "Net generation : wood and wood-derived fuels : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-CA-99.A"
+[1] "Net generation : other biomass : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-CA-99.A"
+[1] "Net generation : all fuels : California : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-CO-99.A"
+[1] "Net generation : coal : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-CO-99.A"
+[1] "Net generation : petroleum liquids : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-CO-99.A"
+[1] "Net generation : natural gas : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-CO-99.A"
+[1] "Net generation : wind : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-CO-99.A"
+[1] "Net generation : all utility-scale solar : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-CO-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-CO-99.A"
+[1] "Net generation : conventional hydroelectric : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-CO-99.A"
+[1] "Net generation : wood and wood-derived fuels : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-CO-99.A"
+[1] "Net generation : other biomass : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-CO-99.A"
+[1] "Net generation : all fuels : Colorado : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-CT-99.A"
+[1] "Net generation : coal : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-CT-99.A"
+[1] "Net generation : petroleum liquids : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-CT-99.A"
+[1] "Net generation : natural gas : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-CT-99.A"
+[1] "Net generation : nuclear : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-CT-99.A"
+[1] "Net generation : wind : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-CT-99.A"
+[1] "Net generation : all utility-scale solar : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-CT-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-CT-99.A"
+[1] "Net generation : conventional hydroelectric : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-CT-99.A"
+[1] "Net generation : wood and wood-derived fuels : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-CT-99.A"
+[1] "Net generation : other biomass : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-CT-99.A"
+[1] "Net generation : all fuels : Connecticut : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-DE-99.A"
+[1] "Net generation : coal : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-DE-99.A"
+[1] "Net generation : petroleum liquids : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-DE-99.A"
+[1] "Net generation : natural gas : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-DE-99.A"
+[1] "Net generation : wind : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-DE-99.A"
+[1] "Net generation : all utility-scale solar : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-DE-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-DE-99.A"
+[1] "Net generation : other biomass : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-DE-99.A"
+[1] "Net generation : all fuels : Delaware : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-FL-99.A"
+[1] "Net generation : coal : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-FL-99.A"
+[1] "Net generation : petroleum liquids : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-FL-99.A"
+[1] "Net generation : natural gas : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-FL-99.A"
+[1] "Net generation : nuclear : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-FL-99.A"
+[1] "Net generation : wind : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-FL-99.A"
+[1] "Net generation : all utility-scale solar : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-FL-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-FL-99.A"
+[1] "Net generation : conventional hydroelectric : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-FL-99.A"
+[1] "Net generation : wood and wood-derived fuels : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-FL-99.A"
+[1] "Net generation : other biomass : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-FL-99.A"
+[1] "Net generation : all fuels : Florida : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-GA-99.A"
+[1] "Net generation : coal : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-GA-99.A"
+[1] "Net generation : petroleum liquids : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-GA-99.A"
+[1] "Net generation : natural gas : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-GA-99.A"
+[1] "Net generation : nuclear : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-GA-99.A"
+[1] "Net generation : all utility-scale solar : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-GA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-GA-99.A"
+[1] "Net generation : conventional hydroelectric : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-GA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-GA-99.A"
+[1] "Net generation : other biomass : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-GA-99.A"
+[1] "Net generation : all fuels : Georgia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-HI-99.A"
+[1] "Net generation : coal : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-HI-99.A"
+[1] "Net generation : petroleum liquids : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-HI-99.A"
+[1] "Net generation : wind : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-HI-99.A"
+[1] "Net generation : all utility-scale solar : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-HI-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-HI-99.A"
+[1] "Net generation : conventional hydroelectric : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-HI-99.A"
+[1] "Net generation : wood and wood-derived fuels : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-HI-99.A"
+[1] "Net generation : other biomass : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-HI-99.A"
+[1] "Net generation : all fuels : Hawaii : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-IA-99.A"
+[1] "Net generation : coal : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-IA-99.A"
+[1] "Net generation : petroleum liquids : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-IA-99.A"
+[1] "Net generation : natural gas : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-IA-99.A"
+[1] "Net generation : nuclear : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-IA-99.A"
+[1] "Net generation : wind : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-IA-99.A"
+[1] "Net generation : all utility-scale solar : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-IA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-IA-99.A"
+[1] "Net generation : conventional hydroelectric : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-IA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-IA-99.A"
+[1] "Net generation : other biomass : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-IA-99.A"
+[1] "Net generation : all fuels : Iowa : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-ID-99.A"
+[1] "Net generation : coal : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-ID-99.A"
+[1] "Net generation : petroleum liquids : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-ID-99.A"
+[1] "Net generation : natural gas : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-ID-99.A"
+[1] "Net generation : wind : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-ID-99.A"
+[1] "Net generation : all utility-scale solar : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-ID-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-ID-99.A"
+[1] "Net generation : conventional hydroelectric : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-ID-99.A"
+[1] "Net generation : wood and wood-derived fuels : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-ID-99.A"
+[1] "Net generation : other biomass : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-ID-99.A"
+[1] "Net generation : all fuels : Idaho : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-IL-99.A"
+[1] "Net generation : coal : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-IL-99.A"
+[1] "Net generation : petroleum liquids : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-IL-99.A"
+[1] "Net generation : natural gas : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-IL-99.A"
+[1] "Net generation : nuclear : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-IL-99.A"
+[1] "Net generation : wind : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-IL-99.A"
+[1] "Net generation : all utility-scale solar : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-IL-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-IL-99.A"
+[1] "Net generation : conventional hydroelectric : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-IL-99.A"
+[1] "Net generation : wood and wood-derived fuels : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-IL-99.A"
+[1] "Net generation : other biomass : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-IL-99.A"
+[1] "Net generation : all fuels : Illinois : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-IN-99.A"
+[1] "Net generation : coal : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-IN-99.A"
+[1] "Net generation : petroleum liquids : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-IN-99.A"
+[1] "Net generation : natural gas : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-IN-99.A"
+[1] "Net generation : wind : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-IN-99.A"
+[1] "Net generation : all utility-scale solar : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-IN-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-IN-99.A"
+[1] "Net generation : conventional hydroelectric : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-IN-99.A"
+[1] "Net generation : other biomass : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-IN-99.A"
+[1] "Net generation : all fuels : Indiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-KS-99.A"
+[1] "Net generation : coal : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-KS-99.A"
+[1] "Net generation : petroleum liquids : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-KS-99.A"
+[1] "Net generation : natural gas : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-KS-99.A"
+[1] "Net generation : nuclear : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-KS-99.A"
+[1] "Net generation : wind : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-KS-99.A"
+[1] "Net generation : all utility-scale solar : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-KS-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-KS-99.A"
+[1] "Net generation : conventional hydroelectric : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-KS-99.A"
+[1] "Net generation : other biomass : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-KS-99.A"
+[1] "Net generation : all fuels : Kansas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-KY-99.A"
+[1] "Net generation : coal : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-KY-99.A"
+[1] "Net generation : petroleum liquids : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-KY-99.A"
+[1] "Net generation : natural gas : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-KY-99.A"
+[1] "Net generation : all utility-scale solar : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-KY-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-KY-99.A"
+[1] "Net generation : conventional hydroelectric : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-KY-99.A"
+[1] "Net generation : wood and wood-derived fuels : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-KY-99.A"
+[1] "Net generation : other biomass : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-KY-99.A"
+[1] "Net generation : all fuels : Kentucky : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-LA-99.A"
+[1] "Net generation : coal : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-LA-99.A"
+[1] "Net generation : petroleum liquids : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-LA-99.A"
+[1] "Net generation : natural gas : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-LA-99.A"
+[1] "Net generation : nuclear : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-LA-99.A"
+[1] "Net generation : all utility-scale solar : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-LA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-LA-99.A"
+[1] "Net generation : conventional hydroelectric : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-LA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-LA-99.A"
+[1] "Net generation : other biomass : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-LA-99.A"
+[1] "Net generation : all fuels : Louisiana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MA-99.A"
+[1] "Net generation : coal : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MA-99.A"
+[1] "Net generation : petroleum liquids : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MA-99.A"
+[1] "Net generation : natural gas : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MA-99.A"
+[1] "Net generation : nuclear : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MA-99.A"
+[1] "Net generation : wind : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MA-99.A"
+[1] "Net generation : all utility-scale solar : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MA-99.A"
+[1] "Net generation : conventional hydroelectric : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MA-99.A"
+[1] "Net generation : other biomass : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MA-99.A"
+[1] "Net generation : all fuels : Massachusetts : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MD-99.A"
+[1] "Net generation : coal : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MD-99.A"
+[1] "Net generation : petroleum liquids : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MD-99.A"
+[1] "Net generation : natural gas : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MD-99.A"
+[1] "Net generation : nuclear : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MD-99.A"
+[1] "Net generation : wind : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MD-99.A"
+[1] "Net generation : all utility-scale solar : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MD-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MD-99.A"
+[1] "Net generation : conventional hydroelectric : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MD-99.A"
+[1] "Net generation : wood and wood-derived fuels : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MD-99.A"
+[1] "Net generation : other biomass : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MD-99.A"
+[1] "Net generation : all fuels : Maryland : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-ME-99.A"
+[1] "Net generation : coal : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-ME-99.A"
+[1] "Net generation : petroleum liquids : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-ME-99.A"
+[1] "Net generation : natural gas : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-ME-99.A"
+[1] "Net generation : wind : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-ME-99.A"
+[1] "Net generation : all utility-scale solar : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-ME-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-ME-99.A"
+[1] "Net generation : conventional hydroelectric : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-ME-99.A"
+[1] "Net generation : wood and wood-derived fuels : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-ME-99.A"
+[1] "Net generation : other biomass : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-ME-99.A"
+[1] "Net generation : all fuels : Maine : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MI-99.A"
+[1] "Net generation : coal : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MI-99.A"
+[1] "Net generation : petroleum liquids : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MI-99.A"
+[1] "Net generation : natural gas : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MI-99.A"
+[1] "Net generation : nuclear : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MI-99.A"
+[1] "Net generation : wind : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MI-99.A"
+[1] "Net generation : all utility-scale solar : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MI-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MI-99.A"
+[1] "Net generation : conventional hydroelectric : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MI-99.A"
+[1] "Net generation : wood and wood-derived fuels : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MI-99.A"
+[1] "Net generation : other biomass : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MI-99.A"
+[1] "Net generation : all fuels : Michigan : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MN-99.A"
+[1] "Net generation : coal : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MN-99.A"
+[1] "Net generation : petroleum liquids : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MN-99.A"
+[1] "Net generation : natural gas : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MN-99.A"
+[1] "Net generation : nuclear : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MN-99.A"
+[1] "Net generation : wind : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MN-99.A"
+[1] "Net generation : all utility-scale solar : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MN-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MN-99.A"
+[1] "Net generation : conventional hydroelectric : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MN-99.A"
+[1] "Net generation : wood and wood-derived fuels : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MN-99.A"
+[1] "Net generation : other biomass : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MN-99.A"
+[1] "Net generation : all fuels : Minnesota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MO-99.A"
+[1] "Net generation : coal : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MO-99.A"
+[1] "Net generation : petroleum liquids : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MO-99.A"
+[1] "Net generation : natural gas : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MO-99.A"
+[1] "Net generation : nuclear : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MO-99.A"
+[1] "Net generation : wind : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MO-99.A"
+[1] "Net generation : all utility-scale solar : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MO-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MO-99.A"
+[1] "Net generation : conventional hydroelectric : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MO-99.A"
+[1] "Net generation : wood and wood-derived fuels : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MO-99.A"
+[1] "Net generation : other biomass : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MO-99.A"
+[1] "Net generation : all fuels : Missouri : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MS-99.A"
+[1] "Net generation : coal : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MS-99.A"
+[1] "Net generation : petroleum liquids : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MS-99.A"
+[1] "Net generation : natural gas : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-MS-99.A"
+[1] "Net generation : nuclear : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MS-99.A"
+[1] "Net generation : all utility-scale solar : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MS-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MS-99.A"
+[1] "Net generation : wood and wood-derived fuels : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-MS-99.A"
+[1] "Net generation : other biomass : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MS-99.A"
+[1] "Net generation : all fuels : Mississippi : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-MT-99.A"
+[1] "Net generation : coal : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-MT-99.A"
+[1] "Net generation : petroleum liquids : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-MT-99.A"
+[1] "Net generation : natural gas : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-MT-99.A"
+[1] "Net generation : wind : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-MT-99.A"
+[1] "Net generation : all utility-scale solar : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-MT-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-MT-99.A"
+[1] "Net generation : conventional hydroelectric : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-MT-99.A"
+[1] "Net generation : wood and wood-derived fuels : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-MT-99.A"
+[1] "Net generation : all fuels : Montana : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NC-99.A"
+[1] "Net generation : coal : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NC-99.A"
+[1] "Net generation : petroleum liquids : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NC-99.A"
+[1] "Net generation : natural gas : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-NC-99.A"
+[1] "Net generation : nuclear : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NC-99.A"
+[1] "Net generation : wind : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NC-99.A"
+[1] "Net generation : all utility-scale solar : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NC-99.A"
+[1] "Net generation : small-scale solar photovoltaic : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NC-99.A"
+[1] "Net generation : conventional hydroelectric : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-NC-99.A"
+[1] "Net generation : wood and wood-derived fuels : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NC-99.A"
+[1] "Net generation : other biomass : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NC-99.A"
+[1] "Net generation : all fuels : North Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-ND-99.A"
+[1] "Net generation : coal : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-ND-99.A"
+[1] "Net generation : petroleum liquids : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-ND-99.A"
+[1] "Net generation : natural gas : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-ND-99.A"
+[1] "Net generation : wind : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-ND-99.A"
+[1] "Net generation : small-scale solar photovoltaic : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-ND-99.A"
+[1] "Net generation : conventional hydroelectric : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-ND-99.A"
+[1] "Net generation : other biomass : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-ND-99.A"
+[1] "Net generation : all fuels : North Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NE-99.A"
+[1] "Net generation : coal : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NE-99.A"
+[1] "Net generation : petroleum liquids : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NE-99.A"
+[1] "Net generation : natural gas : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-NE-99.A"
+[1] "Net generation : nuclear : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NE-99.A"
+[1] "Net generation : wind : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NE-99.A"
+[1] "Net generation : all utility-scale solar : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NE-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NE-99.A"
+[1] "Net generation : conventional hydroelectric : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NE-99.A"
+[1] "Net generation : other biomass : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NE-99.A"
+[1] "Net generation : all fuels : Nebraska : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NH-99.A"
+[1] "Net generation : coal : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NH-99.A"
+[1] "Net generation : petroleum liquids : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NH-99.A"
+[1] "Net generation : natural gas : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-NH-99.A"
+[1] "Net generation : nuclear : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NH-99.A"
+[1] "Net generation : wind : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NH-99.A"
+[1] "Net generation : small-scale solar photovoltaic : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NH-99.A"
+[1] "Net generation : conventional hydroelectric : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-NH-99.A"
+[1] "Net generation : wood and wood-derived fuels : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NH-99.A"
+[1] "Net generation : other biomass : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NH-99.A"
+[1] "Net generation : all fuels : New Hampshire : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NJ-99.A"
+[1] "Net generation : coal : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NJ-99.A"
+[1] "Net generation : petroleum liquids : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NJ-99.A"
+[1] "Net generation : natural gas : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-NJ-99.A"
+[1] "Net generation : nuclear : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NJ-99.A"
+[1] "Net generation : wind : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NJ-99.A"
+[1] "Net generation : all utility-scale solar : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NJ-99.A"
+[1] "Net generation : small-scale solar photovoltaic : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NJ-99.A"
+[1] "Net generation : conventional hydroelectric : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NJ-99.A"
+[1] "Net generation : other biomass : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NJ-99.A"
+[1] "Net generation : all fuels : New Jersey : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NM-99.A"
+[1] "Net generation : coal : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NM-99.A"
+[1] "Net generation : petroleum liquids : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NM-99.A"
+[1] "Net generation : natural gas : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NM-99.A"
+[1] "Net generation : wind : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NM-99.A"
+[1] "Net generation : all utility-scale solar : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NM-99.A"
+[1] "Net generation : small-scale solar photovoltaic : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NM-99.A"
+[1] "Net generation : conventional hydroelectric : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NM-99.A"
+[1] "Net generation : other biomass : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NM-99.A"
+[1] "Net generation : all fuels : New Mexico : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NV-99.A"
+[1] "Net generation : coal : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NV-99.A"
+[1] "Net generation : petroleum liquids : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NV-99.A"
+[1] "Net generation : natural gas : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NV-99.A"
+[1] "Net generation : wind : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NV-99.A"
+[1] "Net generation : all utility-scale solar : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NV-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NV-99.A"
+[1] "Net generation : conventional hydroelectric : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-NV-99.A"
+[1] "Net generation : wood and wood-derived fuels : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NV-99.A"
+[1] "Net generation : other biomass : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NV-99.A"
+[1] "Net generation : all fuels : Nevada : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-NY-99.A"
+[1] "Net generation : coal : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-NY-99.A"
+[1] "Net generation : petroleum liquids : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-NY-99.A"
+[1] "Net generation : natural gas : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-NY-99.A"
+[1] "Net generation : nuclear : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-NY-99.A"
+[1] "Net generation : wind : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-NY-99.A"
+[1] "Net generation : all utility-scale solar : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-NY-99.A"
+[1] "Net generation : small-scale solar photovoltaic : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-NY-99.A"
+[1] "Net generation : conventional hydroelectric : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-NY-99.A"
+[1] "Net generation : wood and wood-derived fuels : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-NY-99.A"
+[1] "Net generation : other biomass : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-NY-99.A"
+[1] "Net generation : all fuels : New York : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-OH-99.A"
+[1] "Net generation : coal : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-OH-99.A"
+[1] "Net generation : petroleum liquids : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-OH-99.A"
+[1] "Net generation : natural gas : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-OH-99.A"
+[1] "Net generation : nuclear : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-OH-99.A"
+[1] "Net generation : wind : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-OH-99.A"
+[1] "Net generation : all utility-scale solar : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-OH-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-OH-99.A"
+[1] "Net generation : conventional hydroelectric : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-OH-99.A"
+[1] "Net generation : wood and wood-derived fuels : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-OH-99.A"
+[1] "Net generation : other biomass : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-OH-99.A"
+[1] "Net generation : all fuels : Ohio : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-OK-99.A"
+[1] "Net generation : coal : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-OK-99.A"
+[1] "Net generation : petroleum liquids : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-OK-99.A"
+[1] "Net generation : natural gas : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-OK-99.A"
+[1] "Net generation : wind : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-OK-99.A"
+[1] "Net generation : all utility-scale solar : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-OK-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-OK-99.A"
+[1] "Net generation : conventional hydroelectric : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-OK-99.A"
+[1] "Net generation : wood and wood-derived fuels : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-OK-99.A"
+[1] "Net generation : other biomass : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-OK-99.A"
+[1] "Net generation : all fuels : Oklahoma : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-OR-99.A"
+[1] "Net generation : coal : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-OR-99.A"
+[1] "Net generation : petroleum liquids : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-OR-99.A"
+[1] "Net generation : natural gas : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-OR-99.A"
+[1] "Net generation : wind : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-OR-99.A"
+[1] "Net generation : all utility-scale solar : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-OR-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-OR-99.A"
+[1] "Net generation : conventional hydroelectric : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-OR-99.A"
+[1] "Net generation : wood and wood-derived fuels : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-OR-99.A"
+[1] "Net generation : other biomass : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-OR-99.A"
+[1] "Net generation : all fuels : Oregon : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-PA-99.A"
+[1] "Net generation : coal : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-PA-99.A"
+[1] "Net generation : petroleum liquids : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-PA-99.A"
+[1] "Net generation : natural gas : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-PA-99.A"
+[1] "Net generation : nuclear : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-PA-99.A"
+[1] "Net generation : wind : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-PA-99.A"
+[1] "Net generation : all utility-scale solar : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-PA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-PA-99.A"
+[1] "Net generation : conventional hydroelectric : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-PA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-PA-99.A"
+[1] "Net generation : other biomass : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-PA-99.A"
+[1] "Net generation : all fuels : Pennsylvania : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-RI-99.A"
+[1] "Net generation : petroleum liquids : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-RI-99.A"
+[1] "Net generation : natural gas : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-RI-99.A"
+[1] "Net generation : wind : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-RI-99.A"
+[1] "Net generation : all utility-scale solar : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-RI-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-RI-99.A"
+[1] "Net generation : conventional hydroelectric : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-RI-99.A"
+[1] "Net generation : other biomass : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-RI-99.A"
+[1] "Net generation : all fuels : Rhode Island : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-SC-99.A"
+[1] "Net generation : coal : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-SC-99.A"
+[1] "Net generation : petroleum liquids : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-SC-99.A"
+[1] "Net generation : natural gas : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-SC-99.A"
+[1] "Net generation : nuclear : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-SC-99.A"
+[1] "Net generation : all utility-scale solar : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-SC-99.A"
+[1] "Net generation : small-scale solar photovoltaic : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-SC-99.A"
+[1] "Net generation : conventional hydroelectric : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-SC-99.A"
+[1] "Net generation : wood and wood-derived fuels : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-SC-99.A"
+[1] "Net generation : other biomass : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-SC-99.A"
+[1] "Net generation : all fuels : South Carolina : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-SD-99.A"
+[1] "Net generation : coal : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-SD-99.A"
+[1] "Net generation : petroleum liquids : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-SD-99.A"
+[1] "Net generation : natural gas : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-SD-99.A"
+[1] "Net generation : wind : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-SD-99.A"
+[1] "Net generation : all utility-scale solar : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-SD-99.A"
+[1] "Net generation : small-scale solar photovoltaic : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-SD-99.A"
+[1] "Net generation : conventional hydroelectric : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-SD-99.A"
+[1] "Net generation : other biomass : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-SD-99.A"
+[1] "Net generation : all fuels : South Dakota : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-TN-99.A"
+[1] "Net generation : coal : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-TN-99.A"
+[1] "Net generation : petroleum liquids : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-TN-99.A"
+[1] "Net generation : natural gas : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-TN-99.A"
+[1] "Net generation : nuclear : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-TN-99.A"
+[1] "Net generation : wind : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-TN-99.A"
+[1] "Net generation : all utility-scale solar : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-TN-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-TN-99.A"
+[1] "Net generation : conventional hydroelectric : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-TN-99.A"
+[1] "Net generation : wood and wood-derived fuels : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-TN-99.A"
+[1] "Net generation : other biomass : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-TN-99.A"
+[1] "Net generation : all fuels : Tennessee : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-TX-99.A"
+[1] "Net generation : coal : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-TX-99.A"
+[1] "Net generation : petroleum liquids : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-TX-99.A"
+[1] "Net generation : natural gas : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-TX-99.A"
+[1] "Net generation : nuclear : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-TX-99.A"
+[1] "Net generation : wind : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-TX-99.A"
+[1] "Net generation : all utility-scale solar : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-TX-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-TX-99.A"
+[1] "Net generation : conventional hydroelectric : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-TX-99.A"
+[1] "Net generation : wood and wood-derived fuels : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-TX-99.A"
+[1] "Net generation : other biomass : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-TX-99.A"
+[1] "Net generation : all fuels : Texas : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-UT-99.A"
+[1] "Net generation : coal : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-UT-99.A"
+[1] "Net generation : petroleum liquids : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-UT-99.A"
+[1] "Net generation : natural gas : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-UT-99.A"
+[1] "Net generation : wind : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-UT-99.A"
+[1] "Net generation : all utility-scale solar : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-UT-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-UT-99.A"
+[1] "Net generation : conventional hydroelectric : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-UT-99.A"
+[1] "Net generation : other biomass : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-UT-99.A"
+[1] "Net generation : all fuels : Utah : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-VA-99.A"
+[1] "Net generation : coal : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-VA-99.A"
+[1] "Net generation : petroleum liquids : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-VA-99.A"
+[1] "Net generation : natural gas : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-VA-99.A"
+[1] "Net generation : nuclear : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-VA-99.A"
+[1] "Net generation : all utility-scale solar : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-VA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-VA-99.A"
+[1] "Net generation : conventional hydroelectric : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-VA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-VA-99.A"
+[1] "Net generation : other biomass : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-VA-99.A"
+[1] "Net generation : all fuels : Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-VT-99.A"
+[1] "Net generation : petroleum liquids : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-VT-99.A"
+[1] "Net generation : natural gas : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-VT-99.A"
+[1] "Net generation : nuclear : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-VT-99.A"
+[1] "Net generation : wind : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-VT-99.A"
+[1] "Net generation : all utility-scale solar : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-VT-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-VT-99.A"
+[1] "Net generation : conventional hydroelectric : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-VT-99.A"
+[1] "Net generation : wood and wood-derived fuels : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-VT-99.A"
+[1] "Net generation : other biomass : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-VT-99.A"
+[1] "Net generation : all fuels : Vermont : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-WA-99.A"
+[1] "Net generation : coal : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-WA-99.A"
+[1] "Net generation : petroleum liquids : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-WA-99.A"
+[1] "Net generation : natural gas : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-WA-99.A"
+[1] "Net generation : nuclear : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-WA-99.A"
+[1] "Net generation : wind : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-WA-99.A"
+[1] "Net generation : all utility-scale solar : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-WA-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-WA-99.A"
+[1] "Net generation : conventional hydroelectric : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-WA-99.A"
+[1] "Net generation : wood and wood-derived fuels : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-WA-99.A"
+[1] "Net generation : other biomass : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-WA-99.A"
+[1] "Net generation : all fuels : Washington : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-WI-99.A"
+[1] "Net generation : coal : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-WI-99.A"
+[1] "Net generation : petroleum liquids : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-WI-99.A"
+[1] "Net generation : natural gas : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NUC-WI-99.A"
+[1] "Net generation : nuclear : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-WI-99.A"
+[1] "Net generation : wind : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-WI-99.A"
+[1] "Net generation : all utility-scale solar : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-WI-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-WI-99.A"
+[1] "Net generation : conventional hydroelectric : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-WI-99.A"
+[1] "Net generation : wood and wood-derived fuels : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-WI-99.A"
+[1] "Net generation : other biomass : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-WI-99.A"
+[1] "Net generation : all fuels : Wisconsin : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-WV-99.A"
+[1] "Net generation : coal : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-WV-99.A"
+[1] "Net generation : petroleum liquids : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-WV-99.A"
+[1] "Net generation : natural gas : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-WV-99.A"
+[1] "Net generation : wind : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-WV-99.A"
+[1] "Net generation : small-scale solar photovoltaic : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-WV-99.A"
+[1] "Net generation : conventional hydroelectric : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WWW-WV-99.A"
+[1] "Net generation : wood and wood-derived fuels : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WAS-WV-99.A"
+[1] "Net generation : other biomass : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-WV-99.A"
+[1] "Net generation : all fuels : West Virginia : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-WY-99.A"
+[1] "Net generation : coal : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.PEL-WY-99.A"
+[1] "Net generation : petroleum liquids : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.NG-WY-99.A"
+[1] "Net generation : natural gas : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.WND-WY-99.A"
+[1] "Net generation : wind : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.SUN-WY-99.A"
+[1] "Net generation : all utility-scale solar : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.DPV-WY-99.A"
+[1] "Net generation : small-scale solar photovoltaic : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.HYC-WY-99.A"
+[1] "Net generation : conventional hydroelectric : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.ALL-WY-99.A"
+[1] "Net generation : all fuels : Wyoming : all sectors : annual"
+[1] "Retrieving: ELEC.GEN.COW-AK-99.M"
+[1] "Net generation : coal : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-AK-99.M"
+[1] "Net generation : petroleum liquids : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-AK-99.M"
+[1] "Net generation : natural gas : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-AK-99.M"
+[1] "Net generation : wind : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-AK-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-AK-99.M"
+[1] "Net generation : conventional hydroelectric : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-AK-99.M"
+[1] "Net generation : wood and wood-derived fuels : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-AK-99.M"
+[1] "Net generation : other biomass : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-AK-99.M"
+[1] "Net generation : all fuels : Alaska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-AL-99.M"
+[1] "Net generation : coal : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-AL-99.M"
+[1] "Net generation : petroleum liquids : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-AL-99.M"
+[1] "Net generation : natural gas : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-AL-99.M"
+[1] "Net generation : nuclear : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-AL-99.M"
+[1] "Net generation : all utility-scale solar : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-AL-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-AL-99.M"
+[1] "Net generation : conventional hydroelectric : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-AL-99.M"
+[1] "Net generation : wood and wood-derived fuels : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-AL-99.M"
+[1] "Net generation : other biomass : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-AL-99.M"
+[1] "Net generation : all fuels : Alabama : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-AR-99.M"
+[1] "Net generation : coal : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-AR-99.M"
+[1] "Net generation : petroleum liquids : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-AR-99.M"
+[1] "Net generation : natural gas : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-AR-99.M"
+[1] "Net generation : nuclear : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-AR-99.M"
+[1] "Net generation : all utility-scale solar : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-AR-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-AR-99.M"
+[1] "Net generation : conventional hydroelectric : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-AR-99.M"
+[1] "Net generation : wood and wood-derived fuels : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-AR-99.M"
+[1] "Net generation : other biomass : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-AR-99.M"
+[1] "Net generation : all fuels : Arkansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-AZ-99.M"
+[1] "Net generation : coal : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-AZ-99.M"
+[1] "Net generation : petroleum liquids : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-AZ-99.M"
+[1] "Net generation : natural gas : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-AZ-99.M"
+[1] "Net generation : nuclear : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-AZ-99.M"
+[1] "Net generation : wind : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-AZ-99.M"
+[1] "Net generation : all utility-scale solar : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-AZ-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-AZ-99.M"
+[1] "Net generation : conventional hydroelectric : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-AZ-99.M"
+[1] "Net generation : wood and wood-derived fuels : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-AZ-99.M"
+[1] "Net generation : other biomass : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-AZ-99.M"
+[1] "Net generation : all fuels : Arizona : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-CA-99.M"
+[1] "Net generation : coal : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-CA-99.M"
+[1] "Net generation : petroleum liquids : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-CA-99.M"
+[1] "Net generation : natural gas : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-CA-99.M"
+[1] "Net generation : nuclear : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-CA-99.M"
+[1] "Net generation : wind : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-CA-99.M"
+[1] "Net generation : all utility-scale solar : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-CA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-CA-99.M"
+[1] "Net generation : conventional hydroelectric : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-CA-99.M"
+[1] "Net generation : wood and wood-derived fuels : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-CA-99.M"
+[1] "Net generation : other biomass : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-CA-99.M"
+[1] "Net generation : all fuels : California : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-CO-99.M"
+[1] "Net generation : coal : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-CO-99.M"
+[1] "Net generation : petroleum liquids : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-CO-99.M"
+[1] "Net generation : natural gas : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-CO-99.M"
+[1] "Net generation : wind : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-CO-99.M"
+[1] "Net generation : all utility-scale solar : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-CO-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-CO-99.M"
+[1] "Net generation : conventional hydroelectric : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-CO-99.M"
+[1] "Net generation : wood and wood-derived fuels : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-CO-99.M"
+[1] "Net generation : other biomass : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-CO-99.M"
+[1] "Net generation : all fuels : Colorado : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-CT-99.M"
+[1] "Net generation : coal : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-CT-99.M"
+[1] "Net generation : petroleum liquids : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-CT-99.M"
+[1] "Net generation : natural gas : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-CT-99.M"
+[1] "Net generation : nuclear : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-CT-99.M"
+[1] "Net generation : wind : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-CT-99.M"
+[1] "Net generation : all utility-scale solar : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-CT-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-CT-99.M"
+[1] "Net generation : conventional hydroelectric : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-CT-99.M"
+[1] "Net generation : wood and wood-derived fuels : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-CT-99.M"
+[1] "Net generation : other biomass : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-CT-99.M"
+[1] "Net generation : all fuels : Connecticut : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-DE-99.M"
+[1] "Net generation : coal : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-DE-99.M"
+[1] "Net generation : petroleum liquids : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-DE-99.M"
+[1] "Net generation : natural gas : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-DE-99.M"
+[1] "Net generation : wind : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-DE-99.M"
+[1] "Net generation : all utility-scale solar : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-DE-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-DE-99.M"
+[1] "Net generation : other biomass : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-DE-99.M"
+[1] "Net generation : all fuels : Delaware : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-FL-99.M"
+[1] "Net generation : coal : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-FL-99.M"
+[1] "Net generation : petroleum liquids : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-FL-99.M"
+[1] "Net generation : natural gas : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-FL-99.M"
+[1] "Net generation : nuclear : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-FL-99.M"
+[1] "Net generation : wind : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-FL-99.M"
+[1] "Net generation : all utility-scale solar : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-FL-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-FL-99.M"
+[1] "Net generation : conventional hydroelectric : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-FL-99.M"
+[1] "Net generation : wood and wood-derived fuels : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-FL-99.M"
+[1] "Net generation : other biomass : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-FL-99.M"
+[1] "Net generation : all fuels : Florida : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-GA-99.M"
+[1] "Net generation : coal : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-GA-99.M"
+[1] "Net generation : petroleum liquids : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-GA-99.M"
+[1] "Net generation : natural gas : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-GA-99.M"
+[1] "Net generation : nuclear : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-GA-99.M"
+[1] "Net generation : all utility-scale solar : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-GA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-GA-99.M"
+[1] "Net generation : conventional hydroelectric : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-GA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-GA-99.M"
+[1] "Net generation : other biomass : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-GA-99.M"
+[1] "Net generation : all fuels : Georgia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-HI-99.M"
+[1] "Net generation : coal : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-HI-99.M"
+[1] "Net generation : petroleum liquids : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-HI-99.M"
+[1] "Net generation : wind : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-HI-99.M"
+[1] "Net generation : all utility-scale solar : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-HI-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-HI-99.M"
+[1] "Net generation : conventional hydroelectric : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-HI-99.M"
+[1] "Net generation : wood and wood-derived fuels : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-HI-99.M"
+[1] "Net generation : other biomass : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-HI-99.M"
+[1] "Net generation : all fuels : Hawaii : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-IA-99.M"
+[1] "Net generation : coal : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-IA-99.M"
+[1] "Net generation : petroleum liquids : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-IA-99.M"
+[1] "Net generation : natural gas : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-IA-99.M"
+[1] "Net generation : nuclear : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-IA-99.M"
+[1] "Net generation : wind : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-IA-99.M"
+[1] "Net generation : all utility-scale solar : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-IA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-IA-99.M"
+[1] "Net generation : conventional hydroelectric : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-IA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-IA-99.M"
+[1] "Net generation : other biomass : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-IA-99.M"
+[1] "Net generation : all fuels : Iowa : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-ID-99.M"
+[1] "Net generation : coal : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-ID-99.M"
+[1] "Net generation : petroleum liquids : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-ID-99.M"
+[1] "Net generation : natural gas : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-ID-99.M"
+[1] "Net generation : wind : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-ID-99.M"
+[1] "Net generation : all utility-scale solar : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-ID-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-ID-99.M"
+[1] "Net generation : conventional hydroelectric : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-ID-99.M"
+[1] "Net generation : wood and wood-derived fuels : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-ID-99.M"
+[1] "Net generation : other biomass : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-ID-99.M"
+[1] "Net generation : all fuels : Idaho : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-IL-99.M"
+[1] "Net generation : coal : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-IL-99.M"
+[1] "Net generation : petroleum liquids : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-IL-99.M"
+[1] "Net generation : natural gas : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-IL-99.M"
+[1] "Net generation : nuclear : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-IL-99.M"
+[1] "Net generation : wind : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-IL-99.M"
+[1] "Net generation : all utility-scale solar : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-IL-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-IL-99.M"
+[1] "Net generation : conventional hydroelectric : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-IL-99.M"
+[1] "Net generation : wood and wood-derived fuels : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-IL-99.M"
+[1] "Net generation : other biomass : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-IL-99.M"
+[1] "Net generation : all fuels : Illinois : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-IN-99.M"
+[1] "Net generation : coal : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-IN-99.M"
+[1] "Net generation : petroleum liquids : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-IN-99.M"
+[1] "Net generation : natural gas : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-IN-99.M"
+[1] "Net generation : wind : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-IN-99.M"
+[1] "Net generation : all utility-scale solar : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-IN-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-IN-99.M"
+[1] "Net generation : conventional hydroelectric : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-IN-99.M"
+[1] "Net generation : other biomass : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-IN-99.M"
+[1] "Net generation : all fuels : Indiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-KS-99.M"
+[1] "Net generation : coal : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-KS-99.M"
+[1] "Net generation : petroleum liquids : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-KS-99.M"
+[1] "Net generation : natural gas : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-KS-99.M"
+[1] "Net generation : nuclear : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-KS-99.M"
+[1] "Net generation : wind : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-KS-99.M"
+[1] "Net generation : all utility-scale solar : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-KS-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-KS-99.M"
+[1] "Net generation : conventional hydroelectric : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-KS-99.M"
+[1] "Net generation : other biomass : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-KS-99.M"
+[1] "Net generation : all fuels : Kansas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-KY-99.M"
+[1] "Net generation : coal : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-KY-99.M"
+[1] "Net generation : petroleum liquids : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-KY-99.M"
+[1] "Net generation : natural gas : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-KY-99.M"
+[1] "Net generation : all utility-scale solar : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-KY-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-KY-99.M"
+[1] "Net generation : conventional hydroelectric : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-KY-99.M"
+[1] "Net generation : wood and wood-derived fuels : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-KY-99.M"
+[1] "Net generation : other biomass : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-KY-99.M"
+[1] "Net generation : all fuels : Kentucky : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-LA-99.M"
+[1] "Net generation : coal : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-LA-99.M"
+[1] "Net generation : petroleum liquids : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-LA-99.M"
+[1] "Net generation : natural gas : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-LA-99.M"
+[1] "Net generation : nuclear : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-LA-99.M"
+[1] "Net generation : all utility-scale solar : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-LA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-LA-99.M"
+[1] "Net generation : conventional hydroelectric : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-LA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-LA-99.M"
+[1] "Net generation : other biomass : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-LA-99.M"
+[1] "Net generation : all fuels : Louisiana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MA-99.M"
+[1] "Net generation : coal : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MA-99.M"
+[1] "Net generation : petroleum liquids : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MA-99.M"
+[1] "Net generation : natural gas : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MA-99.M"
+[1] "Net generation : nuclear : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MA-99.M"
+[1] "Net generation : wind : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MA-99.M"
+[1] "Net generation : all utility-scale solar : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MA-99.M"
+[1] "Net generation : conventional hydroelectric : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MA-99.M"
+[1] "Net generation : other biomass : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MA-99.M"
+[1] "Net generation : all fuels : Massachusetts : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MD-99.M"
+[1] "Net generation : coal : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MD-99.M"
+[1] "Net generation : petroleum liquids : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MD-99.M"
+[1] "Net generation : natural gas : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MD-99.M"
+[1] "Net generation : nuclear : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MD-99.M"
+[1] "Net generation : wind : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MD-99.M"
+[1] "Net generation : all utility-scale solar : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MD-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MD-99.M"
+[1] "Net generation : conventional hydroelectric : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MD-99.M"
+[1] "Net generation : wood and wood-derived fuels : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MD-99.M"
+[1] "Net generation : other biomass : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MD-99.M"
+[1] "Net generation : all fuels : Maryland : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-ME-99.M"
+[1] "Net generation : coal : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-ME-99.M"
+[1] "Net generation : petroleum liquids : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-ME-99.M"
+[1] "Net generation : natural gas : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-ME-99.M"
+[1] "Net generation : wind : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-ME-99.M"
+[1] "Net generation : all utility-scale solar : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-ME-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-ME-99.M"
+[1] "Net generation : conventional hydroelectric : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-ME-99.M"
+[1] "Net generation : wood and wood-derived fuels : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-ME-99.M"
+[1] "Net generation : other biomass : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-ME-99.M"
+[1] "Net generation : all fuels : Maine : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MI-99.M"
+[1] "Net generation : coal : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MI-99.M"
+[1] "Net generation : petroleum liquids : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MI-99.M"
+[1] "Net generation : natural gas : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MI-99.M"
+[1] "Net generation : nuclear : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MI-99.M"
+[1] "Net generation : wind : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MI-99.M"
+[1] "Net generation : all utility-scale solar : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MI-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MI-99.M"
+[1] "Net generation : conventional hydroelectric : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MI-99.M"
+[1] "Net generation : wood and wood-derived fuels : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MI-99.M"
+[1] "Net generation : other biomass : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MI-99.M"
+[1] "Net generation : all fuels : Michigan : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MN-99.M"
+[1] "Net generation : coal : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MN-99.M"
+[1] "Net generation : petroleum liquids : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MN-99.M"
+[1] "Net generation : natural gas : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MN-99.M"
+[1] "Net generation : nuclear : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MN-99.M"
+[1] "Net generation : wind : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MN-99.M"
+[1] "Net generation : all utility-scale solar : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MN-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MN-99.M"
+[1] "Net generation : conventional hydroelectric : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MN-99.M"
+[1] "Net generation : wood and wood-derived fuels : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MN-99.M"
+[1] "Net generation : other biomass : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MN-99.M"
+[1] "Net generation : all fuels : Minnesota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MO-99.M"
+[1] "Net generation : coal : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MO-99.M"
+[1] "Net generation : petroleum liquids : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MO-99.M"
+[1] "Net generation : natural gas : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MO-99.M"
+[1] "Net generation : nuclear : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MO-99.M"
+[1] "Net generation : wind : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MO-99.M"
+[1] "Net generation : all utility-scale solar : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MO-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MO-99.M"
+[1] "Net generation : conventional hydroelectric : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MO-99.M"
+[1] "Net generation : wood and wood-derived fuels : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MO-99.M"
+[1] "Net generation : other biomass : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MO-99.M"
+[1] "Net generation : all fuels : Missouri : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MS-99.M"
+[1] "Net generation : coal : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MS-99.M"
+[1] "Net generation : petroleum liquids : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MS-99.M"
+[1] "Net generation : natural gas : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-MS-99.M"
+[1] "Net generation : nuclear : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MS-99.M"
+[1] "Net generation : all utility-scale solar : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MS-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MS-99.M"
+[1] "Net generation : wood and wood-derived fuels : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-MS-99.M"
+[1] "Net generation : other biomass : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MS-99.M"
+[1] "Net generation : all fuels : Mississippi : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-MT-99.M"
+[1] "Net generation : coal : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-MT-99.M"
+[1] "Net generation : petroleum liquids : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-MT-99.M"
+[1] "Net generation : natural gas : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-MT-99.M"
+[1] "Net generation : wind : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-MT-99.M"
+[1] "Net generation : all utility-scale solar : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-MT-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-MT-99.M"
+[1] "Net generation : conventional hydroelectric : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-MT-99.M"
+[1] "Net generation : wood and wood-derived fuels : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-MT-99.M"
+[1] "Net generation : all fuels : Montana : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NC-99.M"
+[1] "Net generation : coal : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NC-99.M"
+[1] "Net generation : petroleum liquids : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NC-99.M"
+[1] "Net generation : natural gas : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-NC-99.M"
+[1] "Net generation : nuclear : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NC-99.M"
+[1] "Net generation : wind : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NC-99.M"
+[1] "Net generation : all utility-scale solar : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NC-99.M"
+[1] "Net generation : small-scale solar photovoltaic : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NC-99.M"
+[1] "Net generation : conventional hydroelectric : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-NC-99.M"
+[1] "Net generation : wood and wood-derived fuels : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NC-99.M"
+[1] "Net generation : other biomass : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NC-99.M"
+[1] "Net generation : all fuels : North Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-ND-99.M"
+[1] "Net generation : coal : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-ND-99.M"
+[1] "Net generation : petroleum liquids : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-ND-99.M"
+[1] "Net generation : natural gas : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-ND-99.M"
+[1] "Net generation : wind : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-ND-99.M"
+[1] "Net generation : small-scale solar photovoltaic : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-ND-99.M"
+[1] "Net generation : conventional hydroelectric : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-ND-99.M"
+[1] "Net generation : other biomass : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-ND-99.M"
+[1] "Net generation : all fuels : North Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NE-99.M"
+[1] "Net generation : coal : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NE-99.M"
+[1] "Net generation : petroleum liquids : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NE-99.M"
+[1] "Net generation : natural gas : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-NE-99.M"
+[1] "Net generation : nuclear : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NE-99.M"
+[1] "Net generation : wind : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NE-99.M"
+[1] "Net generation : all utility-scale solar : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NE-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NE-99.M"
+[1] "Net generation : conventional hydroelectric : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NE-99.M"
+[1] "Net generation : other biomass : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NE-99.M"
+[1] "Net generation : all fuels : Nebraska : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NH-99.M"
+[1] "Net generation : coal : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NH-99.M"
+[1] "Net generation : petroleum liquids : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NH-99.M"
+[1] "Net generation : natural gas : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-NH-99.M"
+[1] "Net generation : nuclear : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NH-99.M"
+[1] "Net generation : wind : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NH-99.M"
+[1] "Net generation : small-scale solar photovoltaic : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NH-99.M"
+[1] "Net generation : conventional hydroelectric : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-NH-99.M"
+[1] "Net generation : wood and wood-derived fuels : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NH-99.M"
+[1] "Net generation : other biomass : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NH-99.M"
+[1] "Net generation : all fuels : New Hampshire : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NJ-99.M"
+[1] "Net generation : coal : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NJ-99.M"
+[1] "Net generation : petroleum liquids : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NJ-99.M"
+[1] "Net generation : natural gas : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-NJ-99.M"
+[1] "Net generation : nuclear : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NJ-99.M"
+[1] "Net generation : wind : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NJ-99.M"
+[1] "Net generation : all utility-scale solar : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NJ-99.M"
+[1] "Net generation : small-scale solar photovoltaic : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NJ-99.M"
+[1] "Net generation : conventional hydroelectric : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NJ-99.M"
+[1] "Net generation : other biomass : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NJ-99.M"
+[1] "Net generation : all fuels : New Jersey : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NM-99.M"
+[1] "Net generation : coal : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NM-99.M"
+[1] "Net generation : petroleum liquids : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NM-99.M"
+[1] "Net generation : natural gas : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NM-99.M"
+[1] "Net generation : wind : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NM-99.M"
+[1] "Net generation : all utility-scale solar : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NM-99.M"
+[1] "Net generation : small-scale solar photovoltaic : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NM-99.M"
+[1] "Net generation : conventional hydroelectric : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NM-99.M"
+[1] "Net generation : other biomass : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NM-99.M"
+[1] "Net generation : all fuels : New Mexico : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NV-99.M"
+[1] "Net generation : coal : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NV-99.M"
+[1] "Net generation : petroleum liquids : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NV-99.M"
+[1] "Net generation : natural gas : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NV-99.M"
+[1] "Net generation : wind : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NV-99.M"
+[1] "Net generation : all utility-scale solar : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NV-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NV-99.M"
+[1] "Net generation : conventional hydroelectric : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-NV-99.M"
+[1] "Net generation : wood and wood-derived fuels : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NV-99.M"
+[1] "Net generation : other biomass : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NV-99.M"
+[1] "Net generation : all fuels : Nevada : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-NY-99.M"
+[1] "Net generation : coal : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-NY-99.M"
+[1] "Net generation : petroleum liquids : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-NY-99.M"
+[1] "Net generation : natural gas : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-NY-99.M"
+[1] "Net generation : nuclear : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-NY-99.M"
+[1] "Net generation : wind : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-NY-99.M"
+[1] "Net generation : all utility-scale solar : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-NY-99.M"
+[1] "Net generation : small-scale solar photovoltaic : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-NY-99.M"
+[1] "Net generation : conventional hydroelectric : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-NY-99.M"
+[1] "Net generation : wood and wood-derived fuels : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-NY-99.M"
+[1] "Net generation : other biomass : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-NY-99.M"
+[1] "Net generation : all fuels : New York : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-OH-99.M"
+[1] "Net generation : coal : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-OH-99.M"
+[1] "Net generation : petroleum liquids : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-OH-99.M"
+[1] "Net generation : natural gas : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-OH-99.M"
+[1] "Net generation : nuclear : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-OH-99.M"
+[1] "Net generation : wind : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-OH-99.M"
+[1] "Net generation : all utility-scale solar : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-OH-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-OH-99.M"
+[1] "Net generation : conventional hydroelectric : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-OH-99.M"
+[1] "Net generation : wood and wood-derived fuels : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-OH-99.M"
+[1] "Net generation : other biomass : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-OH-99.M"
+[1] "Net generation : all fuels : Ohio : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-OK-99.M"
+[1] "Net generation : coal : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-OK-99.M"
+[1] "Net generation : petroleum liquids : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-OK-99.M"
+[1] "Net generation : natural gas : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-OK-99.M"
+[1] "Net generation : wind : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-OK-99.M"
+[1] "Net generation : all utility-scale solar : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-OK-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-OK-99.M"
+[1] "Net generation : conventional hydroelectric : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-OK-99.M"
+[1] "Net generation : wood and wood-derived fuels : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-OK-99.M"
+[1] "Net generation : other biomass : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-OK-99.M"
+[1] "Net generation : all fuels : Oklahoma : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-OR-99.M"
+[1] "Net generation : coal : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-OR-99.M"
+[1] "Net generation : petroleum liquids : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-OR-99.M"
+[1] "Net generation : natural gas : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-OR-99.M"
+[1] "Net generation : wind : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-OR-99.M"
+[1] "Net generation : all utility-scale solar : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-OR-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-OR-99.M"
+[1] "Net generation : conventional hydroelectric : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-OR-99.M"
+[1] "Net generation : wood and wood-derived fuels : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-OR-99.M"
+[1] "Net generation : other biomass : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-OR-99.M"
+[1] "Net generation : all fuels : Oregon : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-PA-99.M"
+[1] "Net generation : coal : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-PA-99.M"
+[1] "Net generation : petroleum liquids : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-PA-99.M"
+[1] "Net generation : natural gas : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-PA-99.M"
+[1] "Net generation : nuclear : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-PA-99.M"
+[1] "Net generation : wind : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-PA-99.M"
+[1] "Net generation : all utility-scale solar : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-PA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-PA-99.M"
+[1] "Net generation : conventional hydroelectric : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-PA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-PA-99.M"
+[1] "Net generation : other biomass : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-PA-99.M"
+[1] "Net generation : all fuels : Pennsylvania : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-RI-99.M"
+[1] "Net generation : petroleum liquids : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-RI-99.M"
+[1] "Net generation : natural gas : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-RI-99.M"
+[1] "Net generation : wind : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-RI-99.M"
+[1] "Net generation : all utility-scale solar : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-RI-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-RI-99.M"
+[1] "Net generation : conventional hydroelectric : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-RI-99.M"
+[1] "Net generation : other biomass : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-RI-99.M"
+[1] "Net generation : all fuels : Rhode Island : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-SC-99.M"
+[1] "Net generation : coal : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-SC-99.M"
+[1] "Net generation : petroleum liquids : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-SC-99.M"
+[1] "Net generation : natural gas : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-SC-99.M"
+[1] "Net generation : nuclear : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-SC-99.M"
+[1] "Net generation : all utility-scale solar : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-SC-99.M"
+[1] "Net generation : small-scale solar photovoltaic : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-SC-99.M"
+[1] "Net generation : conventional hydroelectric : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-SC-99.M"
+[1] "Net generation : wood and wood-derived fuels : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-SC-99.M"
+[1] "Net generation : other biomass : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-SC-99.M"
+[1] "Net generation : all fuels : South Carolina : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-SD-99.M"
+[1] "Net generation : coal : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-SD-99.M"
+[1] "Net generation : petroleum liquids : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-SD-99.M"
+[1] "Net generation : natural gas : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-SD-99.M"
+[1] "Net generation : wind : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-SD-99.M"
+[1] "Net generation : all utility-scale solar : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-SD-99.M"
+[1] "Net generation : small-scale solar photovoltaic : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-SD-99.M"
+[1] "Net generation : conventional hydroelectric : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-SD-99.M"
+[1] "Net generation : other biomass : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-SD-99.M"
+[1] "Net generation : all fuels : South Dakota : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-TN-99.M"
+[1] "Net generation : coal : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-TN-99.M"
+[1] "Net generation : petroleum liquids : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-TN-99.M"
+[1] "Net generation : natural gas : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-TN-99.M"
+[1] "Net generation : nuclear : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-TN-99.M"
+[1] "Net generation : wind : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-TN-99.M"
+[1] "Net generation : all utility-scale solar : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-TN-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-TN-99.M"
+[1] "Net generation : conventional hydroelectric : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-TN-99.M"
+[1] "Net generation : wood and wood-derived fuels : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-TN-99.M"
+[1] "Net generation : other biomass : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-TN-99.M"
+[1] "Net generation : all fuels : Tennessee : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-TX-99.M"
+[1] "Net generation : coal : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-TX-99.M"
+[1] "Net generation : petroleum liquids : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-TX-99.M"
+[1] "Net generation : natural gas : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-TX-99.M"
+[1] "Net generation : nuclear : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-TX-99.M"
+[1] "Net generation : wind : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-TX-99.M"
+[1] "Net generation : all utility-scale solar : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-TX-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-TX-99.M"
+[1] "Net generation : conventional hydroelectric : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-TX-99.M"
+[1] "Net generation : wood and wood-derived fuels : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-TX-99.M"
+[1] "Net generation : other biomass : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-TX-99.M"
+[1] "Net generation : all fuels : Texas : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-UT-99.M"
+[1] "Net generation : coal : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-UT-99.M"
+[1] "Net generation : petroleum liquids : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-UT-99.M"
+[1] "Net generation : natural gas : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-UT-99.M"
+[1] "Net generation : wind : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-UT-99.M"
+[1] "Net generation : all utility-scale solar : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-UT-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-UT-99.M"
+[1] "Net generation : conventional hydroelectric : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-UT-99.M"
+[1] "Net generation : other biomass : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-UT-99.M"
+[1] "Net generation : all fuels : Utah : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-VA-99.M"
+[1] "Net generation : coal : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-VA-99.M"
+[1] "Net generation : petroleum liquids : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-VA-99.M"
+[1] "Net generation : natural gas : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-VA-99.M"
+[1] "Net generation : nuclear : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-VA-99.M"
+[1] "Net generation : all utility-scale solar : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-VA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-VA-99.M"
+[1] "Net generation : conventional hydroelectric : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-VA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-VA-99.M"
+[1] "Net generation : other biomass : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-VA-99.M"
+[1] "Net generation : all fuels : Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-VT-99.M"
+[1] "Net generation : petroleum liquids : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-VT-99.M"
+[1] "Net generation : natural gas : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-VT-99.M"
+[1] "Net generation : nuclear : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-VT-99.M"
+[1] "Net generation : wind : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-VT-99.M"
+[1] "Net generation : all utility-scale solar : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-VT-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-VT-99.M"
+[1] "Net generation : conventional hydroelectric : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-VT-99.M"
+[1] "Net generation : wood and wood-derived fuels : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-VT-99.M"
+[1] "Net generation : other biomass : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-VT-99.M"
+[1] "Net generation : all fuels : Vermont : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-WA-99.M"
+[1] "Net generation : coal : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-WA-99.M"
+[1] "Net generation : petroleum liquids : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-WA-99.M"
+[1] "Net generation : natural gas : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-WA-99.M"
+[1] "Net generation : nuclear : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-WA-99.M"
+[1] "Net generation : wind : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-WA-99.M"
+[1] "Net generation : all utility-scale solar : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-WA-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-WA-99.M"
+[1] "Net generation : conventional hydroelectric : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-WA-99.M"
+[1] "Net generation : wood and wood-derived fuels : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-WA-99.M"
+[1] "Net generation : other biomass : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-WA-99.M"
+[1] "Net generation : all fuels : Washington : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-WI-99.M"
+[1] "Net generation : coal : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-WI-99.M"
+[1] "Net generation : petroleum liquids : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-WI-99.M"
+[1] "Net generation : natural gas : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NUC-WI-99.M"
+[1] "Net generation : nuclear : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-WI-99.M"
+[1] "Net generation : wind : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-WI-99.M"
+[1] "Net generation : all utility-scale solar : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-WI-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-WI-99.M"
+[1] "Net generation : conventional hydroelectric : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-WI-99.M"
+[1] "Net generation : wood and wood-derived fuels : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-WI-99.M"
+[1] "Net generation : other biomass : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-WI-99.M"
+[1] "Net generation : all fuels : Wisconsin : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-WV-99.M"
+[1] "Net generation : coal : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-WV-99.M"
+[1] "Net generation : petroleum liquids : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-WV-99.M"
+[1] "Net generation : natural gas : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-WV-99.M"
+[1] "Net generation : wind : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-WV-99.M"
+[1] "Net generation : small-scale solar photovoltaic : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-WV-99.M"
+[1] "Net generation : conventional hydroelectric : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WWW-WV-99.M"
+[1] "Net generation : wood and wood-derived fuels : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WAS-WV-99.M"
+[1] "Net generation : other biomass : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-WV-99.M"
+[1] "Net generation : all fuels : West Virginia : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.COW-WY-99.M"
+[1] "Net generation : coal : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.PEL-WY-99.M"
+[1] "Net generation : petroleum liquids : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.NG-WY-99.M"
+[1] "Net generation : natural gas : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.WND-WY-99.M"
+[1] "Net generation : wind : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.SUN-WY-99.M"
+[1] "Net generation : all utility-scale solar : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.DPV-WY-99.M"
+[1] "Net generation : small-scale solar photovoltaic : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.HYC-WY-99.M"
+[1] "Net generation : conventional hydroelectric : Wyoming : all sectors : monthly"
+[1] "Retrieving: ELEC.GEN.ALL-WY-99.M"
+[1] "Net generation : all fuels : Wyoming : all sectors : monthly"
+Error in (function (classes, fdef, mtable)  : 
+  unable to find an inherited method for function 'dbWriteTable' for signature '"PostgreSQLConnection", "character", "list"'
+Calls: dbWriteTable -> <Anonymous>
+Execution halted
+----------------------------------------------------------------------
+---------------------------fetch_from_EPA.R---------------------------
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  V_GHG_EMITTER_SECTOR.FACILITY_ID = col_double(),
+  V_GHG_EMITTER_SECTOR.ADDRESS2 = col_logical(),
+  V_GHG_EMITTER_SECTOR.LATITUDE = col_double(),
+  V_GHG_EMITTER_SECTOR.LONGITUDE = col_double(),
+  V_GHG_EMITTER_SECTOR.YEAR = col_double(),
+  V_GHG_EMITTER_SECTOR.CO2E_EMISSION = col_double()
+)
+See spec(...) for full column specifications.
+Warning: 100001 parsing failures.
+row col   expected     actual                                                      file
+  1  -- 21 columns 20 columns 'https://data.epa.gov/efservice/V_GHG_EMITTER_SECTOR/CSV'
+  2  -- 21 columns 20 columns 'https://data.epa.gov/efservice/V_GHG_EMITTER_SECTOR/CSV'
+  3  -- 21 columns 20 columns 'https://data.epa.gov/efservice/V_GHG_EMITTER_SECTOR/CSV'
+  4  -- 21 columns 20 columns 'https://data.epa.gov/efservice/V_GHG_EMITTER_SECTOR/CSV'
+  5  -- 21 columns 20 columns 'https://data.epa.gov/efservice/V_GHG_EMITTER_SECTOR/CSV'
+... ... .......... .......... .........................................................
+See problems(...) for more details.
+
+Warning message:
+Missing column names filled in: 'X21' [21] 
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------cleaning_and_uploading_data_code-------------------
+----------------------------------------------------------------------
+------------------cleaning_annual_capacity_factors.R------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------cleaning_capacity.R--------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+----------------------cleaning_capacity_monthly.R---------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/capacity_factors_monthly.csv"
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------cleaning_city_consumption_expenditures_2016.R------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...1
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* ...
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_consumption_(MWh/capita)" will be truncated to "Local_calibration_Commercial_Electricity_consumption_(MWh/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Electricity_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_consumption_(MWh/capita)" will be truncated to "Local_calibration_Commercial_Electricity_consumption_(MWh/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Electricity_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/c"
+NOTICE:  identifier "Emissions_factors_Electricity_CO2_equivalent_total_output_emission_rate_(mton/MWh)" will be truncated to "Emissions_factors_Electricity_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emission_rate_(mton/TcF)" will be truncated to "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission_rate_(mton/gallon)" will be truncated to "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission"
+NOTICE:  identifier "Emissions_factors_Electricity_CO2_equivalent_total_output_emission_rate_(mton/MWh)" will be truncated to "Emissions_factors_Electricity_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emission_rate_(mton/TcF)" will be truncated to "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission_rate_(mton/gallon)" will be truncated to "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission"
+----------------------------------------------------------------------
+------------cleaning_county_consumption_expenditure_2016.R------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...1
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* ...
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_consumption_(MWh/capita)" will be truncated to "Local_calibration_Commercial_Electricity_consumption_(MWh/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Electricity_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_consumption_(MWh/capita)" will be truncated to "Local_calibration_Commercial_Electricity_consumption_(MWh/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Electricity_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Electricity_expenditures_('000_$/c"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_consumption_(TcF/capit"
+NOTICE:  identifier "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/capita)" will be truncated to "Local_calibration_Commercial_Natural_Gas_expenditures_('000_$/c"
+NOTICE:  identifier "Emissions_factors_Electricity_CO2_equivalent_total_output_emission_rate_(mton/MWh)" will be truncated to "Emissions_factors_Electricity_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emission_rate_(mton/TcF)" will be truncated to "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission_rate_(mton/gallon)" will be truncated to "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission"
+NOTICE:  identifier "Emissions_factors_Electricity_CO2_equivalent_total_output_emission_rate_(mton/MWh)" will be truncated to "Emissions_factors_Electricity_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emission_rate_(mton/TcF)" will be truncated to "Emissions_factors_Natural_Gas_CO2_equivalent_total_output_emiss"
+NOTICE:  identifier "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission_rate_(mton/gallon)" will be truncated to "Emissions_factors_Gasoline_CO2_equivalent_total_output_emission"
+----------------------------------------------------------------------
+------------------------cleaning_deep_solar.R-------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] FALSE
+Warning message:
+In postgresqlWriteTable(conn, name, value, ...) :
+  table deep_solar exists in database: aborting assignTable
+[1] TRUE
+----------------------------------------------------------------------
+---------------cleaning_dominion_efficiency_programs.R----------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:purrr':
+
+    transpose
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+New names:
+* `` -> ...1
+* `` -> ...2
+* `` -> ...4
+* `` -> ...5
+* `` -> ...7
+* ...
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+---------------------------cleaning_eia860.R--------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+Warning message:
+The `value` argument of ``names<-`()` must be a character vector as of tibble 3.0.0.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated. 
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+[1] TRUE
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+NOTICE:  identifier "RTO/ISO Location Designation for Reporting Wholesale Sales Data to FERC" will be truncated to "RTO/ISO Location Designation for Reporting Wholesale Sales Data"
+----------------------------------------------------------------------
+------------------cleaning_elec_sales_through_2019.R------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+--------------------cleaning_electricity_summary.R--------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------cleaning_emissions.R-------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+---------------------cleaning_energy_burden_va.R----------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+* ...
+New names:
+* `` -> ...2
+* `` -> ...3
+New names:
+* `` -> ...2
+* `` -> ...3
+Warning message:
+The `value` argument of ``names<-`()` must be a character vector as of tibble 3.0.0.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated. 
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+----------------cleaning_energy_efficiency_programs.R-----------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+----------------------cleaning_energy_savings.R-----------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/energy_efficiency.csv"
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+---------------------------cleaning_fuel.R----------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------cleaning_generation_by_sector.R--------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/generation_by_type_va.csv"
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+------------------------cleaning_net_metering.R-----------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/net_metering.csv"
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-----------------------cleaning_offshore_wind.R-----------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+* `` -> ...5
+* `` -> ...6
+Warning message:
+The `value` argument of ``names<-`()` must be a character vector as of tibble 3.0.0.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated. 
+Warning messages:
+1: In lapply(df, as.numeric) : NAs introduced by coercion
+2: In lapply(df, as.numeric) : NAs introduced by coercion
+3: In lapply(df, as.numeric) : NAs introduced by coercion
+4: In lapply(df, as.numeric) : NAs introduced by coercion
+Warning message:
+In lapply(df, as.numeric) : NAs introduced by coercion
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------cleaning_ownership.R-------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:purrr':
+
+    transpose
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+----------------------------cleaning_pjm.R----------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+--------------------------cleaning_plants.R---------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+ ï..Table.2B..Ten.largest.plants.by.generation..2018      X            
+ Length:22                                           Length:22         
+ Class :character                                    Class :character  
+ Mode  :character                                    Mode  :character  
+     X.1                X.2                X.3              X.4         
+ Length:22          Length:22          Length:22          Mode:logical  
+ Class :character   Class :character   Class :character   NA's:22       
+ Mode  :character   Mode  :character   Mode  :character                 
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------cleaning_retailers.R-------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+------------------cleaning_rooftop_solar_low_income.R-----------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+---------------------cleaning_total_expenditure.R---------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------cleaning_utility_scale_storage.R-------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+There were 50 or more warnings (use warnings() to see the first 50)
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------cleaning_VCEA_goals.R------------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+------------------cleaning_virginia_annual_savings.R------------------
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v stringr 1.4.0
+v tidyr   1.0.3     v forcats 0.5.0
+v readr   1.3.1     
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+New names:
+* `` -> ...1
+* `` -> ...2
+New names:
+* `` -> ...1
+* `` -> ...2
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------deriving_and_uploading_data_code-------------------
+----------------------------------------------------------------------
+-----------------------deriving_co2_emissions.R-----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+--------------------deriving_energy_consumption.R---------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+-------------------------------metadata-------------------------------
+----------------------------------------------------------------------
+------------------------------metadata.R------------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+udunits system database from C:/Users/Chloe/Documents/R/win-library/4.0/units/share/udunits
+Key stored successfully in package environment.
+Error in curl::curl_fetch_memory(url, handle = handle): Timeout was reached: [api.eia.gov] Resolving timed out after 1359101 milliseconds
+Request failed [ERROR]. Retrying in 1 seconds...
+Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: api.eia.gov
+Request failed [ERROR]. Retrying in 2.3 seconds...
+Error in curl::curl_fetch_memory(url, handle = handle) : 
+  Could not resolve host: api.eia.gov
+Calls: eia_series ... withVisible -> <Anonymous> -> .eia_get -> <Anonymous>
+Execution halted
+----------------------------------------------------------------------
+-----------------------metadata_code_capacity.R-----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(electric_ipp_chp_capacity) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-------------------metadata_code_capacity_factors.R-------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(capacity_factors_annual) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+--------------------metadata_code_co2_emissions.R---------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(co2_emission_per_thousand_dollars_of_gdp_va) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+------------------metadata_code_current_ee_programs.R-----------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(current_ee_programs) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+----------------------metadata_code_deep_solar.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(deep_solar) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+--------------metadata_code_dominion_efficiency_programs.R--------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(gross_savings_dominion) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+------------------------metadata_code_eia860.R------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+
+Attaching package: 'plyr'
+
+The following object is masked from 'package:here':
+
+    here
+
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::arrange()   masks plyr::arrange()
+x purrr::compact()   masks plyr::compact()
+x dplyr::count()     masks plyr::count()
+x dplyr::failwith()  masks plyr::failwith()
+x dplyr::filter()    masks stats::filter()
+x dplyr::id()        masks plyr::id()
+x dplyr::lag()       masks stats::lag()
+x dplyr::mutate()    masks plyr::mutate()
+x dplyr::rename()    masks plyr::rename()
+x dplyr::summarise() masks plyr::summarise()
+x dplyr::summarize() masks plyr::summarize()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(eia860_utility_2014) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+------------------metadata_code_electricity_summary.R-----------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(electricity_summary) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-----------------------metadata_code_emissions.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+[1] TRUE
+[1] TRUE
+----------------------------------------------------------------------
+---------------------metadata_code_energy_burden.R--------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(energy_burden_by_fuel_type) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+------------------metadata_code_energy_consumption.R------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(energy_consumption_per_capita_va) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+------------------metadata_code_energy_savings.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(energy_savings_reporting_year_incremental) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-----------------------metadata_code_FRED_data.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+Loading required package: jsonlite
+
+Attaching package: 'jsonlite'
+
+The following object is masked from 'package:purrr':
+
+    flatten
+
+Loading required package: data.table
+
+Attaching package: 'data.table'
+
+The following objects are masked from 'package:dplyr':
+
+    between, first, last
+
+The following object is masked from 'package:purrr':
+
+    transpose
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(fred_vapop) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-------------------------metadata_code_fuel.R-------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(fuel) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+---------------------metadata_code_gen_by_state.R---------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Key stored successfully in package environment.
+[1] TRUE
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(eia_elec_gen_ak_a) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+----------------------metadata_code_generation.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(electric_ipp_chp_generation) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+---------------------metadata_code_net_metering.R---------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(photovoltaic_net_metering) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+--------------------metadata_code_offshore_wind.R---------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(total_mw_offshore_wind) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-----------------------metadata_code_ownership.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(ownership) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+--------------------------metadata_code_pjm.R-------------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(pjm_solar) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+--------------metadata_code_plant_generation_capacity.R---------------
+Fatal error: cannot open file 'C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_plant_generation_capacity.R': No such file or directory
+
+----------------------------------------------------------------------
+-----------------------metadata_code_retailers.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(retailers) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+---------------metadata_code_rooftop_solar_low_income.R---------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(rooftop_solar_low_income) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-------------------metadata_code_total_expenditure.R------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(elec_sales_through_2019_annual) already exists.
+CONTEXT:  COPY metadata, line 2
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+-------------------metadata_code_VA_annual_savings.R------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(virginia_annual_savings_through_2020) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
+----------------------metadata_code_VCEA_goals.R----------------------
+here() starts at C:/Users/Chloe/Desktop/postgres-etl
+Loading required package: DBI
+-- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+v ggplot2 3.3.0     v purrr   0.3.4
+v tibble  3.0.1     v dplyr   0.8.5
+v tidyr   1.0.3     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()
+[1] TRUE
+------------------------------------------------------------------------------
+You have loaded plyr after dplyr - this is likely to cause problems.
+If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+library(plyr); library(dplyr)
+------------------------------------------------------------------------------
+
+Attaching package: 'plyr'
+
+The following objects are masked from 'package:dplyr':
+
+    arrange, count, desc, failwith, id, mutate, rename, summarise,
+    summarize
+
+The following object is masked from 'package:purrr':
+
+    compact
+
+The following object is masked from 'package:here':
+
+    here
+
+Error in postgresqlgetResult(new.con) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
+DETAIL:  Key (db_table_name)=(VCEA_energy_efficiency) already exists.
+CONTEXT:  COPY metadata, line 1
+)
+Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
+Execution halted
+----------------------------------------------------------------------
