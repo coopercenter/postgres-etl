@@ -24,32 +24,28 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 rm(ra_pwd)
 
 
-#type in name of data table inside colnames() - this function will extract the table's columns
-cols <- list(colnames("elec_sales_through_2019"))
+#type in name of data table inside colnames() - this function will extract the table's columns. Replace 'datasetName' with the name of dataset in database.
+va_electricity_total_ex_1970_to_2017 <- dbGetQuery(db,'SELECT * from "va_electricity_total_ex_1970_to_2017"')
+cols <- list(colnames(va_electricity_total_ex_1970_to_2017))
 
 #manually list out units -- make sure to correctly correspond the order of units to the order of columns
 #can be NA if cross-sectional data
-units <- list(c("Year", "GWh", "GWh", "GWh", "GWh"))
+units <- list(c("Year", "Million Dollars"))
 
 
 # construct r2, r3,... if needed
-r1<- data.frame(db_table_name = 'elec_sales_through_2019',
-                short_series_name = 'Electricity Sales through 2019',
-                full_series_name = 'Electricity Sales through 2019 for Dominion and APCO',
-                column2variable_name_map = I(cols), units = I(units), frequency = NA,
-                data_source_brief_name = 'Dominion Power, Bill Shobe', data_source_full_name = 'Dominion Power Company, Bill Shobe',
+r1<- data.frame(db_table_name = 'va_electricity_total_ex_1970_to_2017',
+                short_series_name = 'Virignia Total Electricity Expenditures from 1970 to 2017',
+                full_series_name = 'Virignia Total Electricity Expenditures from 1970 to 2017',
+                column2variable_name_map = I(cols), units = I(units), frequency = 'A',
+                data_source_brief_name = NA, data_source_full_name = NA,
                 url = NA, api = NA,
-                series_id = NA, json = NA, notes = NA, data_type = NA,
-                data_context = NA, corresponding_data = NA,
-                R_script = 'cleaning_elec_through_2019.R', latest_data_update = NA, #check with data source last time it was updated
+                series_id = NA, json = NA, notes = NA, data_type = 'time-series',
+                data_context = "historical", corresponding_data = NA,
+                R_script = 'cleaning_total_expenditure', latest_data_update = NA, #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
-
-
+#Add r1,r2,r3...ect if they are created.
 metadata <- rbind(r1)
-
-db_driver = dbDriver("PostgreSQL")
-source(here("my_postgres_credentials.R"))
-db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
