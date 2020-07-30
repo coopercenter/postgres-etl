@@ -228,11 +228,11 @@ db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=
 dbWriteTable(db, 'metadata', value = metadata, append = FALSE, overwrite = TRUE, row.names = FALSE)
 
 # setting column constraints
-set_pk <- dbSendQuery(db, "ALTER TABLE metadata2 ADD PRIMARY KEY (db_table_name);")
-set_freq <- dbSendQuery(db, "ALTER TABLE metadata2 ALTER COLUMN frequency TYPE char(1)")
-set_url <- dbSendQuery(db, "ALTER TABLE metadata2 ALTER COLUMN url TYPE VARCHAR(1000)")
-set_corr_data <- dbSendQuery(db, 'ALTER TABLE metadata2 ALTER COLUMN corresponding_data TYPE VARCHAR(1000)')
-set_notes <- dbSendQuery(db, "ALTER TABLE metadata2 ALTER COLUMN notes TYPE VARCHAR(1000)")
+set_pk <- dbSendQuery(db, "ALTER TABLE metadata ADD PRIMARY KEY (db_table_name);")
+set_freq <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN frequency TYPE char(1)")
+set_url <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN url TYPE VARCHAR(1000)")
+set_corr_data <- dbSendQuery(db, 'ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE VARCHAR(1000)')
+set_notes <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN notes TYPE VARCHAR(1000)")
 #set_corr_data <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE varchar(500)")
 #set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
 #set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
