@@ -26,7 +26,7 @@ r1<- data.frame(db_table_name = "energy_savings_reporting_year_incremental",
                 data_source_brief_name='EIA State Electricity Profile',data_source_full_name='U.S. Energy Information Administration 2018 VA Electricity Profile',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
-                R_script='cleaning_energy_efficiency.R',
+                R_script='cleaning_energy_savings.R',
                 latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ r2<- data.frame(db_table_name = "energy_savings_incremental_life_cycle",
                 data_source_brief_name='EIA State Electricity Profile',data_source_full_name='U.S. Energy Information Administration 2018 VA Electricity Profile',
                 url='https://www.eia.gov/electricity/state/virginia/',api=NA,
                 series_id=NA,json=NA,notes=NA, data_type='time-series', data_context='historical', corresponding_data=NA, 
-                R_script='cleaning_energy_efficiency.R',
+                R_script='cleaning_energy_savings.R',
                 latest_data_update='2018-12-31', last_db_refresh='2020-05-01')
 
 # ----------------------------------------------------------------------------------
