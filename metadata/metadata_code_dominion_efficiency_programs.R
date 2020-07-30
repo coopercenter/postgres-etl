@@ -36,7 +36,7 @@ r1<- data.frame(db_table_name = 'gross_savings_dominion',
                 url = NA, api = NA,
                 series_id = NA, json = NA, notes = NA, data_type = 'time-series',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_dominion_efficiency_programs', latest_data_update = NA, #check with data source last time it was updated
+                R_script = 'cleaning_dominion_efficiency_programs.R', latest_data_update = NA, #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 #-----------
 net_savings_dominion <- dbGetQuery(db,'SELECT * from net_savings_dominion')
@@ -51,7 +51,7 @@ r2<- data.frame(db_table_name = 'net_savings_dominion',
                 url = NA, api = NA,
                 series_id = NA, json = NA, notes = NA, data_type = 'time-series',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_dominion_efficiency_programs', latest_data_update = NA, #check with data source last time it was updated
+                R_script = 'cleaning_dominion_efficiency_programs.R', latest_data_update = NA, #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 #-----------
@@ -67,11 +67,9 @@ r3<- data.frame(db_table_name = 'program_participants_dominion',
                 url = NA, api = NA,
                 series_id = NA, json = NA, notes = NA, data_type = 'time-series',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_dominion_efficiency_programs', latest_data_update = NA, #check with data source last time it was updated
+                R_script = 'cleaning_dominion_efficiency_programs.R', latest_data_update = NA, #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 
 metadata <- rbind(r1,r2,r3)
-
-
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)

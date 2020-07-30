@@ -42,7 +42,7 @@ r1<- data.frame(db_table_name = 'deep_solar',
                 url = 'http://web.stanford.edu/group/deepsolar/home', api = NA,
                 series_id = NA, json = NA, notes = NA, data_type = 'cross-sectional',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_deep_solar', latest_data_update = '2019-03-19', #check with data source last time it was updated
+                R_script = 'cleaning_deep_solar.R', latest_data_update = '2019-03-19', #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 
