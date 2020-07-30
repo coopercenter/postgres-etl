@@ -73,9 +73,26 @@ r4 <- data.frame(db_table_name = "VCEA_storage",
                  latest_data_update='2019-12-31', last_db_refresh='2020-06-17')
 
 # ----------------------------------------------------------------------------------
+clean_energy_renewable_goals <- dbGetQuery(db,'SELECT * from clean_energy_renewable_goals')
+cols <- list(colnames(clean_energy_renewable_goals))
+units <- list(c("Year", "Company", "Percent"))
+
+
+r5 <- data.frame(db_table_name = 'clean_energy_renewable_goals',
+                 short_series_name = 'Clean Energy Renewable Goals RPS',
+                 full_series_name = 'Clean Energy Renewable Goals RPS for APCO and Dominion',
+                 column2variable_name_map = I(cols), units = I(units), frequency = 'A',
+                 data_source_brief_name = 'VCEA', data_source_full_name = 'Virginia Clean Economy Act',
+                 url = NA, api = NA,
+                 series_id = NA, json = NA, notes = NA, data_type = 'time-series',
+                 data_context = 'mandate', corresponding_data = NA,
+                 R_script = 'cleaning_VCEA_goals.R', latest_data_update = NA, #check with data source last time it was updated
+                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
+
+# ----------------------------------------------------------------------------------
 
 library(plyr)
-metadata <- rbind(r1,r2,r3,r4)
+metadata <- rbind(r1,r2,r3,r4,r5)
 dbWriteTable(db, 'metadata', value = metadata, append = TRUE, overwrite = FALSE, row.names = FALSE)
 
 ## Close connection
