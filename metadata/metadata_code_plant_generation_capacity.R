@@ -44,7 +44,7 @@ r1<- data.frame(db_table_name = 'plants_by_capacity_va',
                 url = "https://www.eia.gov/electricity/data/eia860/", api = NA,
                 series_id = NA, json = NA, notes = "Table 2A. Ten largest plants by capacity, 2018", data_type = 'cross-sectional',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_plant_by_capacity', latest_data_update = '2020-06-12', #check with data source last time it was updated
+                R_script = 'cleaning_plant_by_capacity.R', latest_data_update = '2020-06-12', #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 r2<- data.frame(db_table_name = 'plant_generation_data_va',
@@ -55,7 +55,7 @@ r2<- data.frame(db_table_name = 'plant_generation_data_va',
                 url = "https://www.eia.gov/electricity/data/eia923/", api = NA,
                 series_id = NA, json = NA, notes = "Table 2B. Ten largest plants by generation, 2018", data_type = 'cross-sectional',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_plant_generation', latest_data_update = '2020-06-16', #check with data source last time it was updated
+                R_script = 'cleaning_plant_generation.R', latest_data_update = '2020-06-16', #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 

@@ -40,7 +40,7 @@ r1<- data.frame(db_table_name = 'ownership',
                 url = NA, api = NA,
                 series_id = NA, json = NA, notes = NA, data_type = 'cross-sectional',
                 data_context = 'historical', corresponding_data = NA,
-                R_script = 'cleaning_ownership', latest_data_update = NA, #check with data source last time it was updated
+                R_script = 'cleaning_ownership.R', latest_data_update = NA, #check with data source last time it was updated
                 last_db_refresh = lubridate::with_tz(Sys.time(), "UTC"))
 
 #Add r1,r2,r3...ect if they are created.
