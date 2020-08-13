@@ -61,9 +61,6 @@ echo ----------------------------------------------------------------------
 echo ---------------------------cleaning_fuel.R----------------------------
 Rscript C:\Users\Chloe\Desktop\postgres-etl\cleaning_and_uploading_data_code\cleaning_fuel.R
 echo ----------------------------------------------------------------------
-echo -------------------cleaning_generation_by_sector.R--------------------
-Rscript C:\Users\Chloe\Desktop\postgres-etl\cleaning_and_uploading_data_code\cleaning_generation_by_sector.R
-echo ----------------------------------------------------------------------
 echo ------------------------cleaning_net_metering.R-----------------------
 Rscript C:\Users\Chloe\Desktop\postgres-etl\cleaning_and_uploading_data_code\cleaning_net_metering.R
 echo ----------------------------------------------------------------------
@@ -154,9 +151,6 @@ Rscript C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_fuel.R
 echo ----------------------------------------------------------------------
 echo ---------------------metadata_code_gen_by_state.R---------------------
 Rscript C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_gen_by_state.R
-echo ----------------------------------------------------------------------
-echo ----------------------metadata_code_generation.R----------------------
-Rscript C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_generation.R
 echo ----------------------------------------------------------------------
 echo ---------------------metadata_code_net_metering.R---------------------
 Rscript C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_net_metering.R

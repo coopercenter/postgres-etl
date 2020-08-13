@@ -105,70 +105,8 @@ for (i in 1:length(series_id_list)){
   api_link[[i]] <- paste("http://api.eia.gov/series/?api_key=",eiaKey,"&series_id=",series_id_list[[i]],sep='')
 }
 
-
-eia_short_names<-list('Total co2 emission',
-                      'Total energy consumption',
-                      'Total energy production',
-                      'Annual retail sales',
-                      'Monthly retail sales',
-                      'Total monthly generation',
-                      'Total annual generation',
-                      'Total monthly solar generation',
-                      'Total monthly conventional hydroelectric generation',
-                      'Total monthly average retail price',
-                      'Commercial monthly average retail price',
-                      'Residential monthly average retail price',
-                      'Industrial monthly average retail price',
-                      'Transportation monthly average retial price',
-                      'Total monthly number of customer accounts',
-                      'Total monthly nuclear generation',
-                      'Total monthly coal generation',
-                      'Total monthly natural gas generation',
-                      'Total monthly other renewables generation',
-                      'Total monthly petroleum liquids generation',
-                      'Total monthly utility scale solar generation',
-                      'Total monthly small scale solar generation',
-                      'Total monthly utility scale solar generation non cogen',
-                      'Total monthly coal electric power generation',
-                      'Total monthly utility scale photovoltaic generation',
-                      'Total monthly wood and wood derived fuels generation',
-                      'Total monthly other biomass generation',
-                      'Total monthly hydro electric pumped sotrage',
-                      'Total monthly other generation',
-                      'Annual coal generation',
-                      'Annual petroleum generation',
-                      'Annual natural gas generation',
-                      'Annual nuclear generation',
-                      'Annual utility scale solar generation',
-                      'Annual small scale solar generation',
-                      'Annual hydroelectric generation',
-                      'Annual wood derived fuel generation',
-                      'Annual other biomass generation',
-                      'Total energy consumed by the residential sector',
-                      'Total energy consumed by the commercial sector',
-                      'Total energy consumed by the industrial sector',
-                      'Total energy consumed by the transportation sector',
-                      'Total carbon dioxide emissions, all sectors',
-                      'Total coal carbon dioxide emissions, all sectors',
-                      'Total natural gas carbon dioxide emissions, all sectors',
-                      'Total petroleum carbon dioxide emissions, all sectors',
-                      'Annual retail sales for residential sector',
-                      'Annual retail sales for commercial sector',
-                      'Annual retail sales for industrial sector',
-                      'Annual retail sales for transportation sector',
-                      'Annual retail sales for other sectors',
-                      'Monthly retail sales for residential sector',
-                      'Monthly retail sales for commercial sector',
-                      'Monthly retail sales for industrial sector',
-                      'Monthly retail sales for transportation sector',
-                      'Monthly retail sales for other sectors',
-                      'Annual hydro-electric pumped storage generation',
-                      'Annual other renewables generation',
-                      'Annual other generation',
-                      'Annual utility-scale photovoltaic generation',
-                      'Annual net interstate flow of electricity'
-                      )
-
+eia_short_name_vec <- read_file(here("api_data_code","eia_short_names.txt"))
+eia_short_name_list <- unlist(strsplit(eia_short_name_vec,'\r\n'))
 
 
 col2var<-vector("list", length(series_id_list))
@@ -209,7 +147,7 @@ for (i in 1:length(series_id_list)) {
 # Create metadata dataframes for each dataset and fill in the info
 for (i in 1:length(series_id_list)){
   fit_meta[[i]]<-data.frame(db_table_name = eia_data_names[[i]],
-                            short_series_name= eia_short_names[[i]],
+                            short_series_name= eia_short_name_list[[i]],
                             full_series_name = all_eia_meta[[i]]$name,
                             column2variable_name_map=I(list(cols[[i]])),units=eia_units[[i]],frequency=all_eia_meta[[i]]$f,
                             data_source_brief_name='EIA',data_source_full_name='U.S. Energy Information Administration',
@@ -234,8 +172,8 @@ set_url <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN url TYPE VARCHAR(1
 set_corr_data <- dbSendQuery(db, 'ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE VARCHAR(1000)')
 set_notes <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN notes TYPE VARCHAR(1000)")
 #set_corr_data <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN corresponding_data TYPE varchar(500)")
-#set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
-#set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
+set_data_update <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN latest_data_update TYPE TIMESTAMP WITHOUT TIME ZONE")
+set_db_refresh <- dbSendQuery(db, "ALTER TABLE metadata ALTER COLUMN last_db_refresh TYPE TIMESTAMP WITH TIME ZONE")
 
 # Check if column constraints are true
 #data_types <- dbGetQuery(db, "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'metadata2';")
