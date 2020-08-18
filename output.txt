@@ -2124,6 +2124,12 @@ Missing column names filled in: 'X21' [21]
 [1] TRUE
 [1] TRUE
 ----------------------------------------------------------------------
+-------------Downloading va.xlsx from EIA VA State Profile------------
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 81799  100 81799    0     0  81799      0  0:00:01 --:--:--  0:00:01  232k
+-------------------Saving each worksheet as csv files-----------------
+----------------------------------------------------------------------
 -------------------cleaning_and_uploading_data_code-------------------
 ----------------------------------------------------------------------
 ------------------cleaning_annual_capacity_factors.R------------------
@@ -2148,8 +2154,10 @@ x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
 Loading required package: DBI
-[1] TRUE
-[1] TRUE
+Error in `[.data.frame`(capacity_factors_annual, , 2:20) : 
+  undefined columns selected
+Calls: [ -> [.data.frame
+Execution halted
 ----------------------------------------------------------------------
 -------------------------cleaning_capacity.R--------------------------
 
@@ -2200,8 +2208,28 @@ x dplyr::lag()    masks stats::lag()
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
 Loading required package: DBI
 [1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/capacity_factors_monthly.csv"
-[1] TRUE
-[1] TRUE
+Error: Can't subset columns that don't exist.
+x Location 17 doesn't exist.
+i There are only 16 columns.
+Backtrace:
+     x
+  1. +-dplyr::select(capacity_factors_monthly, c(2:17))
+  2. +-dplyr:::select.data.frame(capacity_factors_monthly, c(2:17))
+  3. | \-tidyselect::vars_select(tbl_vars(.data), !!!enquos(...))
+  4. |   \-tidyselect:::eval_select_impl(...)
+  5. |     +-tidyselect:::with_subscript_errors(...)
+  6. |     | +-base::tryCatch(...)
+  7. |     | | \-base:::tryCatchList(expr, classes, parentenv, handlers)
+  8. |     | |   \-base:::tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  9. |     | |     \-base:::doTryCatch(return(expr), name, parentenv, handler)
+ 10. |     | \-tidyselect:::instrument_base_errors(expr)
+ 11. |     |   \-base::withCallingHandlers(...)
+ 12. |     \-tidyselect:::vars_select_eval(...)
+ 13. |       \-tidyselect:::loc_validate(pos, vars)
+ 14. |         \-vctrs::vec_as_location(pos, n = length(vars))
+ 15. \-vctrs:::stop_subscript_oob(...)
+ 16.   \-vctrs::
+Execution halted
 ----------------------------------------------------------------------
 -------------cleaning_city_consumption_expenditures_2016.R------------
 
@@ -2325,10 +2353,7 @@ x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
 Loading required package: DBI
-[1] FALSE
-Warning message:
-In postgresqlWriteTable(conn, name, value, ...) :
-  table deep_solar exists in database: aborting assignTable
+[1] TRUE
 [1] TRUE
 ----------------------------------------------------------------------
 ---------------cleaning_dominion_efficiency_programs.R----------------
@@ -2756,33 +2781,6 @@ Loading required package: DBI
 [1] TRUE
 [1] TRUE
 ----------------------------------------------------------------------
--------------------cleaning_generation_by_sector.R--------------------
-
-Attaching package: 'dplyr'
-
-The following objects are masked from 'package:stats':
-
-    filter, lag
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-
--- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-v ggplot2 3.3.0     v purrr   0.3.4
-v tibble  3.0.1     v stringr 1.4.0
-v tidyr   1.0.3     v forcats 0.5.0
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-here() starts at C:/Users/Chloe/Desktop/postgres-etl
-Loading required package: DBI
-[1] "C:/Users/Chloe/Desktop/postgres-etl/raw_data/generation_by_type_va.csv"
-[1] TRUE
-[1] TRUE
-[1] TRUE
-[1] TRUE
-----------------------------------------------------------------------
 ------------------------cleaning_net_metering.R-----------------------
 
 Attaching package: 'dplyr'
@@ -2941,14 +2939,14 @@ x dplyr::lag()    masks stats::lag()
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
 Loading required package: DBI
 [1] TRUE
- ï..Table.2B..Ten.largest.plants.by.generation..2018      X            
- Length:22                                           Length:22         
- Class :character                                    Class :character  
- Mode  :character                                    Mode  :character  
-     X.1                X.2                X.3              X.4         
- Length:22          Length:22          Length:22          Mode:logical  
- Class :character   Class :character   Class :character   NA's:22       
- Mode  :character   Mode  :character   Mode  :character                 
+ Table.2B..Ten.largest.plants.by.generation..2018      X            
+ Length:13                                        Length:13         
+ Class :character                                 Class :character  
+ Mode  :character                                 Mode  :character  
+     X.1                X.2                X.3           
+ Length:13          Length:13          Length:13         
+ Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character  
 [1] TRUE
 [1] TRUE
 [1] TRUE
@@ -3128,7 +3126,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-[1] TRUE
+[1] FALSE
 [1] TRUE
 [1] TRUE
 [1] TRUE
@@ -3144,7 +3142,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-[1] TRUE
+[1] FALSE
 [1] TRUE
 [1] TRUE
 [1] TRUE
@@ -3164,14 +3162,8 @@ x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 udunits system database from C:/Users/Chloe/Documents/R/win-library/4.0/units/share/udunits
 Key stored successfully in package environment.
-Error in curl::curl_fetch_memory(url, handle = handle): Timeout was reached: [api.eia.gov] Resolving timed out after 1359101 milliseconds
-Request failed [ERROR]. Retrying in 1 seconds...
-Error in curl::curl_fetch_memory(url, handle = handle): Could not resolve host: api.eia.gov
-Request failed [ERROR]. Retrying in 2.3 seconds...
-Error in curl::curl_fetch_memory(url, handle = handle) : 
-  Could not resolve host: api.eia.gov
-Calls: eia_series ... withVisible -> <Anonymous> -> .eia_get -> <Anonymous>
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -----------------------metadata_code_capacity.R-----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3206,13 +3198,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(electric_ipp_chp_capacity) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -------------------metadata_code_capacity_factors.R-------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3226,6 +3213,22 @@ v readr   1.3.1     v forcats 0.5.0
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 [1] TRUE
+Error in postgresqlExecStatement(conn, statement, ...) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  relation "capacity_factors_annual" does not exist
+LINE 1: SELECT * from capacity_factors_annual
+                      ^
+)
+Warning message:
+In postgresqlQuickSQL(conn, statement, ...) :
+  Could not create execute: SELECT * from capacity_factors_annual
+Error in postgresqlExecStatement(conn, statement, ...) : 
+  RS-DBI driver: (could not Retrieve the result : ERROR:  relation "capacity_factors_monthly" does not exist
+LINE 1: SELECT * from capacity_factors_monthly
+                      ^
+)
+Warning message:
+In postgresqlQuickSQL(conn, statement, ...) :
+  Could not create execute: SELECT * from capacity_factors_monthly
 ------------------------------------------------------------------------------
 You have loaded plyr after dplyr - this is likely to cause problems.
 If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
@@ -3247,13 +3250,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(capacity_factors_annual) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 --------------------metadata_code_co2_emissions.R---------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3288,13 +3286,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(co2_emission_per_thousand_dollars_of_gdp_va) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ------------------metadata_code_current_ee_programs.R-----------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3307,13 +3300,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(current_ee_programs) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 ----------------------metadata_code_deep_solar.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3326,13 +3313,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(deep_solar) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 --------------metadata_code_dominion_efficiency_programs.R--------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3345,13 +3326,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(gross_savings_dominion) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 ------------------------metadata_code_eia860.R------------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3380,13 +3355,8 @@ x dplyr::mutate()    masks plyr::mutate()
 x dplyr::rename()    masks plyr::rename()
 x dplyr::summarise() masks plyr::summarise()
 x dplyr::summarize() masks plyr::summarize()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(eia860_utility_2014) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ------------------metadata_code_electricity_summary.R-----------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3421,13 +3391,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(electricity_summary) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -----------------------metadata_code_emissions.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3498,13 +3463,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(energy_burden_by_fuel_type) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ------------------metadata_code_energy_consumption.R------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3539,13 +3499,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(energy_consumption_per_capita_va) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ------------------metadata_code_energy_savings.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3580,13 +3535,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(energy_savings_reporting_year_incremental) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -----------------------metadata_code_FRED_data.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3620,13 +3570,9 @@ The following object is masked from 'package:purrr':
 
     transpose
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(fred_vapop) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -------------------------metadata_code_fuel.R-------------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3661,13 +3607,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(fuel) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ---------------------metadata_code_gen_by_state.R---------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3682,54 +3623,7 @@ x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
 Key stored successfully in package environment.
 [1] TRUE
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(eia_elec_gen_ak_a) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
-----------------------------------------------------------------------
-----------------------metadata_code_generation.R----------------------
-here() starts at C:/Users/Chloe/Desktop/postgres-etl
-Loading required package: DBI
--- Attaching packages --------------------------------------- tidyverse 1.3.0 --
-v ggplot2 3.3.0     v purrr   0.3.4
-v tibble  3.0.1     v dplyr   0.8.5
-v tidyr   1.0.3     v stringr 1.4.0
-v readr   1.3.1     v forcats 0.5.0
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
 [1] TRUE
-------------------------------------------------------------------------------
-You have loaded plyr after dplyr - this is likely to cause problems.
-If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-library(plyr); library(dplyr)
-------------------------------------------------------------------------------
-
-Attaching package: 'plyr'
-
-The following objects are masked from 'package:dplyr':
-
-    arrange, count, desc, failwith, id, mutate, rename, summarise,
-    summarize
-
-The following object is masked from 'package:purrr':
-
-    compact
-
-The following object is masked from 'package:here':
-
-    here
-
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(electric_ipp_chp_generation) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
 ----------------------------------------------------------------------
 ---------------------metadata_code_net_metering.R---------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3742,13 +3636,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(photovoltaic_net_metering) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 --------------------metadata_code_offshore_wind.R---------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3783,13 +3671,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(total_mw_offshore_wind) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -----------------------metadata_code_ownership.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3802,13 +3685,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(ownership) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 --------------------------metadata_code_pjm.R-------------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3843,13 +3720,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(pjm_solar) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 --------------metadata_code_plant_generation_capacity.R---------------
 Fatal error: cannot open file 'C:\Users\Chloe\Desktop\postgres-etl\metadata\metadata_code_plant_generation_capacity.R': No such file or directory
@@ -3888,13 +3760,8 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(retailers) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 ---------------metadata_code_rooftop_solar_low_income.R---------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3907,13 +3774,8 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(rooftop_solar_low_income) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------
 -------------------metadata_code_total_expenditure.R------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3926,13 +3788,7 @@ v readr   1.3.1     v forcats 0.5.0
 -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(elec_sales_through_2019_annual) already exists.
-CONTEXT:  COPY metadata, line 2
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 -------------------metadata_code_VA_annual_savings.R------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -3967,13 +3823,7 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(virginia_annual_savings_through_2020) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
 ----------------------------------------------------------------------
 ----------------------metadata_code_VCEA_goals.R----------------------
 here() starts at C:/Users/Chloe/Desktop/postgres-etl
@@ -4008,11 +3858,6 @@ The following object is masked from 'package:here':
 
     here
 
-Error in postgresqlgetResult(new.con) : 
-  RS-DBI driver: (could not Retrieve the result : ERROR:  duplicate key value violates unique constraint "metadata_pkey"
-DETAIL:  Key (db_table_name)=(VCEA_energy_efficiency) already exists.
-CONTEXT:  COPY metadata, line 1
-)
-Calls: dbWriteTable ... dbWriteTable -> postgresqlWriteTable -> postgresqlgetResult
-Execution halted
+[1] TRUE
+[1] TRUE
 ----------------------------------------------------------------------

@@ -9,20 +9,13 @@ source(here('my_postgres_credentials.R'))
 db <- dbConnect(db_driver,user=db_user, password=ra_pwd,dbname="postgres", host=db_host)
 rm(ra_pwd)
 
-here('raw_data','capacity_factors_monthly.csv')
-#read in dataset
 capacity_factors_monthly <- read.csv(here('raw_data','capacity_factors_monthly.csv'))
-# capacity.factors.monthly <- as.data.frame(t(capacity.factors.monthly))
-# capacity.factors.monthly <- capacity.factors.monthly[,2:19]
-# capacity.factors.monthly <- select(capacity.factors.monthly, V2, V4, V5,V6, V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V18,V19)
-# 
-# names(capacity.factors.monthly)<-lapply(capacity.factors.monthly[1,],as.character)
-# capacity.factors.monthly <- capacity.factors.monthly[-1,]
-# colnames(capacity.factors.monthly)[1] <- 'Month'
-
-capacity_factors_monthly <- select(capacity_factors_monthly,c(2:17))
-
-#write.csv(capacity.factors.monthly, "Capacity Factors Monthly .csv") -- remove statement
+capacity_factors_monthly <- as.data.frame(t(capacity_factors_monthly))
+capacity_factors_monthly <- capacity_factors_monthly[,2:19]
+capacity_factors_monthly <- capacity_factors_monthly[-c(2)]
+names(capacity_factors_monthly)<-lapply(capacity_factors_monthly[1,],as.character)
+capacity_factors_monthly <- capacity_factors_monthly[-1,]
+colnames(capacity_factors_monthly)[1] <- 'Month'
 
 #upload to db
 dbWriteTable(db, 'capacity_factors_monthly', capacity_factors_monthly, row.names=FALSE, overwrite = TRUE)

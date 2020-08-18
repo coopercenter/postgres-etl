@@ -14,6 +14,21 @@ echo ----------------------------------------------------------------------
 echo ---------------------------fetch_from_EPA.R---------------------------
 Rscript C:\Users\Chloe\Desktop\postgres-etl\api_data_code\fetch_from_EPA.R
 echo ----------------------------------------------------------------------
+echo -------------Downloading va.xlsx from EIA VA State Profile------------
+curl https://www.eia.gov/electricity/state/virginia/xls/va.xlsx --output raw_data/va.xlsx
+echo -------------------Saving each worksheet as csv files-----------------
+python xlsx2csv -s 1 raw_data/va.xlsx raw_data/summary.csv
+python xlsx2csv -s 2 raw_data/va.xlsx raw_data/plants_by_capacity.csv
+python xlsx2csv -s 3 raw_data/va.xlsx raw_data/plant_generation_va.csv
+python xlsx2csv -s 4 raw_data/va.xlsx raw_data/retailers.csv
+python xlsx2csv -s 5 raw_data/va.xlsx raw_data/electric_power_capacity_by_sector.csv
+python xlsx2csv -s 7 raw_data/va.xlsx raw_data/fuel_uncleaned.csv
+python xlsx2csv -s 8 raw_data/va.xlsx raw_data/emission.csv
+python xlsx2csv -s 10 raw_data/va.xlsx raw_data/ownership_raw.csv
+python xlsx2csv -s 12 raw_data/va.xlsx raw_data/net_metering.csv
+python xlsx2csv -s 15 raw_data/va.xlsx raw_data/capacity_factors_monthly.csv
+python xlsx2csv -s 16 raw_data/va.xlsx raw_data/capacity_factors_annual.csv
+echo ----------------------------------------------------------------------
 echo -------------------cleaning_and_uploading_data_code-------------------
 echo ----------------------------------------------------------------------
 echo ------------------cleaning_annual_capacity_factors.R------------------
