@@ -18,5 +18,8 @@ summary_e <- summary_e[-1,]
 
 #upload to db
 dbWriteTable(db, 'electricity_summary', summary_e, row.names=FALSE, overwrite = TRUE)
+
+# change to electricity_summary_2018
+
 #close db connection
 dbDisconnect(db)
