@@ -18,12 +18,16 @@ names(capacity_factors_annual)<-lapply(capacity_factors_annual[1,],as.character)
 capacity_factors_annual <- capacity_factors_annual[-1,]
 colnames(capacity_factors_annual)[1] <- 'Year'
 
-years <- c(2018, 2017,2016,2015,2014,2013,2012,2011,2010, 2009, 2008)
-index <- c(2:12)
-i <- c(1:11)
 
-for (val in i){
-  capacity_factors_annual[index[i],1] = years[i]
+years <- capacity_factors_annual[,1] #gets the first column
+years <-(years[2:length(years)]) #Assuming the first slot is not a year, start at index 2
+years <- regmatches(years, gregexpr("[[:digit:]]+", years)) #only pulls the numbers out of string values
+
+i <- c(2:(length(years)+1)) #count variable. Start at 2 because we're assuming index 1 isn't a year.
+
+for (val in i){ #For loop to go through and change it through.
+  print(val)
+  capacity_factors_annual[val,1] = years[[val-1]]
 }
 
 
