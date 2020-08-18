@@ -12,6 +12,8 @@ rm(ra_pwd)
 
 #read in dataset
 ownership <- read.csv(here("raw_data","ownership_raw.csv"))
+year <- colnames(ownership[1])
+year <- str_sub(year, start=-4)
 ownership<- ownership[3:10,]
 names(ownership)<-lapply(ownership[1,],as.character)
 ownership<-ownership[-1,]
@@ -34,7 +36,12 @@ test <- setDT(test, keep.rownames = TRUE)[]
 colnames(test)[1] <- "Area of Ownership"
 ownership <- test
 
+table_name <- paste('ownership_',year,sep="")
+
 #upload to db
-dbWriteTable(db, 'ownership', ownership, row.names=FALSE, overwrite = TRUE)
+dbWriteTable(db, table_name, ownership, row.names=FALSE, overwrite = TRUE)
+
+# change to ownership_2018
+
 #close db connection
 dbDisconnect(db)
