@@ -17,6 +17,10 @@ names(data)
 
 # Assign key data to variables
 time_char <- data$datetime_beginning_ept #in eastern time zone
+
+
+time_char
+
 # Convert time from character to POSIXt date/time format
 time <- strptime(time_char, format = '%m/%d/%Y %H:%M', tz = '') # 
 rtLMP <- data$total_lmp_rt #real time 5-minute location marginal pricing

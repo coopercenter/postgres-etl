@@ -1,12 +1,7 @@
-## CO2 Signal PJM Region Electricity Carbon Intensity API Call 
-# Arne Newman
-# Last updated: 9/23/20
+# CO2 Signal PJM Region Electricity Carbon Intensity API Call 
 
-# Intent is to test calling the API and parsing the  response
-# API documentation is at https://docs.co2signal.com/#introduction
-
-#install.packages("httr")
-#install.packages("jsonlite")
+# This script collects electricity carbon intensity for the PJM Region. API documentation 
+# is available at https://docs.co2signal.com/#introduction
 
 #Require the package so you can use it
 require("httr")
@@ -17,24 +12,18 @@ password <- ""
 
 base_url <- "https://api.co2signal.com/v1/latest?"
 
-# Build coordinate input for the call
+# Build coordinate input for the call; coordinates for UVA selected. This maps
+# to the PJM region
 lon <- '-78.508299'
 lat <- '38.033215'
+# Combine the coordinates for the URL string based on API format
 lon_lat <- paste('lon=',lon,'&','lat=',lat, sep='')
-# lon_lat # check lon_lat string if needed
+
+# Create the URL string
 zone_call<-paste(base_url,lon_lat,sep='')
-# zone_call #check full API string if needed
 
 #Run get request 
 get_zone_co2 <- GET(zone_call, add_headers('auth-token' = auth_token))
-
-## If using country code instead of zone, use 2 lines below 
-# country_code <- "XX"
-# country_call <- paste(url, "countryCode","=", country_code, sep="")
-# get_country_co2 <- GET(country_call, add_headers('auth-token' = auth_token))
-
-# Check data type - result is a list
-typeof(get_zone_co2)
 
 # Parse the response
 co2_zone_parsed <- content(get_zone_co2, "parsed")
