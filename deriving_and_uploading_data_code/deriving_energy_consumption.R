@@ -21,43 +21,40 @@ pop <- dbGetQuery(db,'SELECT * from fred_vapop')
 pop$value <- as.numeric(pop$value)*1000
 pop$date <- as.Date(pop$date)
 
-# laod consumption data
+# load consumption data
 tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
 
 # unit of consumption is billion btu
+tot_consumption$value <- tot_consumption$value*1000000000
+
 # merge on shared values, population has more historical data than consumption
-merged_data = right_join(pop, tot_consumption, by="date", suffix=c('_pop', "_consumption"))
-df = merged_data %>% select(value_pop, value_consumption, date)
+merged_data <- full_join(pop, tot_consumption, by="date", suffix=c('_pop', "_consumption"))
+df <- merged_data %>% select(value_pop, value_consumption, date)
 
 # derive the values
 df$consumption_per_capita <- df$value_consumption/df$value_pop
 df$year <- year(as.POSIXct(df$date))
 
-c_per_cap_df <- df %>% select(year, consumption_per_capita)
+c_per_cap_df <- df %>% select(year, consumption_per_capita) %>% filter(!is.na(consumption_per_capita))
 
 #upload to db
 dbWriteTable(db, 'energy_consumption_per_capita_va', c_per_cap_df, row.names=FALSE, overwrite = TRUE)
 #-----------------------------------------------------------------------------------------------
+
 # get the datasets
-# gdp goes from 1997 to 2019
-gdp<- dbGetQuery(db,'SELECT * from fred_vangsp')
-# tot_consumption goes from 1960 to 2018
-tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
+gdp <- dbGetQuery(db,'SELECT * from fred_vangsp')
 
-# so take the common years: 1997 to 2018
+# unit of GDP is in million of dollar, convert to dollars
+gdp$value <- as.numeric(gdp$value)*1000000
+gdp$date <- as.Date(gdp$date)
 
-# unit of GDP is in million of dollar
-gdp_s97<-as.numeric(gdp[1:22,2])*1000000
-
-# unit of consumption is billion btu
-tot_s97 <- tot_consumption[1:22,]
-tot_s97<- tot_s97[nrow(tot_s97):1,1]*1000000000
-# now it's btu
+# tot_consumption has more history than GDP
+c_per_gdp_df <- full_join(gdp, tot_consumption, by="date", suffix=c("_gdp", "_consumption"))
 
 # derive the values
-c_per_gdp <- tot_s97/gdp_s97
-c_per_gdp_df <- data.frame(1997:2018,c_per_gdp)
-colnames(c_per_gdp_df)<- c('year','consumption_per_unit_gdp')
+c_per_gdp_df$consumption_per_unit_gdp <- c_per_gdp_df$value_consumption/c_per_gdp_df$value_gdp
+
+c_per_gdp_df <- c_per_gdp_df %>% select(consumption_per_unit_gdp, year) %>% filter(!is.na(consumption_per_unit_gdp))
 
 #upload to db
 dbWriteTable(db, 'energy_consumption_per_unit_gdp_va', c_per_gdp_df, row.names=FALSE, overwrite = TRUE)
