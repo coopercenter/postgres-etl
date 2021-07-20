@@ -24,10 +24,7 @@ pop$date <- as.Date(pop$date)
 # load consumption data
 tot_consumption <- dbGetQuery(db,'SELECT * from eia_seds_tetcb_va_a')
 
-# unit of consumption is billion btu
-tot_consumption$value <- tot_consumption$value*1000000000
-
-# merge on shared values, population has more historical data than consumption
+# merge on shared values
 merged_data <- full_join(pop, tot_consumption, by="date", suffix=c('_pop', "_consumption"))
 df <- merged_data %>% select(value_pop, value_consumption, date)
 
@@ -51,8 +48,8 @@ gdp$date <- as.Date(gdp$date)
 # tot_consumption has more history than GDP
 c_per_gdp_df <- full_join(gdp, tot_consumption, by="date", suffix=c("_gdp", "_consumption"))
 
-# derive the values
-c_per_gdp_df$consumption_per_unit_gdp <- c_per_gdp_df$value_consumption/c_per_gdp_df$value_gdp
+# derive the values, convert value_consumption from billion btu to btu
+c_per_gdp_df$consumption_per_unit_gdp <- c_per_gdp_df$value_consumption*1000000000/c_per_gdp_df$value_gdp
 
 c_per_gdp_df <- c_per_gdp_df %>% select(consumption_per_unit_gdp, year) %>% filter(!is.na(consumption_per_unit_gdp))
 
