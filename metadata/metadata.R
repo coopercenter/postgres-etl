@@ -145,6 +145,7 @@ for (i in 1:length(series_id_list)) {
 
 
 # Create metadata dataframes for each dataset and fill in the info
+metadata = data.frame()
 for (i in 1:length(series_id_list)){
   fit_meta[[i]]<-data.frame(db_table_name = eia_data_names[[i]],
                             short_series_name= eia_short_name_list[[i]],

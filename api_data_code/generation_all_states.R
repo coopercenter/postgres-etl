@@ -268,4 +268,4 @@ for (i in 1:50){
 
 #Upload total annual and monthly generation dataframes to database.
 dbWriteTable(db, "gen_by_state_annually_all_states", value = gen_by_state_annual, append = FALSE, overwrite = TRUE, row.names = FALSE)
-dbWriteTable(db, "gen_by_state_monthly_all_states", value = gen_by_state_monthly, append = FALSE, overwrite = TRUE, row.names = FALSE)
+dbWriteTable(db, "gen_by_state_monthly_all_states", value = as.data.frame(gen_by_state_monthly), append = FALSE, overwrite = TRUE, row.names = FALSE)
